@@ -14,7 +14,16 @@ void error(const char *msg)
     exit(1);
 }
 
-void downloadFile(int newSockFD,struct sockaddr_in cli_addr){
+struct argPasser
+{
+	int FD; //file descriptor
+	struct sockaddr_in ADDR;
+};
+
+void* downloadFile(void* data){
+	int newSockFD=((argPasser*)data)->FD; //copy out the data so that the thread is fine when the main continues
+	struct sockaddr_in cli_addr=((argPasser*)data)->ADDR;
+
 	printf("\n\n=== New Connection ===\n\n");
 	    char clientAddress[INET6_ADDRSTRLEN+1]; bzero(clientAddress,sizeof(clientAddress));
 	    inet_ntop(AF_INET, &(cli_addr.sin_addr),clientAddress,sizeof(clientAddress));
@@ -34,7 +43,7 @@ void downloadFile(int newSockFD,struct sockaddr_in cli_addr){
 	    		filenameLength+=bbb-'0';
 	    	}else break;
 	    }
-	    if(filenameLength==0){close(newSockFD);return;}
+	    if(filenameLength==0){close(newSockFD);return NULL;}
 	    printf("Filename Length: %d\n", filenameLength);
 	    char filename[filenameLength+1];
 	    bzero(filename,filenameLength+1);
@@ -50,7 +59,7 @@ void downloadFile(int newSockFD,struct sockaddr_in cli_addr){
 	    	}
 	    	curt++;
 	    }
-	    if(filename[0]==0){close(newSockFD);return;}
+	    if(filename[0]==0){close(newSockFD);return NULL;}
 	    printf("%s\n", filename);
 	    read(newSockFD,&bbb,1); //clear out the newline seperator
 
@@ -67,7 +76,7 @@ void downloadFile(int newSockFD,struct sockaddr_in cli_addr){
 	    		fileLength+=bbb-'0';
 	    	}else break;
 	    }
-	    if(fileLength==0){close(newSockFD);return;}
+	    if(fileLength==0){close(newSockFD);return NULL;}
 	    printf("File     Length: %d\n", fileLength);
 
 	    //time to read the file and write to a file
@@ -110,7 +119,12 @@ int main(int argc, char** args){
 		int newSockFD = accept(listenFD, (struct sockaddr *) &cli_addr, &clientLength); //get the FD of the new client connection
 		if (newSockFD < 0) 
 	          error("ERROR on accept");
-	    downloadFile(newSockFD,cli_addr);
+	    //downloadFile(newSockFD,cli_addr);
+	    pthread_t temp;
+	    static struct argPasser data={newSockFD,cli_addr};
+	    if(pthread_create(&temp,NULL,downloadFile,&data)){
+	    	printf("ERROR making new thread\n");
+	    }
 	}
 
 	printf("Exiting\n");
