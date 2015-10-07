@@ -13,6 +13,25 @@ void error(const char *msg)
     exit(1);
 }
 
+int lastIndexOf(char* buf,char search){
+    int last=-1;
+    int curt=0;
+    while(*buf){
+        if(*buf==search)last=curt;
+        buf++; curt++;
+    }
+    return last;
+}
+int lastIndexOf_0NF(char* buf,char search){
+    int last=0;
+    int curt=0;
+    while(*buf){
+        if(*buf==search)last=curt;
+        buf++; curt++;
+    }
+    return last;
+}
+
 char * itoa(int here, char* buf){
 	//unsigned numbers and assumes unlimited buffer
 	char * temp=buf;
@@ -77,13 +96,13 @@ int main(int argc, char *argv[])
     char filenameLengthA[20];
     char fieldSeperator='\n';
     bzero(filenameLengthA,20);
-    itoa(strlen(argv[2]),filenameLengthA);
-    printf("Filename        %s\nFileLength      %s\n", argv[2],filenameLengthA);
+    itoa(strlen(argv[2]+lastIndexOf_0NF(argv[2])),filenameLengthA);
+    printf("Filename        %s\nFileLength      %s\n", argv[2]+lastIndexOf_0NF(argv[2]),filenameLengthA);
 
     //tell the name of the file
     write(socketFD,filenameLengthA,strlen(filenameLengthA));
     write(socketFD,&fieldSeperator,1);
-    write(socketFD,argv[2],strlen(argv[2]));
+    write(socketFD,argv[2]+lastIndexOf_0NF(argv[2]),strlen(argv[2]+lastIndexOf_0NF(argv[2])));
     write(socketFD,&fieldSeperator,1);
 
     //tell how long the file is
