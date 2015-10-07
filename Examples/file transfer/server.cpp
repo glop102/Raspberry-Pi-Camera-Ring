@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 void error(const char *msg)
 {
@@ -37,6 +38,9 @@ int main(int argc, char** args){
 		if (newSockFD < 0) 
 	          error("ERROR on accept");
 	    printf("\n\n=== New Connection ===\n\n");
+	    char clientAddress[INET6_ADDRSTRLEN+1]; bzero(clientAddress,sizeof(clientAddress));
+	    inet_ntop(AF_INET, &(cli_addr.sin_addr),clientAddress,sizeof(clientAddress));
+	    printf("clientAddress\t%s\n",clientAddress);
 
 	    //get the filename that will be used to save to
 	    char bbb;
