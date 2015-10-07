@@ -121,7 +121,9 @@ int main(int argc, char** args){
 	          error("ERROR on accept");
 	    //downloadFile(newSockFD,cli_addr);
 	    pthread_t temp;
-	    static struct argPasser data={newSockFD,cli_addr};
+	    static struct argPasser data;
+	    data.FD=newSockFD;
+	    data.ADDR=cli_addr;
 	    if(pthread_create(&temp,NULL,downloadFile,&data)){
 	    	printf("ERROR making new thread\n");
 	    }
