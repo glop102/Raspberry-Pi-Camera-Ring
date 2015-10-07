@@ -96,13 +96,13 @@ int main(int argc, char *argv[])
     char filenameLengthA[20];
     char fieldSeperator='\n';
     bzero(filenameLengthA,20);
-    itoa(strlen(argv[2]+lastIndexOf_0NF(argv[2],'/')),filenameLengthA);
-    printf("Filename        %s\nFileLength      %s\n", argv[2]+lastIndexOf_0NF(argv[2],'/'),filenameLengthA);
+    itoa(strlen(argv[2]+lastIndexOf_0NF(argv[2],'/')+1),filenameLengthA);
+    printf("Filename        %s\nFileLength      %s\n", argv[2]+lastIndexOf_0NF(argv[2],'/')+1,filenameLengthA);
 
     //tell the name of the file
     write(socketFD,filenameLengthA,strlen(filenameLengthA));
     write(socketFD,&fieldSeperator,1);
-    write(socketFD,argv[2]+lastIndexOf_0NF(argv[2],'/'),strlen(argv[2]+lastIndexOf_0NF(argv[2],'/')));
+    write(socketFD,argv[2]+lastIndexOf_0NF(argv[2],'/')+1,strlen(argv[2]+lastIndexOf_0NF(argv[2],'/')+1));
     write(socketFD,&fieldSeperator,1);
 
     //tell how long the file is
