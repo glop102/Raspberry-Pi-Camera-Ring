@@ -20,16 +20,14 @@ int main(int argc, char** args){
 		exit(1);
 	}
 
-	struct sockaddr_in cli_addr;
-	socklen_t clientLength=sizeof(cli_addr);
-
 	char buffer[256];
 	while(1){
-		int newSockFD = accept(listenFD, (struct sockaddr *) &cli_addr, &clientLength); //get the FD of the new client connection
+		struct newConnectionInfo peer = simpleAccept(listenFD);
+		int newSockFD = peer.FD; //get the FD of the new client connection
 		if (newSockFD < 0) 
 	          error("ERROR on accept");
 	    bzero(buffer,256); //make our buffer full of zeros
-	    printf("\n\n=== New Connection ===\n\n\n");
+	    printf("\n\n=== New Connection ===\n%s\n\n\n",peer.address);
 
 	    int charsRead=1;
 	    while(charsRead>=1){

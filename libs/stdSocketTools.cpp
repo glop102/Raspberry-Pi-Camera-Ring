@@ -39,3 +39,20 @@ int simpleOpenListenSocket(int port){
 	listen(listenFD,15);//start listening so that we can get new connections
 	return listenFD;
 }
+
+struct newConnectionInfo simpleAccept(int socketFD){
+	//listens to a port until a person connects
+	//this then sends back the basic info
+	//file descriptor of the new connection
+	//IP address of the incomming person
+	struct sockaddr_in cli_addr;
+	socklen_t clientLength = sizeof(cli_addr);//size of the struct
+	int newSockFD = accept(socketFD, (struct sockaddr *) &cli_addr, &clientLength); //get the FD of the new client connection
+	if (newSockFD < 0) 
+	    printf("ERROR on accept");
+
+	struct newConnectionInfo peer;
+	peer.FD=newSockFD;
+	strcpy(peer.address,incomingAddr(cli_addr).c_str());
+	return peer;
+}

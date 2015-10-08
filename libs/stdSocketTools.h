@@ -19,5 +19,11 @@ This makes it a collection of smaller functions
 std::string incomingAddr(struct sockaddr_in ADDR); //gives the IP address of the connection
 int simpleOpenSocket();
 int simpleOpenListenSocket(int port);
+struct newConnectionInfo simpleAccept(int socketFD);
+
+struct newConnectionInfo{
+	int FD;
+	char address[16];
+};
 
 #endif
