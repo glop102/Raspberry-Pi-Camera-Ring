@@ -50,6 +50,8 @@ int main(int argc, char** args){
 
 		if(header.substr(0,3)=="GET")
 			engageBrowser(newSockFD,"");
+		if(header.substr(0,4)=="POST")
+			engageBrowser(newSockFD,"");
 		if(header.substr(0,5)=="RASPI")
 			raspiConnection(peer,header);
 	}
