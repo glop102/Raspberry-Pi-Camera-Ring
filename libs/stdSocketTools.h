@@ -23,7 +23,7 @@ struct newConnectionInfo simpleAccept(int socketFD);
 
 struct newConnectionInfo{
 	int FD;
-	char address[16];
+	char address[16]; //just bearly big enough for IPv4 addresses
 };
 
 #endif

@@ -6,6 +6,8 @@
 #include <string.h>
 #include <unistd.h>
 #include "../libs/stdSocketTools.h"
+#include "webServer.h"
+#include "raspiControlSystem.h"
 
 void error(const char *msg)
 {
@@ -20,37 +22,36 @@ int main(int argc, char** args){
 		exit(1);
 	}
 
-	char buffer[256];
+	char buf;
 	while(1){
 		struct newConnectionInfo peer = simpleAccept(listenFD);
 		int newSockFD = peer.FD; //get the FD of the new client connection
 		if (newSockFD < 0) 
 	          error("ERROR on accept");
-	    bzero(buffer,256); //make our buffer full of zeros
 	    printf("\n\n=== New Connection ===\n%s\n\n\n",peer.address);
 
 	    int charsRead=1;
-	    while(charsRead>=1){
-	    	bzero(buffer,256); //make our buffer full of zeros
-		    charsRead=read(newSockFD,buffer,255);//read the message
+	    std::string header;
+	    while(charsRead){
+		    charsRead=read(newSockFD,&buf,1);//read the message
 		    if(charsRead<0) error("Unable to read socket");
-		    printf("%s\n", buffer);
-		    if(charsRead>=4 && strstr(buffer,"exit")!=NULL){ //exit program
-		    	printf("Caught exit command\n");
-		    	close(listenFD);
-		    	close(newSockFD);
-		    	exit(0);
-		    }
-		    if((charsRead>=4 && strstr(buffer,"\r\n\r\n")!=NULL) || (charsRead>=1 && buffer[1]==0)){ //break read loop and continue program
+		    printf("%c", buf);
+		    header+=buf;
+
+		    int headerLength=header.length();
+		    if(headerLength<5) continue;
+		    if(header.substr(headerLength-4) == "\r\n\r\n"){
+		    	//found the end of the header of the newly connected client
+		    	//now lets break so that we can analyze what we need to do
 		    	break;
 		    }
 		}
 		printf("\n\n=== Writing ===\n\n");
 
-		std::string cannedResponse="HTTP/1.1 200 OK\n\r\n\r<html><body><h1>Hello There</h1></body></html>\n\r";
-	    charsRead=write(newSockFD,cannedResponse.c_str(),cannedResponse.length());
-	    if(charsRead<0) error("Unable to write socket");
-	    close(newSockFD);
+		if(header.substr(0,3)=="GET")
+			engageBrowser(newSockFD,"");
+		if(header.substr(0,5)=="RASPI")
+			raspiConnection(peer,header);
 	}
 
 	printf("Exiting\n");
