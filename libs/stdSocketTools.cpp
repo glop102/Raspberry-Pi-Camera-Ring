@@ -36,5 +36,6 @@ int simpleOpenListenSocket(int port){
 		//error("ERROR on binding");
 		return -1;
 	}
+	listen(listenFD,15);//start listening so that we can get new connections
 	return listenFD;
 }

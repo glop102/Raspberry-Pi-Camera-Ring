@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include "../libs/stdSocketTools.h"
 
 void error(const char *msg)
 {
@@ -12,26 +13,17 @@ void error(const char *msg)
     exit(1);
 }
 
-int main(int argc, char* args){
-	int port=63036;
-	socklen_t clientLength;
-	struct sockaddr_in serv_addr, cli_addr;
-	int listenFD;
-	int newFD;
+int main(int argc, char** args){
+	int listenFD=simpleOpenListenSocket(63036);
+	if(listenFD<0){
+		printf("UNABLE to open socket\n");
+		exit(1);
+	}
 
-	listenFD = socket(AF_INET, SOCK_STREAM, 0); //voodoo line 1
-	if (listenFD < 0) 
-        error("ERROR opening socket");
-    serv_addr.sin_family = AF_INET; //internet domain, not unix domain
-	serv_addr.sin_addr.s_addr = INADDR_ANY; //allow us to listen to all interfaces
-	serv_addr.sin_port = htons(port); //change order of the bytes from the host specific to the network order (so dont worry about Big or Little endian)
-	if (bind(listenFD, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
-		error("ERROR on binding");
+	struct sockaddr_in cli_addr;
+	socklen_t clientLength=sizeof(cli_addr);
 
-	listen(listenFD,5); //start listening so that we can get new connections
-	clientLength = sizeof(cli_addr); //size of the struct
 	char buffer[256];
-
 	while(1){
 		int newSockFD = accept(listenFD, (struct sockaddr *) &cli_addr, &clientLength); //get the FD of the new client connection
 		if (newSockFD < 0) 
@@ -57,7 +49,8 @@ int main(int argc, char* args){
 		}
 		printf("\n\n=== Writing ===\n\n");
 
-	    charsRead=write(newSockFD,"Hello There\n\r",13);
+		std::string cannedResponse="HTTP/1.1 200 OK\n\r\n\r<html><body><h1>Hello There</h1></body></html>\n\r";
+	    charsRead=write(newSockFD,cannedResponse.c_str(),cannedResponse.length());
 	    if(charsRead<0) error("Unable to write socket");
 	    close(newSockFD);
 	}

@@ -19,7 +19,6 @@ int main(){
 
 	struct sockaddr_in cli_addr;
 	socklen_t clientLength = sizeof(cli_addr);//size of the struct
-	listen(listenFD,5); //start listening so that we can get new connections
 	char buffer[256];
 
 	while(1){
