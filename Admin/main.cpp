@@ -25,7 +25,6 @@ void* spawnThread(void* peer){
     while(charsRead){
 	    charsRead=read(newSockFD,&buf,1);//read the message
 	    if(charsRead<0) error("Unable to read socket");
-	    printf("%c", buf);
 	    header+=buf;
 
 	    int headerLength=header.length();

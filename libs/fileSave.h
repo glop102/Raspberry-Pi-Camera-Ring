@@ -19,6 +19,8 @@ There is also the secondary saveFile function to change the default save paramet
 
 pthread_t saveFile(int incomingFD);
 pthread_t saveFile(int incomingFD,std::string saveDestFolder,std::string saveDestName);
+void saveFile_noThread(int incomingFD);
+void saveFile_noThread(int incomingFD,std::string saveDestFolder,std::string saveDestName);
 
 void* saveFile_thread(void* dataIN);
 std::string getFilename(int incomingFD);

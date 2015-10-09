@@ -17,6 +17,21 @@ pthread_t saveFile(int incomingFD,std::string saveDestFolder,std::string saveDes
 	pthread_create(&threadFD,NULL,saveFile_thread,(void*)temp);
 	return threadFD; //give back the thread descriptor so it can checked if it worked
 }
+void saveFile_noThread(int incomingFD){
+	return saveFile(incomingFD,"",""); //default to simply save to where the executable was run from
+}
+void saveFile_noThread(int incomingFD,std::string saveDestFolder,std::string saveDestName){
+	fileDataThreadPasser *temp=new fileDataThreadPasser;
+	if(temp==0){
+		printf("ERROR getting data struct made\n");
+		return;
+	}
+	temp->FD=incomingFD;
+	temp->saveDestFolder=saveDestFolder;
+	temp->saveDestName=saveDestName;
+
+	saveFile_thread((void*)temp);
+}
 
 //==========================================================================
 	
