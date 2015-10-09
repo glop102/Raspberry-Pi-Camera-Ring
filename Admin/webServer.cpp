@@ -44,18 +44,33 @@ void sendHTMLFile(int socketFD,std::string request){
 		}
 	}else{
 		response+=response200;
+		printf("%s\n\n\n", response.buf);
 		while(charsRead==255){
 			bzero(buf,256);
 			charsRead=fread(buf,1,255,input);
 			response.append(buf,charsRead);
+			printf("%s\n\n\n", response.buf);
 		}
 		fclose(input);
 	}
+	response=replaceSymbols(response);
+
 	write(socketFD,response.buf,response.length);
 	close(socketFD);
 }
 
 buffer replaceSymbols(buffer input){
+	if(strstr(input.buf,"<html>") < strstr(input.buf,"</html>")){ //if this is an HTML document
+		unsigned long index=strstr(input.buf,"<?raspi testFlag?>")-input.buf;
+		while(index>0 && index<input.length){
+			buffer temp;
+			temp.append(input.buf,index);
+			temp+="<h2>Test Flag Works</h2>";
+			temp+=input.buf+index+strlen("<?raspi testFlag?>");
+			input=temp;
+			index=strstr(input.buf,"<?raspi testFlag?>")-input.buf;
+		}
+	}
 	return input;
 }
 
@@ -63,6 +78,7 @@ buffer replaceSymbols(buffer input){
 //==========================================================================
 buffer::~buffer(){
 	if(this->buf!=NULL) free(this->buf);
+	this->buf=NULL;
 }
 buffer::buffer(){
 	this->buf=NULL;
@@ -78,97 +94,51 @@ buffer::buffer(char* input){
 	this->clear();
 	(*this)+=input;
 }
-buffer::buffer(std::string input){
+buffer::buffer(const buffer& input){
+	this->buf=NULL;
+	this->clear();
+	(*this).append(input.buf,input.length);
+}
+buffer::buffer(const std::string& input){
 	this->buf=NULL;
 	this->clear();
 	(*this)+=input;
 }
 void buffer::clear(){
-	if(this->buf!=NULL) free(this->buf);
-	this->buf=(char*)malloc(1);
+	this->buf=(char*)realloc(this->buf,1);
 	this->length=0;
 }
 void buffer::operator+=(char input){
-	this->length+=1;
-	char* other=(char*)malloc(this->length);
-	if(other!=this->buf){
-		//copy to new buffer
-		unsigned int curt=0;
-		while(curt<this->length-1){
-			other[curt]=this->buf[curt];
-			curt++;
-		}
-		free(this->buf);
-	}
-	other[this->length-1]=input;
-	this->buf=other;
+	this->append(&input,1);
 }
 void buffer::operator+=(const char* input){
-	unsigned int inputLength=strlen(input);
-	char* other=(char*)malloc(this->length+inputLength);
-	if(other!=this->buf){
-		//copy the old to the new
-		unsigned int curt=0;
-		while(curt<this->length){
-			other[curt]=this->buf[curt];
-			curt++;
-		}
-		free(this->buf);
-		this->buf=other;
-	}
-
-	//copy in the new
-	unsigned int curt=0;
-	while(curt<inputLength){
-		this->buf[this->length+curt]=input[curt];
-		curt++;
-	}
-	this->length+=inputLength;
+	this->append(input,strlen(input));
 }
 void buffer::append(const char* input,unsigned int inputLength){
 	char* other=(char*)malloc(this->length+inputLength);
-	if(other!=this->buf){
-		//copy the old to the new
-		unsigned int curt=0;
-		while(curt<this->length){
-			other[curt]=this->buf[curt];
-			curt++;
-		}
-		free(this->buf);
-		this->buf=other;
-	}
-
-	//copy in the new
+	//copy the old to the new
 	unsigned int curt=0;
+	while(curt<this->length){
+		other[curt]=this->buf[curt];
+		curt++;
+	}
+	free(this->buf);
+	this->buf=other;
+	//copy in the new
+	curt=0;
 	while(curt<inputLength){
 		this->buf[this->length+curt]=input[curt];
 		curt++;
 	}
 	this->length+=inputLength;
+}
+void buffer::operator+=(const buffer& input){
+	this->append(input.buf,input.length);
 }
 void buffer::operator+=(std::string input){
-	unsigned int inputLength=input.length();
-	char* other=(char*)malloc(this->length+inputLength);
-	if(other!=this->buf){
-		//copy the old to the new
-		unsigned int curt=0;
-		while(curt<this->length){
-			other[curt]=this->buf[curt];
-			curt++;
-		}
-		free(this->buf);
-		this->buf=other;
-	}
-
-	//copy in the new
-	unsigned int curt=0;
-	while(curt<inputLength){
-		this->buf[this->length+curt]=input[curt];
-		curt++;
-	}
-	this->length+=inputLength;
+	this->append(input.c_str(),input.length());
 }
-void buffer::operator=(buffer other){
+void buffer::operator=(const buffer& other){
 	this->clear(); //stop memory leaks
 	(*this).append(other.buf,other.length);
 }
