@@ -35,15 +35,17 @@ void* spawnThread(void* peer){
 	    	break;
 	    }
 	}
-	printf("\n\n=== Writing ===\n\n");
+	//printf("\n\n=== Writing ===\n\n");
 
 	if(header.substr(0,3)=="GET")
-		engageBrowser(newSockFD,"");
+		engageBrowser(newSockFD,header);
 	if(header.substr(0,4)=="POST")
-		engageBrowser(newSockFD,"");
+		engageBrowser(newSockFD,header);
 	if(header.substr(0,5)=="RASPI")
 		raspiConnection(*(struct newConnectionInfo*)peer,header);
 
+	//note: do not close the socket here
+	//the functions we pass to are supposed to close them
 	delete (struct newConnectionInfo*)peer;
 }
 
@@ -61,7 +63,7 @@ int main(int argc, char** args){
 		int newSockFD = peer->FD; //get the FD of the new client connection
 		if (newSockFD < 0)
 	          error("ERROR on accept");
-	    printf("\n\n=== New Connection ===\n%s\n\n\n",peer->address);
+	    printf("=== New Connection ===\n%s\n",peer->address);
 
 	    pthread_t threadFD;
 		pthread_create(&threadFD,NULL,spawnThread,peer);
