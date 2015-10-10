@@ -1,6 +1,6 @@
 #include "raspiControlSystem.h"
 
-threadSafeList globalIPList;
+threadSafeList<std::string> globalIPList;
 
 void raspiConnection(struct newConnectionInfo peer,std::string header){
 	//printf("%s\n%d\n", peer.address,peer.FD);

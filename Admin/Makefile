@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-pthread -std=gnu++11
 BUILD_DIR=build
 
-all: webServer.o raspiControlSystem.o threadSafeList.o stdSocketTools.o buffer.o
+all: webServer.o raspiControlSystem.o stdSocketTools.o buffer.o
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
 
 %.o: %.cpp
