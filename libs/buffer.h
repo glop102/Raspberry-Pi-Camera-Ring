@@ -5,6 +5,12 @@
 #ifndef glop102Buffer
 #define glop102Buffer
 
+/*
+THIS IS EXCLUSIVLY FOR USE IN THE WEB SECTION OF THE ADMIN PROGRAM
+PLEASE BE CAREFUL USING THIS AS THERE IS A LITTLE MAGIC SAUCE
+not thread safe also
+*/
+
 class buffer{
 public:
 	char* buf;

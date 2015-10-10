@@ -18,10 +18,12 @@
 The new connection is found to be a Raspberry PI
 This is found by looking at the header of the messsage
 The socket of the new connection is passed here along with the header
+
+CALL raspiConnection FIRST - the logic spreads from there
 */
 
 void raspiConnection(struct newConnectionInfo peer,std::string header);
-void downloadFile(struct newConnectionInfo peer);
+void downloadImage(struct newConnectionInfo peer); //command was to download image
 
 struct PI_INFO
 {

@@ -11,6 +11,9 @@ NOTE: This is only intended to be used to store strings
 The original intent was to make this a global list of IP addresses
 WARNING: the strings returned are not original from the list
 you cannot simply do list[66]="10.0.0.1" or something
+
+This is mainly a wrapper around a vector, and so most things are passthrough
+to the vector directly
 */
 
 template <class ttt>

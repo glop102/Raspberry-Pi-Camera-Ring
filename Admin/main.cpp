@@ -10,12 +10,6 @@
 #include "webServer.h"
 #include "raspiControlSystem.h"
 
-void error(const char *msg)
-{
-    perror(msg);
-    exit(1);
-}
-
 void* spawnThread(void* peer){
 	int newSockFD=((struct newConnectionInfo*)peer)->FD;
 
@@ -24,7 +18,10 @@ void* spawnThread(void* peer){
     std::string header;
     while(charsRead){
 	    charsRead=read(newSockFD,&buf,1);//read the message
-	    if(charsRead<0) error("Unable to read socket");
+	    if(charsRead<0){
+	    	printf("Unable to read socket\n");
+	    	exit(0);
+	    }
 	    header+=buf;
 
 	    int headerLength=header.length();
@@ -62,7 +59,7 @@ int main(int argc, char** args){
 
 		int newSockFD = peer->FD; //get the FD of the new client connection
 		if (newSockFD < 0)
-	          error("ERROR on accept");
+	          printf("ERROR on accept");
 	    printf("=== New Connection ===\n%s\n",peer->address);
 
 	    pthread_t threadFD;

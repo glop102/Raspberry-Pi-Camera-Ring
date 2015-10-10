@@ -36,10 +36,16 @@ void buffer::operator+=(char input){
 	this->append(&input,1);
 }
 void buffer::operator+=(const char* input){
+	//warning - some sort of magic sauce here that makes it work for strings
+	//this sauce was added because of a buffer overflow issue
+	//this occured when parsing text in the web browser
 	this->buf[this->length-1]=*input;
 	this->append(input+1,strlen(input));
 }
 void buffer::append(const char* input,unsigned int inputLength){
+	//adds the input to the end of the internal buffer
+	//this is what every other method eventually gets to
+
 	char* other=(char*)malloc(this->length+inputLength);
 	//copy the old to the new
 	unsigned int curt=0;

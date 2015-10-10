@@ -19,9 +19,9 @@ This makes it a collection of smaller functions
 
 std::string incomingAddr(struct sockaddr_in ADDR); //gives the IP address of the connection
 int simpleOpenSocket();
-int simpleOpenListenSocket(int port);
-struct newConnectionInfo simpleAccept(int socketFD);
-int simpleConnectToHost(std::string ADDR,int port);
+int simpleOpenListenSocket(int port); //opens a socket ready to accept connections on a certain port
+struct newConnectionInfo simpleAccept(int socketFD); //on a socket that is listening, blocks for a new connection
+int simpleConnectToHost(std::string ADDR,int port); //simlpe connect to a host on a given port
 
 struct newConnectionInfo{
 	int FD;

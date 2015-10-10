@@ -1,9 +1,15 @@
 #include "webServer.h"
 
 void engageBrowser(int socketFD,std::string header){
+	/*
+	CALL THIS FIRST
+	This is what all the logic spreads from in order to do the website control
+	*/
 	//what page are they trying to get to?
 	std::string request=getRequestedPage(header);//this is also going to be used to open the file
 
+	//Parse the url to see what to do
+	//we spread out from here
 	printf("File Request:  %s\n",request.c_str());
 	if(request=="/"){ //hard-coded response
 		sendHTMLFile(socketFD,"www/index.html");
@@ -12,15 +18,20 @@ void engageBrowser(int socketFD,std::string header){
 	}else if(request.find("/images/")==0){ //if they are looking at an image set
 		request=request.substr(8);
 	}else{ //default - try to load the file
-		sendHTMLFile(socketFD,"www"+request);
+		if(request[0]=='/')
+			sendHTMLFile(socketFD,"www"+request);
+		else
+			sendHTMLFile(socketFD,"www/"+request);
 	}
 }
 
 std::string getRequestedPage(std::string header){
+	//grabs the URL from the first line of a header
 	if(header.substr(0,3)=="GET"){
 		int index=header.find(' ',5);
 		return header.substr(4,index-4);
 	}
+	return "/404.html"; //error, cant find the stuff mate
 }
 
 void sendHTMLFile(int socketFD,std::string request){
@@ -28,11 +39,15 @@ void sendHTMLFile(int socketFD,std::string request){
 	static std::string response404="HTTP/1.1 404 Not Found\r\n\r\n";
 	static std::string response301="HTTP/1.1 301 Moved Permanently\n\rLocation: /\r\n\r\n";
 
+	//start with trying to open the file
 	buffer response;
 	char buf[256];
 	int charsRead=255;
 	FILE* input=fopen(request.c_str(),"r");
+
+	//check that the file could be opened
 	if(input==NULL){
+		//cant open
 		FILE* input=fopen("www/404.html","r");
 		response+=response404;
 		if(input!=NULL){
@@ -44,6 +59,7 @@ void sendHTMLFile(int socketFD,std::string request){
 			fclose(input);
 		}
 	}else{
+		//default load file and give to the client
 		response+=response200;
 		//printf("=============================\n%s\n\n\n", response.buf);
 		while(charsRead==255){
@@ -54,15 +70,26 @@ void sendHTMLFile(int socketFD,std::string request){
 		}
 		fclose(input);
 	}
+
+	//we have the file in memory
+	//parse the file text and replace special symbols
 	response+=(char)0; //give the end of string char just to make sure
 	response=replaceSymbols(response);
 
+	//give the parsed file to the user
 	write(socketFD,response.buf,response.length);
 	close(socketFD);
 }
 
 buffer replaceSymbols(buffer input){
-	if(strstr(input.buf,"<html>") < strstr(input.buf,"</html>")){ //if this is an HTML document
+	//finds special symbols and replaces them with special information
+	//this is the second major place that branches off doing stuff
+
+	if(strstr(input.buf,"<html>") < strstr(input.buf,"</html>")){
+		//if this is an HTML document, then look
+		//this is to safeguard us screwing with binary files such as images
+
+		//DEBUG FLAGS
 		unsigned long index=strstr(input.buf,"<?raspi testFlag?>")-input.buf;
 		while(index>0 && index<input.length){
 			buffer temp;

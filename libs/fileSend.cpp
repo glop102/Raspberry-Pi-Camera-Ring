@@ -1,6 +1,7 @@
 #include "fileSend.h"
 
 int lastIndexOf(const char* buf,char search){
+    //gives the last occuring index of a char
     int last=-1;
     int curt=0;
     while(*buf){
@@ -10,7 +11,7 @@ int lastIndexOf(const char* buf,char search){
     return last;
 }
 
-std::string itoa(int here){
+std::string itoa(unsigned int here){
 	//unsigned numbers and assumes unlimited buffer
 	std::string buf="";
 	while(here){
@@ -29,6 +30,7 @@ std::string itoa(int here){
 }
 
 void sendFile(int socketFD,std::string hostName,int port,std::string filePath){
+    //first figure out where the server is
     struct sockaddr_in serv_addr=determineDestinationData(hostName,port);
     //make the connection to the server
     if (connect(socketFD,(struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0){
@@ -39,6 +41,8 @@ void sendFile(int socketFD,std::string hostName,int port,std::string filePath){
 }
 
 struct sockaddr_in determineDestinationData(std::string hostName,int port){
+    //given the name of the server (IP of URL)
+    //returns the server info to make the connection
 	struct hostent *server=gethostbyname(hostName.c_str());
 	if (server == NULL) {
         fprintf(stderr,"ERROR, no such host\n");
@@ -47,6 +51,7 @@ struct sockaddr_in determineDestinationData(std::string hostName,int port){
     }
 
     //set the data for where we are sending the file
+    //yes, this is quite the block of text, but it is greek to me
     struct sockaddr_in serv_addr;
     bzero((char*)&serv_addr,sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
@@ -57,6 +62,20 @@ struct sockaddr_in determineDestinationData(std::string hostName,int port){
 }
 
 void writeFileToSocket(int socketFD,std::string filePath){
+    //the meat of the system
+    // 1. make sure the file can be opened
+    // 2. write to the socket the basic info about the file
+    // 3. write the file itself to the socket
+
+    //structure of data sent
+    // 1. length of the filename
+    // 2. filename
+    // 3. length of the file
+    // 4. file data
+    //there is a SINGLE newline between each field
+    //although the fileSave function can handle extra newlines
+    //    don't be sloppy and send them in the first place
+
 	FILE* input=fopen(filePath.c_str(),"r");
 	if(input==NULL){
     	printf("Unable to open file\n");

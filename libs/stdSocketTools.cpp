@@ -1,6 +1,7 @@
 #include "stdSocketTools.h"
 
 std::string incomingAddr(struct sockaddr_in ADDR){
+	//gets the address of the incoming connection
 	//http://stackoverflow.com/questions/2064636/getting-the-source-address-of-an-incoming-socket-connection
 	char ipstr[INET6_ADDRSTRLEN + 1];
 
@@ -21,6 +22,8 @@ int simpleOpenSocket(){
 	return socket(AF_INET, SOCK_STREAM, 0);
 }
 int simpleOpenListenSocket(int port){
+	//opens a socket that is listening on a certain port
+
 	struct sockaddr_in serv_addr;
 	int listenFD;
 
@@ -43,8 +46,8 @@ int simpleOpenListenSocket(int port){
 struct newConnectionInfo simpleAccept(int socketFD){
 	//listens to a port until a person connects
 	//this then sends back the basic info
-	//file descriptor of the new connection
-	//IP address of the incomming person
+	//    file descriptor of the new connection
+	//    IP address of the incomming person
 	struct sockaddr_in cli_addr;
 	socklen_t clientLength = sizeof(cli_addr);//size of the struct
 	int newSockFD = accept(socketFD, (struct sockaddr *) &cli_addr, &clientLength); //get the FD of the new client connection
@@ -58,6 +61,7 @@ struct newConnectionInfo simpleAccept(int socketFD){
 }
 
 int simpleConnectToHost(std::string ADDR,int port){
+	//given a destination, will return a socket to talk with
 	int socketFD=simpleOpenSocket();
 	if(socketFD<0) return -1; //error
 

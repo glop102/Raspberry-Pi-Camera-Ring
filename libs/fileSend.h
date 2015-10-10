@@ -10,6 +10,11 @@
 #ifndef fileSave_socketLibs
 #define fileSave_socketLibs
 
+/*
+Sends a file using the super trivial protocol
+This works in conjunction with saveFile
+*/
+
 void sendFile(int socketFD,std::string hostName,int port,std::string filePath);
 int lastIndexOf(const char* buf,char search);
 std::string itoa(int here);
