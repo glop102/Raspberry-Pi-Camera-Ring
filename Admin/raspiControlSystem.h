@@ -21,5 +21,15 @@ The socket of the new connection is passed here along with the header
 */
 
 void raspiConnection(struct newConnectionInfo peer,std::string header);
+void downloadFile(struct newConnectionInfo peer);
+
+struct PI_INFO
+{
+	std::string address;
+	std::string role; //Camera, Projector, etc
+	bool operator==(const PI_INFO& other){
+		return this->address==other.address;
+	}
+};
 
 #endif

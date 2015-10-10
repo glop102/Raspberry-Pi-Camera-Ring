@@ -9,7 +9,8 @@ int main(int argc, char const *args[]){
 		printf("ERROR opening socket\n");
 		exit(1);
 	}
-	char header[]="RASPI CAMERA\r\n\r\n";
+	//char header[]="RASPI CAMERA\r\nREPORTING\r\n\r\n";
+	char header[]="RASPI CAMERA\r\nIMAGE SEND\r\n\r\n";
 	write(socketFD,header,strlen(header));
 
 	return 0;
