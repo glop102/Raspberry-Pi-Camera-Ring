@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include "../libs/stdSocketTools.h"
+#include "../libs/threadSafeList.h"
 #ifndef raspiControlSystem
 #define raspiControlSystem
 

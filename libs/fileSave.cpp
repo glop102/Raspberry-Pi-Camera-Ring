@@ -18,7 +18,7 @@ pthread_t saveFile(int incomingFD,std::string saveDestFolder,std::string saveDes
 	return threadFD; //give back the thread descriptor so it can checked if it worked
 }
 void saveFile_noThread(int incomingFD){
-	return saveFile(incomingFD,"",""); //default to simply save to where the executable was run from
+	saveFile(incomingFD,"",""); //default to simply save to where the executable was run from
 }
 void saveFile_noThread(int incomingFD,std::string saveDestFolder,std::string saveDestName){
 	fileDataThreadPasser *temp=new fileDataThreadPasser;
