@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <netdb.h>
 #include <pthread.h>
 #include <string>
 #ifndef standardSocketTools
@@ -20,6 +21,7 @@ std::string incomingAddr(struct sockaddr_in ADDR); //gives the IP address of the
 int simpleOpenSocket();
 int simpleOpenListenSocket(int port);
 struct newConnectionInfo simpleAccept(int socketFD);
+int simpleConnectToHost(std::string ADDR,int port);
 
 struct newConnectionInfo{
 	int FD;

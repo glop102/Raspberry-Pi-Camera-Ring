@@ -56,3 +56,28 @@ struct newConnectionInfo simpleAccept(int socketFD){
 	strcpy(peer.address,incomingAddr(cli_addr).c_str());
 	return peer;
 }
+
+int simpleConnectToHost(std::string ADDR,int port){
+	int socketFD=simpleOpenSocket();
+	if(socketFD<0) return -1; //error
+
+	struct hostent *server = gethostbyname(ADDR.c_str());
+	if(server==NULL){
+		close(socketFD);
+		return -1; //error
+	}
+
+	struct sockaddr_in serv_addr;
+	//setup the connection info
+    bzero((char *) &serv_addr, sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);
+    serv_addr.sin_port = htons(port);
+
+    if (connect(socketFD,(struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0){
+		close(socketFD);
+		return -1; //error
+	}
+
+	return socketFD;
+}
