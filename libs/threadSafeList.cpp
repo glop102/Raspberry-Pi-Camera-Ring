@@ -31,3 +31,7 @@ int threadSafeList::find(std::string input){
 	}
 	return -1;
 }
+int threadSafeList::length(){
+	std::lock_guard<std::mutex> threadSafety(this->working); //makes this class thread safe
+	return this->buf.size();
+}

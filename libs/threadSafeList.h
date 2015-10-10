@@ -25,6 +25,7 @@ public:
 	void append(std::string input);
 	void clear();
 	int  find(std::string);
+	int length();
 };
 
 #endif
