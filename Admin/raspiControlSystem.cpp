@@ -49,4 +49,73 @@ void downloadImage(struct newConnectionInfo peer){
 	//     FIRST!!! make sure that the images directory exists
 	//     SECOND!! make the folder for the image set that is used here
 	//     THIRD!!! open connections to the PIs and send command
+
+	/* Opens the local dir and prints every file AND folder there
+	DIR* fd=opendir(".");
+	if(fd==0) return;
+	struct dirent *de;
+	while((de=readdir(fd))!=NULL){ //read everything in the folder
+		printf("\t%s\n", de->d_name);
+	}
+	closedir(fd);
+	*/
+
+	/* Find every directory by seeing if you can open it
+	DIR* fd=opendir(".");
+	if(fd==0) return;
+	struct dirent *de;
+	while((de=readdir(fd))!=NULL){ //read everything in the folder
+		DIR* fd2=opendir(de->d_name);
+		printf("\t%lu\t%s\n",fd2,de->d_name); //is 0 if not a directory
+		if(fd2)closedir(fd2);
+	}
+	closedir(fd);
+	*/
+	std::vector<std::string> dirContents;
+	dirContents=listDirectoryContents("./images/");
+	dirContents=sortContents(dirContents);
+	saveFile_noThread(peer.FD,"images/"+dirContents[dirContents.size()-1],std::string(peer.address)+".png");
+}
+
+std::vector<std::string> listDirectoryContents(std::string input){
+	DIR* fd=opendir(input.c_str());
+	if(fd==0) return {};
+
+	struct dirent *de;
+	std::vector<std::string> v;
+	while((de=readdir(fd))!=NULL){ //read everything in the folder
+		if(de->d_name[0]=='.' && de->d_name[1]==0) continue; //ignore the dots
+		if(de->d_name[0]=='.' && de->d_name[1]=='.' && de->d_name[2]==0) continue;
+		v.push_back(de->d_name);
+	}
+	closedir(fd);
+	return v;
+}
+
+std::vector<std::string> sortContents(std::vector<std::string> input){
+	//insertion sort
+	for(int x=1;x<input.size();x++){
+		int diff=stringDifference(input[x],input[x-1]); //neg means we need to move up
+		if(diff<0){
+			int y=x;
+			while(diff<0 && y>=1){
+				std::string temp=input[y];
+				input[y]=input[y-1];
+				input[y-1]=temp;
+				y--;
+				if(y>0)diff=stringDifference(input[y],input[y-1]); //neg means we need to move up
+			}
+		}
+	}
+	return input;
+}
+
+int stringDifference(std::string first,std::string sec){
+	//negative means first comes before sec
+	//positive means sec comes before first
+	int counter=0;
+	while(first[counter]!=0 && sec[counter]!=0 && first[counter]==sec[counter]){
+		counter++;
+	}
+	return first[counter]-sec[counter];
 }

@@ -9,8 +9,10 @@
 #include <pthread.h>
 #include <string>
 #include <vector>
+#include <dirent.h>
 #include "../libs/stdSocketTools.h"
 #include "../libs/threadSafeList.h"
+#include "../libs/fileSave.h"
 #ifndef raspiControlSystem
 #define raspiControlSystem
 
@@ -24,6 +26,9 @@ CALL raspiConnection FIRST - the logic spreads from there
 
 void raspiConnection(struct newConnectionInfo peer,std::string header);
 void downloadImage(struct newConnectionInfo peer); //command was to download image
+std::vector<std::string> listDirectoryContents(std::string);
+std::vector<std::string> sortContents(std::vector<std::string>);
+int stringDifference(std::string,std::string);
 
 struct PI_INFO
 {

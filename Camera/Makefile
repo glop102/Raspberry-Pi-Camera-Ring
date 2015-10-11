@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-pthread -std=gnu++11
 BUILD_DIR=build
 
-all: stdSocketTools.o
+all: stdSocketTools.o fileSend.o
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
 
 %.o: %.cpp
