@@ -1,8 +1,5 @@
 #include "raspiControlSystem.h"
 
-threadSafeList<PI_INFO> globalIPList; //global list of PIs that have reported to the admin
-	//NOTE: this list is global so that the webserver can use it to send commands when the client says to
-
 void raspiConnection(struct newConnectionInfo peer,std::string header){
 	/*
 	CALL THIS FIRST
@@ -73,7 +70,6 @@ void downloadImage(struct newConnectionInfo peer){
 	*/
 	std::vector<std::string> dirContents;
 	dirContents=listDirectoryContents("./images/");
-	dirContents=sortContents(dirContents);
 	saveFile_noThread(peer.FD,"images/"+dirContents[dirContents.size()-1],std::string(peer.address)+".png");
 }
 
@@ -89,7 +85,7 @@ std::vector<std::string> listDirectoryContents(std::string input){
 		v.push_back(de->d_name);
 	}
 	closedir(fd);
-	return v;
+	return sortContents(v);
 }
 
 std::vector<std::string> sortContents(std::vector<std::string> input){

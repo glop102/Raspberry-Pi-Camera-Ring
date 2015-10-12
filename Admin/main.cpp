@@ -9,6 +9,7 @@
 #include "../libs/stdSocketTools.h"
 #include "webServer.h"
 #include "raspiControlSystem.h"
+#include "globalVarInit.h"
 
 void* spawnThread(void* peer){
 	int newSockFD=((struct newConnectionInfo*)peer)->FD;

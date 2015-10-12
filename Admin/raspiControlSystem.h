@@ -29,6 +29,9 @@ void downloadImage(struct newConnectionInfo peer); //command was to download ima
 std::vector<std::string> listDirectoryContents(std::string);
 std::vector<std::string> sortContents(std::vector<std::string>);
 int stringDifference(std::string,std::string);
+//void sendCaptureCommand_All(); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
+//void sendRebootCommand(std::string address);
+//void sendVideoRestartCommand(std::string address);
 
 struct PI_INFO
 {
@@ -38,5 +41,8 @@ struct PI_INFO
 		return this->address==other.address;
 	}
 };
+
+extern threadSafeList<PI_INFO> globalIPList; //global list of PIs that have reported to the admin
+	//NOTE: this list is global so that the webserver can use it to send commands when the client says to
 
 #endif

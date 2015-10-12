@@ -8,8 +8,10 @@
 #include <arpa/inet.h>
 #include <pthread.h>
 #include <string>
+#include <vector>
 #include "../libs/stdSocketTools.h"
-#include "../libs/buffer.h"
+#include "../libs/fileSave.h" //to get the itoa function I wrote
+#include "raspiControlSystem.h"
 #ifndef webServerWrapper
 #define webServerWrapper
 
@@ -25,6 +27,12 @@ it then checks to see if the URL is hardcoded to do something
 void engageBrowser(int socketFD,std::string header);
 std::string getRequestedPage(std::string header); //gets the requested URL from the header passed in
 void sendHTMLFile(int socketFD,std::string request); //sends a file from the filesystem
-buffer replaceSymbols(buffer input); //replaces speacial symbols with special information before letting it be sent to the browser
+void replaceSymbols(std::vector<char>& input); //replaces speacial symbols with special information before letting it be sent to the browser
+
+void sendHTML_ImageSet(int socketFD,std::string setName); //special case for when opening an image set to look at the images and download archive
+void replaceSymbols_ImageSet(std::string& doc, std::string setName);
+
+//imageSetDownload(int socketFD,std::string imageSetName);
+//imageSetDelete(int socketFD,std::string imageSetName);
 
 #endif
