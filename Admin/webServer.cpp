@@ -436,7 +436,7 @@ void redirectPage(int socketFD,std::string here){
 	page+=here;
 	page+="'</script></html>\r\n";
 
-	write(socketFD,response200.c_str(),response301.length());
+	write(socketFD,response200.c_str(),response200.length());
 	write(socketFD,page.c_str(),page.length());
 }
 
