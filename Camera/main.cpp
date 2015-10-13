@@ -78,7 +78,7 @@ int main(int argc, char const *args[]){
 		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
 			system("sudo reboot");
 		}
-		close(newConc);
+		close(newConc.FD);
 	}
 
 	return 0;
