@@ -431,11 +431,12 @@ void imageSetDelete(int socketFD,std::string imageSetName){
 }
 
 void redirectPage(int socketFD,std::string here){
-	static std::string response301="HTTP/1.1 301 Moved Permanently\n\rLocation: /\r\n\r\n";
+	std::string response200="HTTP/1.1 200 OK\r\n\r\n";
 	std::string page="<html><script>location='";
 	page+=here;
 	page+="'</script></html>\r\n";
-	write(socketFD,response301.c_str(),response301.length());
+
+	write(socketFD,response200.c_str(),response301.length());
 	write(socketFD,page.c_str(),page.length());
 }
 
