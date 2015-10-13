@@ -1,3 +1,4 @@
+/*============================*/
 .header{
 	position: relative;
 	display: block;
@@ -20,6 +21,7 @@
 	margin-left: 0.5em;
 }
 
+/*============================*/
 .menu{
 	position: relative;
 	float: right;
@@ -29,4 +31,9 @@
 }
 .menu a{
 	display: block;
+}
+
+.content{
+	margin-left: 2em;
+	margin-top: 1.5em;
 }

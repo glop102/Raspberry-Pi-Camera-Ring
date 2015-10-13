@@ -1,8 +1,9 @@
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="/style.css"/>
 		<style type="text/css">
-			div{
-				border: solid black;
+			.ImageSet_ImageList{
+				margin-right: 2em;
 			}
 			.ImageSet_ImageList img{
 				width: 20%;
@@ -10,15 +11,21 @@
 		</style>
 	</head>
 	<body>
-		<h1>Set Number <?raspi currentSetNum?></h1>
-		<?raspi currentSetDownloadURL?>
-		<br/>
-		<?raspi currentSetDeleteURL?>
-		<br/>
-		<?raspi currentSetDownload?>
-		<br/>
-		<?raspi currentSetDelete?>
-		<br/>
-		<?raspi currentSetImages?>
+		<div class="header">
+			<img src="/frog.gif"/>
+			<h1>Set Number <?raspi currentSetNum?></h1>
+		</div>
+		<div class="menu">
+			<a href="/index.html">Home</a>
+			<a href="/images">Image Sets</a>
+			<a href="/capturePicture">Capture Picture</a>
+			<?raspi currentSetDownload?>
+			<?raspi currentSetDelete?>
+		</div>
+		<div class="content">
+			<?raspi  currentSetDownloadURL?>
+			<?raspi  currentSetDeleteURL?>
+			<?raspi currentSetImages?>
+		</div>
 	</body>
 </html>

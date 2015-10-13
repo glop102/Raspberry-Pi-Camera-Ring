@@ -1,21 +1,40 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="/style.css"/>
-		<style>
-			.PIList{
-				
+		<style type="text/css">
+			.PIList p{
+				display: inline-table;
+				margin-left: 1em;
+				padding: 0 0 0 0;
+				margin-top: 0.25em;
+				margin-bottom: 0.25em;
+			}
+			.PIList .Role{
+				margin-left: 2em;
+				margin-right: 1em;
+			}
+			.PIInfo{
+				display: inline-block;
+				border: solid black;
+				padding: 0 0 0 0;
+			}
+			.PIInfo:hover{
+				background: orange;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="header">
-			<img src="frog.gif"/>
+			<img src="/frog.gif"/>
 			<h1>Camera Control</h1>
 		</div>
 		<div class="menu">
+			<a href="/index.html">Home</a>
 			<a href="/images">Image Sets</a>
 			<a href="/capturePicture">Capture Picture</a>
 		</div>
-		<?raspi listPIs?>
+		<div class="content">
+			<?raspi listPIs?>
+		</div>
 	</body>
 </html>
