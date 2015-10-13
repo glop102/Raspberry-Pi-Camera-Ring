@@ -16,7 +16,7 @@ This works in conjunction with saveFile
 */
 
 void sendFile(int socketFD,std::string hostName,int port,std::string filePath);
-void sendFileAlreadyConnected(int socketFD,std::string hostName,int port,std::string filePath);
+void sendFileAlreadyConnected(int socketFD,std::string filePath);
 int lastIndexOf(const char* buf,char search);
 std::string itoa(unsigned int here);
 struct sockaddr_in determineDestinationData(std::string hostName,int port);

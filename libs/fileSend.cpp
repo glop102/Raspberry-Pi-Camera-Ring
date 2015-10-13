@@ -39,9 +39,8 @@ void sendFile(int socketFD,std::string hostName,int port,std::string filePath){
     }
     writeFileToSocket(socketFD,filePath);
 }
-void sendFileAlreadyConnected(int socketFD,std::string hostName,int port,std::string filePath){
+void sendFileAlreadyConnected(int socketFD,std::string filePath){
     //first figure out where the server is
-    struct sockaddr_in serv_addr=determineDestinationData(hostName,port);
     writeFileToSocket(socketFD,filePath);
 }
 

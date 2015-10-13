@@ -29,7 +29,8 @@ void downloadImage(struct newConnectionInfo peer); //command was to download ima
 std::vector<std::string> listDirectoryContents(std::string);
 std::vector<std::string> sortContents(std::vector<std::string>);
 int stringDifference(std::string,std::string);
-//void sendCaptureCommand_All(); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
+void sendCaptureCommand_All(); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
+void* __sendCaptureCommand_All(void* data); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
 //void sendRebootCommand(std::string address);
 //void sendVideoRestartCommand(std::string address);
 

@@ -34,6 +34,7 @@ void engageBrowser(int socketFD,std::string header){
 		//tell PIs to capture the picture
 		//load new page - prefiably redirects to the home page
 		//i mean it really changes the location of the page to the index page
+		sendCaptureCommand_All();
 		sendHTMLFile(socketFD,"www/index.html");
 	}else{ //default - try to load the file
 		if(request[0]=='/')

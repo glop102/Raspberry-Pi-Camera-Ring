@@ -12,10 +12,10 @@ void raspiConnection(struct newConnectionInfo peer,std::string header){
 	}
 
 	//DEBUG - lets you see all the clients connected everytime a new connection happens
-	printf("%d total found\n", globalIPList.length());
-	for(int x=0;x<globalIPList.length();x++){
-		printf("\t%s\t%s\n", globalIPList[x].address.c_str(),globalIPList[x].role.c_str());
-	}
+	//printf("%d total found\n", globalIPList.length());
+	//for(int x=0;x<globalIPList.length();x++){
+	//	printf("\t%s\t%s\n", globalIPList[x].address.c_str(),globalIPList[x].role.c_str());
+	//}
 
 	//Parse the second line for the major command of what to do
 	//we spread out from here
@@ -114,4 +114,21 @@ int stringDifference(std::string first,std::string sec){
 		counter++;
 	}
 	return first[counter]-sec[counter];
+}
+
+void sendCaptureCommand_All(){
+	for(int x=0;x<globalIPList.length();x++){
+		if(globalIPList[x].role!="CAMERA")continue;
+		pthread_t thread;
+		pthread_create(&thread,NULL,__sendCaptureCommand_All,(void*)globalIPList[x].address.c_str());
+	}
+}
+void* __sendCaptureCommand_All(void* data){
+	std::string address=(char*)data;
+	int socketFD=simpleConnectToHost(address,63036);
+	if(socketFD==0)return NULL;
+	static std::string header="RASPI ADMIN\r\nIMAGE TAKE\r\n\r\n";
+	write(socketFD,header.c_str(),header.length());
+	close(socketFD);
+	return NULL;
 }
