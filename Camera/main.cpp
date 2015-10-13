@@ -44,7 +44,7 @@ void startVideoStream(){
 	system("uv4l --auto-video_nr --driver raspicam --server-option '--enable-webrtc=0' --server-option '--enable-webrtc-audio=0' --server-option '--webrtc-receive-audio=0' --server-option '--port=63136'");
 }
 void stopVideoStream(){
-	system("killall uv4l");
+	system("sudo killall uv4l");
 }
 void takeImage(){
 	// puts into output.png
