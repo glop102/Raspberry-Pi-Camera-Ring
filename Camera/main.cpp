@@ -25,7 +25,7 @@ std::string getHeader(int socketFD){
 	    charsRead=read(socketFD,&buf,1);//read the message
 	    if(charsRead<0){
 	    	printf("Unable to read socket\n");
-	    	exit(0);
+	    	return ""; //default to safety
 	    }
 	    header+=buf;
 
@@ -78,7 +78,7 @@ int main(int argc, char const *args[]){
 		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
 			system("sudo reboot");
 		}
-		close(listenFD);
+		close(newConc);
 	}
 
 	return 0;
