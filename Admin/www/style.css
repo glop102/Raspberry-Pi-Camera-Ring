@@ -1,0 +1,32 @@
+.header{
+	position: relative;
+	display: block;
+	left: 0;
+	top: 0;
+	border-bottom: solid black;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+.header img{
+	position: relative;
+	display: inline-block;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.header h1{
+	position: relative;
+	display: inline-block;
+	margin: 0 0 0 0;
+	margin-left: 0.5em;
+}
+
+.menu{
+	position: relative;
+	float: right;
+	border: solid black;
+	top: 1.5em;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+}
+.menu a{
+	display: block;
+}

@@ -1,26 +1,9 @@
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="/style.css"/>
 		<style>
-			.header{
-				position: relative;
-				display: block;
-				left: 0;
-				top: 0;
-				border-bottom: solid black;
-				padding: 0 0 0 0;
-				margin: 0 0 0 0;
-			}
-			.header img{
-				position: relative;
-				display: inline-block;
-				margin: 0 0 0 0;
-				padding: 0 0 0 0;
-			}
-			.header h1{
-				position: relative;
-				display: inline-block;
-				margin: 0 0 0 0;
-				margin-left: 0.5em;
+			.PIList{
+				
 			}
 		</style>
 	</head>
@@ -29,7 +12,10 @@
 			<img src="frog.gif"/>
 			<h1>Camera Control</h1>
 		</div>
-		<a href="/images">Image Sets</a>
-		<a href="/capturePicture">Capture Picture</a>
+		<div class="menu">
+			<a href="/images">Image Sets</a>
+			<a href="/capturePicture">Capture Picture</a>
+		</div>
+		<?raspi listPIs?>
 	</body>
 </html>

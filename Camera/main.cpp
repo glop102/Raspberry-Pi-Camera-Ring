@@ -41,7 +41,7 @@ std::string getHeader(int socketFD){
 }
 
 void startVideoStream(){
-	system("uv4l --audio-video_nr --driver raspicam --server-option '--enable-webrtc=0' --server-option '--enable-webrtc-audio=0' --server-option '--webrtc-receive-audio=0' --server-option '--port=63136'");
+	system("uv4l --auto-video_nr --driver raspicam --server-option '--enable-webrtc=0' --server-option '--enable-webrtc-audio=0' --server-option '--webrtc-receive-audio=0' --server-option '--port=63136'");
 }
 void stopVideoStream(){
 	system("killall uv4l");
@@ -66,14 +66,18 @@ int main(int argc, char const *args[]){
 	firstConnect(); //connect to the admin to say that we are here
 
 	int listenFD = simpleOpenListenSocket(63036);
-	struct newConnectionInfo newConc = simpleAccept(listenFD);
-	std::string header=getHeader(newConc.FD);
-	printf("%s\n", header.c_str());
-	if(header=="RASPI ADMIN\r\nIMAGE TAKE\r\n\r\n"){
-		stopVideoStream();
-		takeImage();
-		startVideoStream();
-		sendImageBack();
+	while(1){
+		struct newConnectionInfo newConc = simpleAccept(listenFD);
+		std::string header=getHeader(newConc.FD);
+		printf("%s\n", header.c_str());
+		if(header=="RASPI ADMIN\r\nIMAGE TAKE\r\n\r\n"){
+			stopVideoStream();
+			takeImage();
+			startVideoStream();
+			sendImageBack();
+		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
+			system("sudo reboot");
+		}
 		close(listenFD);
 	}
 

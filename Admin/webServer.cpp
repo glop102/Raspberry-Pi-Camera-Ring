@@ -27,15 +27,20 @@ void engageBrowser(int socketFD,std::string header){
 				//something like
 				//request.substr(strlen("/images/XXXXX/"))=="download"
 				//then send to the imageSetDownload(socketFD,imageSetName)
-				sendHTMLFile(socketFD,request.substr(1)); //if it is /images/setNumber/something
+				if(request.substr(strlen("/images/XXXXX/"))=="delete"){
+					imageSetDelete(socketFD,imageSetName);
+				}else if(request.substr(strlen("/images/XXXXX/"))=="download"){
+					imageSetDownload(socketFD,imageSetName);
+				}else sendHTMLFile(socketFD,request.substr(1)); //if it is /images/setNumber/something
 			} else sendHTML_ImageSet(socketFD,imageSetName);
 		}
 	}else if(request=="/capturePicture"){
 		//tell PIs to capture the picture
 		//load new page - prefiably redirects to the home page
 		//i mean it really changes the location of the page to the index page
+		std::string nextSetName=makeNextImageSet();
 		sendCaptureCommand_All();
-		sendHTMLFile(socketFD,"www/index.html");
+		redirectPage(socketFD,"/images/"+nextSetName);
 	}else{ //default - try to load the file
 		if(request[0]=='/')
 			sendHTMLFile(socketFD,"www"+request);
@@ -383,4 +388,57 @@ void replaceSymbols_ImageSet(std::string& doc, std::string setName){
 	for(int x=0;x<v.size();x++)
 		temp+=v[x];
 	doc=temp;
+}
+
+std::string makeNextImageSet(){
+	std::vector<std::string> dirContents=listDirectoryContents("images");
+	if(dirContents.size()==0){
+		system("mkdir images"); //make sure the folder exists in the first place
+		system("mkdir images/00001");
+		return "00001"; //already did the work
+	}
+	int last=atoi(dirContents[dirContents.size()-1].c_str());
+	last++;
+	std::string nextSetName="mkdir images/";
+	nextSetName+=itoa(last);
+	system(nextSetName.c_str());
+	return itoa(last);
+}
+std::string itoa(unsigned int here){
+	//unsigned numbers and assumes unlimited buffer
+	std::string buf="";
+	while(here){
+		buf+= (here%10) + '0';
+		here/=10;
+	}
+
+	//now reverse buf
+	char temp;
+	for(int x=0;x<buf.length()/2;x++){
+		temp=buf[x];
+		buf[x]=buf[buf.length()-x-1];
+		buf[buf.length()-x-1]=temp;
+	}
+	while(buf.length()<5) buf='0'+buf; //pad the front with zeros
+	return buf;
+}
+void imageSetDelete(int socketFD,std::string imageSetName){
+	std::string command="rm -rf images/";
+	command+=imageSetName;
+	system(command.c_str());
+
+	redirectPage(socketFD,"/images");
+}
+
+void redirectPage(int socketFD,std::string here){
+	static std::string response301="HTTP/1.1 301 Moved Permanently\n\rLocation: /\r\n\r\n";
+	std::string page="<html><script>location='";
+	page+=here;
+	page+="'</script></html>\r\n";
+	write(socketFD,response301.c_str(),response301.length());
+	write(socketFD,page.c_str(),page.length());
+}
+
+void imageSetDownload(int socketFD,std::string imageSetName){
+	redirectPage(socketFD,imageSetName);
 }
