@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fPIC  -Wno-multichar -Wall -Wno-unused-but-set-variable -fPIC   -shared -Wl,-soname,reader_avi.so -o ../../build/lib/reader_avi.so CMakeFiles/reader_avi.dir/avi_reader.c.o ../../build/lib/libcontainers.so ../../build/lib/libvcos.so -lpthread -ldl -lrt -Wl,-rpath,/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/lib: 

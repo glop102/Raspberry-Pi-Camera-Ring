@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fPIC  -Wno-multichar -Wall -Wno-unused-but-set-variable -fPIC   -shared -Wl,-soname,writer_dummy.so -o ../../build/lib/writer_dummy.so CMakeFiles/writer_dummy.dir/dummy_writer.c.o ../../build/lib/libcontainers.so ../../build/lib/libvcos.so -lpthread -ldl -lrt -Wl,-rpath,/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/lib: 

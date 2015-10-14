@@ -1,0 +1,1 @@
+/usr/bin/gcc   -Wno-multichar -Wall -Wno-unused-but-set-variable -fPIC    CMakeFiles/containers_datagram_receiver.dir/datagram_receiver.c.o  -o ../../build/bin/containers_datagram_receiver -rdynamic ../../build/lib/libcontainers.so ../../build/lib/libvcos.so -lpthread -ldl -lrt -Wl,-rpath,/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/lib: 

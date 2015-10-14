@@ -1,0 +1,134 @@
+[  4%] Built target vcos
+[  4%] Built target vchiq_arm
+[  4%] Built target vcfiled_check
+[  6%] Built target vchostif
+[  7%] Built target bcm_host
+[  8%] Built target khrn_client
+[ 17%] Built target EGL
+[ 17%] Built target GLESv2
+[ 19%] Built target vcilcs
+[ 19%] Built target vcfiled
+[ 19%] Built target vcfiled_lock_test
+[ 20%] Built target vchiq_test
+[ 29%] Built target EGL_static
+[ 30%] Built target GLESv2_static
+[ 30%] Built target OpenVG
+[ 32%] Built target WFC
+[ 45%] Built target khrn_static
+Scanning dependencies of target containers
+[ 46%] Building C object containers/CMakeFiles/containers.dir/net/net_sockets_common.c.o
+[ 46%] Building C object containers/CMakeFiles/containers.dir/net/net_sockets_bsd.c.o
+Linking C shared library ../build/lib/libcontainers.so
+[ 52%] Built target containers
+[ 56%] Built target mmal_core
+[ 59%] Built target mmal_util
+Linking C shared library ../../../build/lib/libmmal_components.so
+[ 62%] Built target mmal_components
+[ 63%] Built target vcsm
+[ 65%] Built target mmal_vc_client
+Linking C shared library ../../build/lib/libmmal.so
+[ 65%] Built target mmal
+[ 65%] Built target debug_sym
+Linking C executable ../../../build/bin/mmal_vc_diag
+[ 65%] Built target mmal_vc_diag
+[ 65%] Built target mmal_components_extra
+[ 66%] Built target mmal_omxutil
+[ 69%] Built target mmal_omx
+[ 69%] Built target brcmjpeg
+[ 70%] Built target brcmjpeg_test
+Linking C executable ../../../build/bin/mmal_example_basic_1
+[ 70%] Built target mmal_example_basic_1
+Linking C executable ../../../build/bin/mmal_example_basic_2
+[ 70%] Built target mmal_example_basic_2
+Linking C executable ../../../build/bin/mmal_example_connections
+[ 71%] Built target mmal_example_connections
+Linking C executable ../../../build/bin/mmal_example_graph
+[ 71%] Built target mmal_example_graph
+Linking C executable ../../../build/bin/mmalcam
+[ 72%] Built target mmalcam
+Linking C executable ../../../build/bin/mmalplay
+[ 73%] Built target mmalplay
+[ 73%] Built target containers_net_extra
+Linking C shared library ../../build/lib/reader_mp4.so
+[ 73%] Built target reader_mp4
+Linking C shared library ../../build/lib/writer_mp4.so
+[ 73%] Built target writer_mp4
+Linking C shared library ../../build/lib/reader_ps.so
+[ 74%] Built target reader_ps
+Linking C shared library ../../build/lib/reader_mpga.so
+[ 74%] Built target reader_mpga
+Linking C shared library ../../build/lib/reader_binary.so
+[ 75%] Built target reader_binary
+Linking C shared library ../../build/lib/writer_binary.so
+[ 75%] Built target writer_binary
+Linking C shared library ../../build/lib/reader_mkv.so
+[ 76%] Built target reader_mkv
+Linking C shared library ../../build/lib/reader_wav.so
+[ 76%] Built target reader_wav
+Linking C shared library ../../build/lib/reader_asf.so
+[ 76%] Built target reader_asf
+Linking C shared library ../../build/lib/writer_asf.so
+[ 77%] Built target writer_asf
+Linking C shared library ../../build/lib/reader_flv.so
+[ 77%] Built target reader_flv
+Linking C shared library ../../build/lib/reader_avi.so
+[ 77%] Built target reader_avi
+Linking C shared library ../../build/lib/writer_avi.so
+[ 77%] Built target writer_avi
+Linking C shared library ../../build/lib/reader_rtp.so
+[ 78%] Built target reader_rtp
+Linking C shared library ../../build/lib/reader_rtsp.so
+[ 78%] Built target reader_rtsp
+Linking C shared library ../../build/lib/reader_rcv.so
+[ 79%] Built target reader_rcv
+Linking C shared library ../../build/lib/reader_rv9.so
+[ 80%] Built target reader_rv9
+Linking C shared library ../../build/lib/reader_qsynth.so
+[ 80%] Built target reader_qsynth
+Linking C shared library ../../build/lib/reader_simple.so
+[ 80%] Built target reader_simple
+Linking C shared library ../../build/lib/writer_simple.so
+[ 81%] Built target writer_simple
+Linking C shared library ../../build/lib/reader_raw_video.so
+[ 81%] Built target reader_raw_video
+Linking C shared library ../../build/lib/writer_raw_video.so
+[ 81%] Built target writer_raw_video
+Linking C shared library ../../build/lib/writer_dummy.so
+[ 82%] Built target writer_dummy
+Linking C shared library ../../../build/lib/reader_metadata_id3.so
+[ 82%] Built target reader_metadata_id3
+Linking C executable ../../build/bin/containers_check_frame_int
+[ 83%] Built target containers_check_frame_int
+Linking C executable ../../build/bin/containers_datagram_receiver
+[ 83%] Built target containers_datagram_receiver
+Linking C executable ../../build/bin/containers_datagram_sender
+[ 83%] Built target containers_datagram_sender
+[ 84%] Built target containers_dump_pktfile
+Linking C executable ../../build/bin/containers_rtp_decoder
+[ 84%] Built target containers_rtp_decoder
+Linking C executable ../../build/bin/containers_stream_client
+[ 85%] Built target containers_stream_client
+Linking C executable ../../build/bin/containers_stream_server
+[ 85%] Built target containers_stream_server
+[ 85%] Built target containers_test_extra
+Linking C executable ../../build/bin/containers_test
+[ 86%] Built target containers_test
+Linking C executable ../../build/bin/containers_test_bits
+[ 86%] Built target containers_test_bits
+Linking C executable ../../build/bin/containers_test_uri
+[ 86%] Built target containers_test_uri
+Linking C executable ../../build/bin/containers_uri_pipe
+[ 87%] Built target containers_uri_pipe
+Linking CXX executable ../../../../build/bin/vidtex
+[ 88%] Built target vidtex
+[ 88%] Built target openmaxil
+[ 89%] Built target vmcs_rpc_client
+[ 90%] Built target vcgencmd
+[ 91%] Built target tvservice
+[ 91%] Built target vcmailbox
+[ 95%] Built target raspistill
+[ 96%] Built target raspivid
+[ 98%] Built target raspividyuv
+[ 99%] Built target raspiyuv
+[ 99%] Built target vcsmem
+[100%] Built target debug_sym_static

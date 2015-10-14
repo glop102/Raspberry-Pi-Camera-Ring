@@ -1,0 +1,1 @@
+/usr/bin/gcc  -fPIC  -Wno-multichar -Wall -Wno-unused-but-set-variable -fPIC   -shared -Wl,-soname,reader_raw_video.so -o ../../build/lib/reader_raw_video.so CMakeFiles/reader_raw_video.dir/raw_video_reader.c.o ../../build/lib/libcontainers.so ../../build/lib/libvcos.so -lpthread -ldl -lrt -Wl,-rpath,/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/lib: 

@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-pthread -std=gnu++11
 BUILD_DIR=build
-RASPICAM_DEPENDS=raspicam_still.o private_still_impl.o 
+RASPICAM_DEPENDS=raspicam_still.o #private_still_impl.o 
 
 all: stdSocketTools.o fileSend.o
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
@@ -32,4 +32,4 @@ clean:
 	rm *.out
 
 test: $(RASPICAM_DEPENDS)
-	$(CC)    -o test.out test.cpp $(patsubst %,$(BUILD_DIR)/%,$^) -Lmmal -Lmmal_core -Lmmal_util -Lraspicam -I/usr/local/include
+	$(CC)    -o test.out test.cpp $(patsubst %,$(BUILD_DIR)/%,$^) -lraspicam -I/usr/local/include

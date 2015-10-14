@@ -15,8 +15,8 @@ int main(){
 
 	size_t bufSize = cam.getImageBufferSize();
 	unsigned char* buf = (unsigned char*)malloc(bufSize);
-	for(int x=0;x<30;x++) cam.grab_retrieve(buf,bufSize); //get the image into our buffer
-		
+	for(int x=0;x<60;x++) cam.grab_retrieve(buf,bufSize); //get the image into our buffer
+
 	for(unsigned long x=0;x<bufSize;x++){
 		printf("%c",buf[x]); //put the image on the stdout
 	}

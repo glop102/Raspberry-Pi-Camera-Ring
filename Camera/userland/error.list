@@ -1,0 +1,64 @@
+In file included from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/./../interface/vcos/vcos.h:116:0,
+                 from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/core/containers_common.h:35,
+                 from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/net/net_sockets_common.c:32:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h: In function ‘vcos_get_free_mem’:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h:691:4: warning: implicit declaration of function ‘sbrk’ [-Wimplicit-function-declaration]
+In file included from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/./../interface/vcos/vcos.h:116:0,
+                 from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/core/containers_common.h:35,
+                 from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/net/net_sockets_common.c:32:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h: In function ‘vcos_strdup’:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h:732:4: warning: implicit declaration of function ‘strdup’ [-Wimplicit-function-declaration]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h:732:4: warning: return makes pointer from integer without a cast [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/net/net_sockets_common.c: At top level:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:112:6: warning: inline function ‘vcos_timer_delete’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:109:6: warning: inline function ‘vcos_timer_reset’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:102:6: warning: inline function ‘vcos_timer_cancel’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:95:6: warning: inline function ‘vcos_timer_set’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:80:15: warning: inline function ‘vcos_timer_create’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:269:6: warning: inline function ‘vcos_thread_resume’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:262:5: warning: inline function ‘vcos_thread_running’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:251:15: warning: inline function ‘vcos_change_preemption’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:234:6: warning: inline function ‘vcos_thread_relinquish’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:186:15: warning: inline function ‘vcos_thread_get_affinity’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:112:6: warning: inline function ‘vcos_timer_delete’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:109:6: warning: inline function ‘vcos_timer_reset’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:102:6: warning: inline function ‘vcos_timer_cancel’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:95:6: warning: inline function ‘vcos_timer_set’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:80:15: warning: inline function ‘vcos_timer_create’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:269:6: warning: inline function ‘vcos_thread_resume’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:262:5: warning: inline function ‘vcos_thread_running’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:251:15: warning: inline function ‘vcos_change_preemption’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:234:6: warning: inline function ‘vcos_thread_relinquish’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:186:15: warning: inline function ‘vcos_thread_get_affinity’ declared but never defined [enabled by default]
+In file included from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/./../interface/vcos/vcos.h:116:0,
+                 from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/core/containers_common.h:35,
+                 from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/net/net_sockets_bsd.c:33:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h: In function ‘vcos_get_free_mem’:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h:691:4: warning: implicit declaration of function ‘sbrk’ [-Wimplicit-function-declaration]
+In file included from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/./../interface/vcos/vcos.h:116:0,
+                 from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/core/containers_common.h:35,
+                 from /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/net/net_sockets_bsd.c:33:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h: In function ‘vcos_strdup’:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h:732:4: warning: implicit declaration of function ‘strdup’ [-Wimplicit-function-declaration]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/interface/vcos/pthreads/vcos_platform.h:732:4: warning: return makes pointer from integer without a cast [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/containers/net/net_sockets_bsd.c: At top level:
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:112:6: warning: inline function ‘vcos_timer_delete’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:109:6: warning: inline function ‘vcos_timer_reset’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:102:6: warning: inline function ‘vcos_timer_cancel’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:95:6: warning: inline function ‘vcos_timer_set’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:80:15: warning: inline function ‘vcos_timer_create’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:269:6: warning: inline function ‘vcos_thread_resume’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:262:5: warning: inline function ‘vcos_thread_running’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:251:15: warning: inline function ‘vcos_change_preemption’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:234:6: warning: inline function ‘vcos_thread_relinquish’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:186:15: warning: inline function ‘vcos_thread_get_affinity’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:112:6: warning: inline function ‘vcos_timer_delete’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:109:6: warning: inline function ‘vcos_timer_reset’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:102:6: warning: inline function ‘vcos_timer_cancel’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:95:6: warning: inline function ‘vcos_timer_set’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_timer.h:80:15: warning: inline function ‘vcos_timer_create’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:269:6: warning: inline function ‘vcos_thread_resume’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:262:5: warning: inline function ‘vcos_thread_running’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:251:15: warning: inline function ‘vcos_change_preemption’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:234:6: warning: inline function ‘vcos_thread_relinquish’ declared but never defined [enabled by default]
+/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/inc/interface/vcos/vcos_thread.h:186:15: warning: inline function ‘vcos_thread_get_affinity’ declared but never defined [enabled by default]
