@@ -98,7 +98,8 @@ int simpleOpenSocket_UDP(int port){
 }
 int simpleOpenSocket_UDPBroadcast(int port){
 	int socketFD=socket(AF_INET,SOCK_DGRAM,0);
-	allowBroadcast_UDP(socketFD);
+	if(allowBroadcast_UDP(socketFD))
+		printf("ERROR getting broadcast permissions\n");
 
 	struct sockaddr_in bcast;
 	bzero((char*)&bcast,sizeof(bcast));
