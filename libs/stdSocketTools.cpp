@@ -120,16 +120,16 @@ int allowBroadcast_UDP(int socketFD){
 }
 
 int sendBroadcast_UDP(int socketFD,int port,std::string message){
-	//host lookup
-	struct hostent *host;
-	host = gethostbyname("255.255.255.255");
-
 	struct sockaddr_in bcast;
 	bzero((char*)&bcast,sizeof(bcast));
 	bcast.sin_family=AF_INET;
 	bcast.sin_port=htons(port);
-	//bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
-	memcpy((void *)&bcast.sin_addr, host->h_addr_list[0], host->h_length);
+	bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
+
+	//host lookup
+	//struct hostent *host;
+	//host = gethostbyname("255.255.255.255");
+	//memcpy((void *)&bcast.sin_addr, host->h_addr_list[0], host->h_length);
 	return sendto(socketFD,message.c_str(),message.length(),0,(struct sockaddr*)&bcast,sizeof(bcast));
 }
 int send_UDP(int socketFD,int port,std::string hostName,std::string message){
