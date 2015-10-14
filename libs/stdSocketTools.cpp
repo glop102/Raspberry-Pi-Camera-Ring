@@ -33,7 +33,7 @@ int simpleOpenListenSocket(int port){
         return -1;
     }
     serv_addr.sin_family = AF_INET; //internet domain, not unix domain
-	serv_addr.sin_addr.s_addr = INADDR_ANY; //allow us to listen to all interfaces
+	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY); //allow us to listen to all interfaces
 	serv_addr.sin_port = htons(port); //change order of the bytes from the host specific to the network order (so dont worry about Big or Little endian)
 	if (bind(listenFD, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0){
 		//error("ERROR on binding");
@@ -146,6 +146,7 @@ struct newConnectionInfo listen_UDP(int socketFD){
 
 	buf[charsRead]=0; //end the string with a zero
 	peer.FD=0;
+	bcast.sin_family = AF_INET;
 	strcpy(peer.address,incomingAddr(bcast).c_str());
 	peer.message=buf;
 
