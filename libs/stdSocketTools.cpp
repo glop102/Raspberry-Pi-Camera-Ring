@@ -96,6 +96,17 @@ int simpleOpenSocket_UDP(int port){
 	bind(socketFD,(struct sockaddr*)&currentMachine,sizeof(currentMachine));
 	return socketFD;
 }
+int simpleOpenSocket_UDPBroadcast(int port){
+	int socketFD=socket(AF_INET,SOCK_DGRAM,0);
+	allowBroadcast_UDP(socketFD);
+	struct sockaddr_in currentMachine;
+	bzero((char*)&currentMachine,sizeof(currentMachine));
+	currentMachine.sin_family=AF_INET; //internet domain
+	currentMachine.sin_addr.s_addr=htonl(INADDR_BROADCAST); //any random address
+	currentMachine.sin_port=htons(port);
+	bind(socketFD,(struct sockaddr*)&currentMachine,sizeof(currentMachine));
+	return socketFD;
+}
 
 int allowBroadcast_UDP(int socketFD){
 	int broadcastEnable=1;

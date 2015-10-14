@@ -26,6 +26,7 @@ int simpleConnectToHost(std::string ADDR,int port); //simlpe connect to a host o
 
 //UDP
 int simpleOpenSocket_UDP(int port);
+int simpleOpenSocket_UDPBroadcast(int port);
 int allowBroadcast_UDP(int socketFD);
 int sendBroadcast_UDP(int socketFD,int port,std::string message);
 int send_UDP(int socketFD,int port,std::string hostName,std::string message);

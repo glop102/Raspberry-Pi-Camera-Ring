@@ -7,8 +7,7 @@
 #include <string>
 
 std::string findAdmin(){
-	int socketFD = simpleOpenSocket_UDP(63036);
-	allowBroadcast_UDP(socketFD);
+	int socketFD = simpleOpenSocket_UDPBroadcast(63036);
 	struct newConnectionInfo peer;
 	while(1){
 		peer=listen_UPD(socketFD);
@@ -62,6 +61,10 @@ void sendImageBack(std::string adminAddress){
 }
 void reportToAdmin(std::string adminAddress){
 	int socketFD = simpleConnectToHost(adminAddress,63036);
+	while(socketFD<=0){
+		sleep(5);
+		simpleConnectToHost(adminAddress,63036);
+	}
 	std::string header="RASPI CAMERA\r\nREPORTING\r\n\r\n";
 	write(socketFD,header.c_str(),header.length());
 	close(socketFD);
@@ -71,6 +74,7 @@ int main(int argc, char const *args[]){
 	stopVideoStream();
 	startVideoStream();
 	std::string adminAddress=findAdmin(); //connect to the admin to say that we are here
+	printf("Admin Address %s\n",adminAddress.c_str());
 	reportToAdmin(adminAddress);
 
 	int listenFD = simpleOpenListenSocket(63036);
