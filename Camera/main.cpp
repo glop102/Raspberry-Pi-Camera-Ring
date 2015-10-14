@@ -62,12 +62,12 @@ void sendImageBack(std::string adminAddress){
 	sendFileAlreadyConnected(socketFD,"output.png");
 }
 void reportToAdmin(std::string adminAddress){
-	unsigned long socketFD = simpleConnectToHost(adminAddress,63036);
-	printf("%lu\n", socketFD);
-	while(socketFD==0){
+	int socketFD = simpleConnectToHost(adminAddress,63036);
+	printf("%d\n", socketFD);
+	while(socketFD<=0){
 		printf("Failed to report to admin\n");
 		sleep(5);
-		simpleConnectToHost(adminAddress,63036);
+		socketFD=simpleConnectToHost(adminAddress,63036);
 	}
 	std::string header="RASPI CAMERA\r\nREPORTING\r\n\r\n";
 	printf("Chars Sent To Admin:  %lu\n",write(socketFD,header.c_str(),header.length()) );
@@ -77,9 +77,9 @@ void reportToAdmin(std::string adminAddress){
 int main(int argc, char const *args[]){
 	stopVideoStream();
 	startVideoStream();
-	std::string adminAddress=findAdmin(); //connect to the admin to say that we are here
+	std::string adminAddress=findAdmin();
 	printf("Admin Address %s\n",adminAddress.c_str());
-	reportToAdmin(adminAddress);
+	reportToAdmin(adminAddress); //connect to the admin to say that we are here
 
 	int listenFD = simpleOpenListenSocket(63036);
 	printf("Accepting Commands\n");
