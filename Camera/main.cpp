@@ -45,6 +45,7 @@ void startVideoStream(){
 }
 void stopVideoStream(){
 	system("sudo killall uv4l");
+	sleep(1); //wait for the device /dev/video0 to disappear
 }
 void takeImage(){
 	// puts into output.png
