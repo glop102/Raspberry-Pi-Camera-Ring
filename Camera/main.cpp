@@ -62,7 +62,7 @@ void sendImageBack(std::string adminAddress){
 	sendFileAlreadyConnected(socketFD,"output.png");
 }
 void reportToAdmin(std::string adminAddress){
-	int socketFD = simpleConnectToHost(adminAddress,63036);
+	unsigned long socketFD = simpleConnectToHost(adminAddress,63036);
 	while(socketFD<=0){
 		sleep(5);
 		simpleConnectToHost(adminAddress,63036);
