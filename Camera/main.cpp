@@ -63,14 +63,15 @@ void sendImageBack(std::string adminAddress){
 }
 void reportToAdmin(std::string adminAddress){
 	int socketFD = simpleConnectToHost(adminAddress,63036);
-	printf("%d\n", socketFD);
+	//printf("%d\n", socketFD);
 	while(socketFD<=0){
 		printf("Failed to report to admin\n");
 		sleep(5);
 		socketFD=simpleConnectToHost(adminAddress,63036);
 	}
 	std::string header="RASPI CAMERA\r\nREPORTING\r\n\r\n";
-	printf("Chars Sent To Admin:  %lu\n",write(socketFD,header.c_str(),header.length()) );
+	//printf("Chars Sent To Admin:  %lu\n",write(socketFD,header.c_str(),header.length()) );
+	write(socketFD,header.c_str(),header.length());
 	close(socketFD);
 }
 

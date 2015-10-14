@@ -7,13 +7,13 @@ std::string incomingAddr(struct sockaddr_in ADDR){
 
 	// deal with both IPv4 and IPv6:
 	if (ADDR.sin_family == AF_INET) {
-		printf("AF_INET\n");
+		//printf("AF_INET\n");
 	    inet_ntop(AF_INET, &ADDR.sin_addr, ipstr, sizeof ipstr);
 	} else { // AF_INET6
 		//WARNING: THIS MAY BREAK
 		//this ipv6 implementation may be broken
 		//this is NOT tested
-		printf("AF_INET6\n");
+		//printf("AF_INET6\n");
 	    inet_ntop(AF_INET6, &ADDR.sin_addr, ipstr, sizeof ipstr);
 	}
 
@@ -150,7 +150,7 @@ struct newConnectionInfo listen_UDP(int socketFD){
 	peer.FD=0;
 	bcast.sin_family = AF_INET;
 	strcpy(peer.address,incomingAddr(bcast).c_str());
-	printf("listen_UPD:  %s\n",peer.address);
+	//printf("listen_UPD:  %s\n",peer.address);
 	peer.message=buf;
 
 	return peer;
