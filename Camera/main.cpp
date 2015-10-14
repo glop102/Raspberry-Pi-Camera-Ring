@@ -81,6 +81,7 @@ int main(int argc, char const *args[]){
 	reportToAdmin(adminAddress);
 
 	int listenFD = simpleOpenListenSocket(63036);
+	printf("Accepting Commands\n");
 	while(1){
 		struct newConnectionInfo newConc = simpleAccept(listenFD);
 		std::string header=getHeader(newConc.FD);
