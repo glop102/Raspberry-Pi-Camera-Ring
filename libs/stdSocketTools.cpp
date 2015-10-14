@@ -115,7 +115,7 @@ int sendBroadcast_UDP(int socketFD,int port,std::string message){
 	bzero((char*)&bcast,sizeof(bcast));
 	bcast.sin_family=AF_INET;
 	bcast.sin_port=htons(port);
-	bcast.sin_addr.s_addr=INADDR_BROADCAST;
+	bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
 
 	//host lookup
 	//struct hostent *host;
@@ -149,8 +149,8 @@ struct newConnectionInfo listen_UDP(int socketFD){
 	buf[charsRead]=0; //end the string with a zero
 	peer.FD=0;
 	bcast.sin_family = AF_INET;
-	printf("listen_UPD:  %s\n",incomingAddr(bcast).c_str());
 	strcpy(peer.address,incomingAddr(bcast).c_str());
+	printf("listen_UPD:  %s\n",peer.address);
 	peer.message=buf;
 
 	return peer;
