@@ -137,9 +137,10 @@ void sendUpdateCommand_All(){
 	for(int x=0;x<globalIPList.length();x++){
 		if(globalIPList[x].role!="CAMERA")continue;
 		int socketFD=simpleConnectToHost(globalIPList[x].address,63036);
-	if(socketFD==0)return;
-	static std::string header="RASPI ADMIN\r\nUPDATE\r\n\r\n";
-	write(socketFD,header.c_str(),header.length());
-	close(socketFD);
+		if(socketFD==0)return;
+		static std::string header="RASPI ADMIN\r\nUPDATE\r\n\r\n";
+		write(socketFD,header.c_str(),header.length());
+		close(socketFD);
 	}
+	globalIPList.clear(); //we dont know if they will have the same address
 }
