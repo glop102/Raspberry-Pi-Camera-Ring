@@ -98,31 +98,17 @@ int simpleOpenSocket_UDP(int port){
 	bind(socketFD,(struct sockaddr*)&currentMachine,sizeof(currentMachine));
 	return socketFD;
 }
-int simpleOpenSocket_UDPBroadcast(int port){
-	int socketFD=socket(AF_INET,SOCK_DGRAM,0);
-	if(allowBroadcast_UDP(socketFD))
-		printf("ERROR getting broadcast permissions\n");
-
-	struct sockaddr_in bcast;
-	bzero((char*)&bcast,sizeof(bcast));
-	bcast.sin_family=AF_INET;
-	bcast.sin_port=htons(port);
-	bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
-
-	//host lookup
-	//struct hostent *host;
-	//host = gethostbyname("255.255.255.255");
-	//memcpy((void *)&bcast.sin_addr, host->h_addr_list[0], host->h_length);
-	bind(socketFD,(struct sockaddr*)&bcast,sizeof(bcast));
-	return socketFD;
-}
 
 int allowBroadcast_UDP(int socketFD){
 	int broadcastEnable=1;
+	char interface[]="eth0";
+	setsockopt(socketFD, SOL_SOCKET, SO_BINDTODEVICE, interface, sizeof(interface));
 	return setsockopt(socketFD, SOL_SOCKET, SO_BROADCAST, &broadcastEnable, sizeof(broadcastEnable));
 }
 
 int sendBroadcast_UDP(int socketFD,int port,std::string message){
+	//itterates over ALL interfaces to send the message
+
 	struct sockaddr_in bcast;
 	bzero((char*)&bcast,sizeof(bcast));
 	bcast.sin_family=AF_INET;

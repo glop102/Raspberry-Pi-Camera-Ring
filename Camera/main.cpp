@@ -7,7 +7,7 @@
 #include <string>
 
 std::string findAdmin(){
-	int socketFD = simpleOpenSocket_UDPBroadcast(63036);
+	int socketFD = simpleOpenSocket_UDP(63036);
 	struct newConnectionInfo peer;
 	while(1){
 		peer=listen_UDP(socketFD);

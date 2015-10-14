@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 int main(){
-	//int socketFD=simpleOpenSocket_UDPBroadcast(63036);
 	int socketFD=simpleOpenSocket_UDP(63036);
 	while(1){
 		struct newConnectionInfo peer = listen_UDP(socketFD);

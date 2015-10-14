@@ -48,11 +48,10 @@ void* spawnThread(void* peer){
 }
 
 void* constantAnnounce(void* data){
-	int socketFD=simpleOpenSocket_UDPBroadcast(63036);
+	int socketFD=simpleOpenSocket_UDP(63036);
 	while(1){
 		sleep(3); //only announce every 3 seconds
 		sendBroadcast_UDP(socketFD,63036,"ADMIN ANNOUNCE");
-		send_UDP(socketFD,63036,"10.42.0.44","ADMIN ANNOUNCE");
 		printf("Sending Broadcast\n");
 	}
 }
