@@ -85,3 +85,58 @@ int simpleConnectToHost(std::string ADDR,int port){
 
 	return socketFD;
 }
+
+int simpleOpenSocket_UDP(int port){
+	int socketFD=socket(AF_INET,SOCK_DGRAM,0);
+	struct sockaddr_in currentMachine;
+	bzero((char*)&currentMachine,sizeof(currentMachine));
+	currentMachine.sin_family=AF_INET; //internet domain
+	currentMachine.sin_addr.s_addr=htonl(INADDR_ANY); //any random address
+	currentMachine.sin_port=htons(port);
+	bind(socketFD,(struct sockaddr*)&currentMachine,sizeof(currentMachine));
+	return socketFD;
+}
+
+int allowBroadcast_UDP(int socketFD){
+	int broadcastEnable=1;
+	return setsockopt(socketFD, SOL_SOCKET, SO_BROADCAST, &broadcastEnable, sizeof(broadcastEnable));
+}
+
+int sendBroadcast_UDP(int socketFD,int port,std::string message){
+	struct sockaddr_in bcast;
+	bzero((char*)&bcast,sizeof(bcast));
+	bcast.sin_family=AF_INET;
+	bcast.sin_port=htons(port);
+	bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
+	return sendto(socketFD,message.c_str(),message.length(),0,(struct sockaddr*)&bcast,sizeof(bcast));
+}
+int send_UDP(int socketFD,int port,std::string hostName,std::string message){
+	//host lookup
+	struct hostent *host;
+	host = gethostbyname(hostName.c_str());
+
+	//sending the stuff
+	struct sockaddr_in servaddr;
+	bzero((char*)&servaddr,sizeof(servaddr));
+	servaddr.sin_family=AF_INET;
+	servaddr.sin_port=htons(port);
+	memcpy((void *)&servaddr.sin_addr, host->h_addr_list[0], host->h_length);
+	return sendto(socketFD,message.c_str(),message.length(),0,(struct sockaddr*)&servaddr,sizeof(servaddr));
+}
+
+struct newConnectionInfo listen_UPD(int socketFD){
+	struct newConnectionInfo peer;
+
+	struct sockaddr_in bcast;
+	bzero((char*)&bcast,sizeof(bcast));
+	char buf[1024];
+	unsigned int bcastLength;
+	unsigned int charsRead = recvfrom(socketFD,buf,1023,0,(struct sockaddr*)&bcast,&bcastLength);
+
+	buf[charsRead]=0; //end the string with a zero
+	peer.FD=0;
+	strcpy(peer.address,incomingAddr(bcast).c_str());
+	peer.message=buf;
+
+	return peer;
+}

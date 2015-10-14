@@ -17,15 +17,24 @@ This provides several common basic tools that dont deserve their own headers
 This makes it a collection of smaller functions
 */
 
+//TCP
 std::string incomingAddr(struct sockaddr_in ADDR); //gives the IP address of the connection
 int simpleOpenSocket();
 int simpleOpenListenSocket(int port); //opens a socket ready to accept connections on a certain port
 struct newConnectionInfo simpleAccept(int socketFD); //on a socket that is listening, blocks for a new connection
 int simpleConnectToHost(std::string ADDR,int port); //simlpe connect to a host on a given port
 
+//UDP
+int simpleOpenSocket_UDP(int port);
+int allowBroadcast_UDP(int socketFD);
+int sendBroadcast_UDP(int socketFD,int port,std::string message);
+int send_UDP(int socketFD,int port,std::string hostName,std::string message);
+struct newConnectionInfo listen_UPD(int socketFD);
+
 struct newConnectionInfo{
 	int FD;
 	char address[16]; //just bearly big enough for IPv4 addresses
+	std::string message;
 };
 
 #endif

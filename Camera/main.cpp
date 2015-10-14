@@ -6,15 +6,16 @@
 #include <unistd.h>
 #include <string>
 
-void firstConnect(){
-	int socketFD = simpleConnectToHost("192.168.1.1",63036);
-	while(socketFD<0){
-		sleep(5); //5 seconds
-		socketFD=simpleConnectToHost("192.168.1.1",63036);
+std::string firstConnect(){
+	int socketFD = simpleOpenSocket_UDP(63036);
+	allowBroadcast_UDP(socketFD);
+	struct newConnectionInfo peer;
+	while(1){
+		peer=listen_UPD(socketFD);
+		if(peer.message=="ADMIN ANNOUNCE") break; //we found the admin
 	}
-	char header[]="RASPI CAMERA\r\nREPORTING\r\n\r\n";
-	write(socketFD,header,strlen(header));
 	close(socketFD);
+	return peer.address;
 }
 
 std::string getHeader(int socketFD){

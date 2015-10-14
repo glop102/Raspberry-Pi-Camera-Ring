@@ -47,12 +47,23 @@ void* spawnThread(void* peer){
 	delete (struct newConnectionInfo*)peer;
 }
 
+void* constantAnnounce(void* data){
+	int socketFD=simpleOpenSocket_UDP(63036);
+	allowBroadcast_UDP(socketFD);
+	while(1){
+		sleep(3); //only announce every 3 seconds
+		sendBroadcast_UDP(socketFD,63036,"ADMIN ANNOUNCE");
+	}
+}
+
 int main(int argc, char** args){
 	int listenFD=simpleOpenListenSocket(63036);
 	if(listenFD<0){
 		printf("UNABLE to open socket\n");
 		exit(1);
 	}
+	pthread_t threadFD;
+	pthread_create(&threadFD,NULL,constantAnnounce,NULL);
 
 	while(1){
 		struct newConnectionInfo* peer=new struct newConnectionInfo;
@@ -63,7 +74,6 @@ int main(int argc, char** args){
 	          printf("ERROR on accept");
 	    printf("=== New Connection ===\n%s\n",peer->address);
 
-	    pthread_t threadFD;
 		pthread_create(&threadFD,NULL,spawnThread,peer);
 	}
 
