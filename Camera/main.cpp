@@ -91,6 +91,10 @@ int main(int argc, char const *args[]){
 			sendImageBack(adminAddress);
 		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
 			system("sudo reboot");
+		}else if(header=="RASPI ADMIN\r\nUPDATE\r\n\r\n"){
+			system("git pull");
+			system("make");
+			system("sudo reboot");
 		}
 		close(newConc.FD);
 	}

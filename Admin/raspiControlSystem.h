@@ -33,6 +33,7 @@ void sendCaptureCommand_All(); //each socket connection needs to be in a new thr
 void* __sendCaptureCommand_All(void* data); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
 //void sendRebootCommand(std::string address);
 //void sendVideoRestartCommand(std::string address);
+void sendUpdateCommand_All();
 
 struct PI_INFO
 {

@@ -41,6 +41,9 @@ void engageBrowser(int socketFD,std::string header){
 		std::string nextSetName=makeNextImageSet();
 		sendCaptureCommand_All();
 		redirectPage(socketFD,"/images/"+nextSetName);
+	}else if(request=="/update"){
+		sendUpdateCommand_All();
+		redirectPage(socketFD,"/");
 	}else{ //default - try to load the file
 		if(request[0]=='/')
 			sendHTMLFile(socketFD,"www"+request);
