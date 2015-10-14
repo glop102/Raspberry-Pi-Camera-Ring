@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <string>
 
-std::string firstConnect(){
+std::string findAdmin(){
 	int socketFD = simpleOpenSocket_UDP(63036);
 	allowBroadcast_UDP(socketFD);
 	struct newConnectionInfo peer;
@@ -54,17 +54,24 @@ void takeImage(){
 	// the camera seems to need time to warm up
 	system("raspistill -o output.png -e png --nopreview --timeout 900");
 }
-void sendImageBack(){
-	int socketFD = simpleConnectToHost("192.168.1.1",63036);
+void sendImageBack(std::string adminAddress){
+	int socketFD = simpleConnectToHost(adminAddress,63036);
 	std::string header="RASPI CAMERA\r\nIMAGE SEND\r\n\r\n";
 	write(socketFD,header.c_str(),header.length());
 	sendFileAlreadyConnected(socketFD,"output.png");
+}
+void reportToAdmin(std::string adminAddress){
+	int socketFD = simpleConnectToHost(adminAddress,63036);
+	std::string header="RASPI CAMERA\r\nREPORTING\r\n\r\n";
+	write(socketFD,header.c_str(),header.length());
+	close(socketFD);
 }
 
 int main(int argc, char const *args[]){
 	stopVideoStream();
 	startVideoStream();
-	firstConnect(); //connect to the admin to say that we are here
+	std::string adminAddress=findAdmin(); //connect to the admin to say that we are here
+	reportToAdmin(adminAddress);
 
 	int listenFD = simpleOpenListenSocket(63036);
 	while(1){
@@ -75,7 +82,7 @@ int main(int argc, char const *args[]){
 			stopVideoStream();
 			takeImage();
 			startVideoStream();
-			sendImageBack();
+			sendImageBack(adminAddress);
 		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
 			system("sudo reboot");
 		}
