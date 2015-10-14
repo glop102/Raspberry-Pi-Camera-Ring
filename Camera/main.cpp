@@ -12,6 +12,7 @@ std::string findAdmin(){
 	while(1){
 		peer=listen_UPD(socketFD);
 		if(peer.message=="ADMIN ANNOUNCE") break; //we found the admin
+		printf("\t%s\n", peer.message.c_str());
 	}
 	close(socketFD);
 	return peer.address;

@@ -99,12 +99,17 @@ int simpleOpenSocket_UDP(int port){
 int simpleOpenSocket_UDPBroadcast(int port){
 	int socketFD=socket(AF_INET,SOCK_DGRAM,0);
 	allowBroadcast_UDP(socketFD);
-	struct sockaddr_in currentMachine;
-	bzero((char*)&currentMachine,sizeof(currentMachine));
-	currentMachine.sin_family=AF_INET; //internet domain
-	currentMachine.sin_addr.s_addr=htonl(INADDR_BROADCAST); //any random address
-	currentMachine.sin_port=htons(port);
-	bind(socketFD,(struct sockaddr*)&currentMachine,sizeof(currentMachine));
+	//host lookup
+	struct hostent *host;
+	host = gethostbyname("255.255.255.255");
+
+	struct sockaddr_in bcast;
+	bzero((char*)&bcast,sizeof(bcast));
+	bcast.sin_family=AF_INET;
+	bcast.sin_port=htons(port);
+	//bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
+	memcpy((void *)&bcast.sin_addr, host->h_addr_list[0], host->h_length);
+	bind(socketFD,(struct sockaddr*)host,sizeof(*host));
 	return socketFD;
 }
 
@@ -114,11 +119,16 @@ int allowBroadcast_UDP(int socketFD){
 }
 
 int sendBroadcast_UDP(int socketFD,int port,std::string message){
+	//host lookup
+	struct hostent *host;
+	host = gethostbyname("255.255.255.255");
+
 	struct sockaddr_in bcast;
 	bzero((char*)&bcast,sizeof(bcast));
 	bcast.sin_family=AF_INET;
 	bcast.sin_port=htons(port);
-	bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
+	//bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
+	memcpy((void *)&bcast.sin_addr, host->h_addr_list[0], host->h_length);
 	return sendto(socketFD,message.c_str(),message.length(),0,(struct sockaddr*)&bcast,sizeof(bcast));
 }
 int send_UDP(int socketFD,int port,std::string hostName,std::string message){
