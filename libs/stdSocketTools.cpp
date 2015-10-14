@@ -99,17 +99,18 @@ int simpleOpenSocket_UDP(int port){
 int simpleOpenSocket_UDPBroadcast(int port){
 	int socketFD=socket(AF_INET,SOCK_DGRAM,0);
 	allowBroadcast_UDP(socketFD);
-	//host lookup
-	struct hostent *host;
-	host = gethostbyname("255.255.255.255");
 
 	struct sockaddr_in bcast;
 	bzero((char*)&bcast,sizeof(bcast));
 	bcast.sin_family=AF_INET;
 	bcast.sin_port=htons(port);
-	//bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
-	memcpy((void *)&bcast.sin_addr, host->h_addr_list[0], host->h_length);
-	bind(socketFD,(struct sockaddr*)host,sizeof(*host));
+	bcast.sin_addr.s_addr=htonl(INADDR_BROADCAST);
+
+	//host lookup
+	//struct hostent *host;
+	//host = gethostbyname("255.255.255.255");
+	//memcpy((void *)&bcast.sin_addr, host->h_addr_list[0], host->h_length);
+	bind(socketFD,(struct sockaddr*)&bcast,sizeof(bcast));
 	return socketFD;
 }
 
