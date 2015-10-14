@@ -54,7 +54,7 @@ void* testVideoStream(void* nada){
 	char buf[1024];
 	int socketFD = simpleConnectToHost("10.42.0.1",63136);
 	while(1){
-		fgets(buffer,1024,stream);
+		fgets(buf,1024,stream);
 		write(socketFD,buf,strlen(buf));
 	}
 	pclose(stream);
@@ -97,7 +97,7 @@ void reportToAdmin(std::string adminAddress){
 int main(int argc, char const *args[]){
 	stopVideoStream();
 	//startVideoStream();
-	pthread(NULL,NULL,testVideoStream,NULL); //test video stream
+	pthread_create(NULL,NULL,testVideoStream,NULL); //test video stream
 
 	std::string adminAddress=findAdmin();
 	printf("Admin Address %s\n",adminAddress.c_str());
