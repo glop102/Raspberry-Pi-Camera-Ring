@@ -145,7 +145,7 @@ int send_UDP(int socketFD,int port,std::string hostName,std::string message){
 	return sendto(socketFD,message.c_str(),message.length(),0,(struct sockaddr*)&servaddr,sizeof(servaddr));
 }
 
-struct newConnectionInfo listen_UPD(int socketFD){
+struct newConnectionInfo listen_UDP(int socketFD){
 	struct newConnectionInfo peer;
 
 	struct sockaddr_in bcast;

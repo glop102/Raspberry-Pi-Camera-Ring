@@ -10,7 +10,7 @@ std::string findAdmin(){
 	int socketFD = simpleOpenSocket_UDPBroadcast(63036);
 	struct newConnectionInfo peer;
 	while(1){
-		peer=listen_UPD(socketFD);
+		peer=listen_UDP(socketFD);
 		if(peer.message=="ADMIN ANNOUNCE") break; //we found the admin
 		printf("\t%s\n", peer.message.c_str());
 	}

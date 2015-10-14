@@ -30,7 +30,7 @@ int simpleOpenSocket_UDPBroadcast(int port);
 int allowBroadcast_UDP(int socketFD);
 int sendBroadcast_UDP(int socketFD,int port,std::string message);
 int send_UDP(int socketFD,int port,std::string hostName,std::string message);
-struct newConnectionInfo listen_UPD(int socketFD);
+struct newConnectionInfo listen_UDP(int socketFD);
 
 struct newConnectionInfo{
 	int FD;
