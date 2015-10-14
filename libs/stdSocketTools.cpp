@@ -88,6 +88,8 @@ int simpleConnectToHost(std::string ADDR,int port){
 
 int simpleOpenSocket_UDP(int port){
 	int socketFD=socket(AF_INET,SOCK_DGRAM,0);
+	if(allowBroadcast_UDP(socketFD))
+		printf("ERROR getting broadcast permissions\n");
 	struct sockaddr_in currentMachine;
 	bzero((char*)&currentMachine,sizeof(currentMachine));
 	currentMachine.sin_family=AF_INET; //internet domain
