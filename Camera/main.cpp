@@ -62,8 +62,9 @@ void sendImageBack(std::string adminAddress){
 	sendFileAlreadyConnected(socketFD,"output.png");
 }
 void reportToAdmin(std::string adminAddress){
-	unsigned long socketFD = simpleConnectToHost(adminAddress,63036);
-	while(socketFD<=0){
+	unsigned int socketFD = simpleConnectToHost(adminAddress,63036);
+	while(socketFD==0){
+		printf("Failed to report to admin\n");
 		sleep(5);
 		simpleConnectToHost(adminAddress,63036);
 	}
