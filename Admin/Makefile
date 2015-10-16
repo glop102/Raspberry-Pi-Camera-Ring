@@ -3,7 +3,6 @@ CFLAGS=-pthread -std=gnu++11
 BUILD_DIR=build
 
 all: webServer.o raspiControlSystem.o stdSocketTools.o fileSave.o
-	mkdir build
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
 
 %.o: %.cpp
