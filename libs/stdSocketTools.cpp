@@ -143,7 +143,7 @@ struct newConnectionInfo listen_UDP(int socketFD){
 	struct sockaddr_in bcast;
 	bzero((char*)&bcast,sizeof(bcast));
 	char buf[1024];
-	unsigned int bcastLength;
+	unsigned int bcastLength=sizeof(bcast);
 	unsigned int charsRead = recvfrom(socketFD,buf,1023,0,(struct sockaddr*)&bcast,&bcastLength);
 
 	buf[charsRead]=0; //end the string with a zero
