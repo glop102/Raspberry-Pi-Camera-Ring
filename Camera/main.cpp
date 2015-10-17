@@ -95,7 +95,7 @@ void reportToAdmin(std::string adminAddress){
 }
 
 int main(int argc, char const *args[]){
-	stopVideoStream();
+	//stopVideoStream();
 	//startVideoStream();
 	pthread_create(NULL,NULL,testVideoStream,NULL); //test video stream
 
