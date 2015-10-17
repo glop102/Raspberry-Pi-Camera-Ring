@@ -51,8 +51,16 @@ void* testVideoStream(void* nada){
 	//       = If no can send data, kill thread and buffer
 
 	FILE *stream=popen("raspivid -t 0 -w 640 -h 480 -hf -fps 30 -o -","r");
+	if(stream<=NULL){
+		printf("Unable to run video program\n");
+		return NULL;
+	}
 	char buf[1024];
 	int socketFD = simpleConnectToHost("10.42.0.1",63136);
+	if(socketFD<=0){
+		printf("Unable to contact client\n");
+		return NULL;
+	}
 	while(1){
 		fgets(buf,1024,stream);
 		write(socketFD,buf,strlen(buf));
@@ -97,7 +105,8 @@ void reportToAdmin(std::string adminAddress){
 int main(int argc, char const *args[]){
 	//stopVideoStream();
 	//startVideoStream();
-	pthread_create(NULL,NULL,testVideoStream,NULL); //test video stream
+	pthread_t nananannana;
+	pthread_create(&nananannana,NULL,testVideoStream,NULL); //test video stream
 
 	std::string adminAddress=findAdmin();
 	printf("Admin Address %s\n",adminAddress.c_str());
