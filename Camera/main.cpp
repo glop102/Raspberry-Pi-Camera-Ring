@@ -41,6 +41,25 @@ std::string getHeader(int socketFD){
 	return header;
 }
 
+void* testVideoStream(void* nada){
+	//test function to see how to do a usefull version of the video stream
+	//GOAL: have a constant stream ready to go
+	//       = Person connects
+	//       = New Thread - Each thread has own buffer
+	//       = Write data from file output into buffer of each connection
+	//       = Each thread sends data
+	//       = If no can send data, kill thread and buffer
+
+	FILE *stream=popen("raspivid -t 0 -w 640 -h 480 -hf -fps 30 -o -","r");
+	char buf[1024];
+	int socketFD = simpleConnectToHost("10.42.0.1",63136);
+	while(1){
+		fgets(buffer,1024,stream);
+		write(socketFD,buf,strlen(buf));
+	}
+	pclose(stream);
+	return NULL;
+}
 void startVideoStream(){
 	system("uv4l --auto-video_nr --driver raspicam --server-option '--enable-webrtc=0' --server-option '--enable-webrtc-audio=0' --server-option '--webrtc-receive-audio=0' --server-option '--port=63136'");
 }
@@ -77,7 +96,9 @@ void reportToAdmin(std::string adminAddress){
 
 int main(int argc, char const *args[]){
 	stopVideoStream();
-	startVideoStream();
+	//startVideoStream();
+	pthread(NULL,NULL,testVideoStream,NULL); //test video stream
+
 	std::string adminAddress=findAdmin();
 	printf("Admin Address %s\n",adminAddress.c_str());
 	reportToAdmin(adminAddress); //connect to the admin to say that we are here
