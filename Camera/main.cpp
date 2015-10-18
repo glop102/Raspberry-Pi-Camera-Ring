@@ -50,7 +50,7 @@ void* testVideoStream(void* nada){
 	//       = Each thread sends data
 	//       = If no can send data, kill thread and buffer
 
-	FILE *stream=popen("raspivid -t 0 -w 640 -h 480 -hf -fps 30 -o -","r");
+	FILE *stream=popen("raspivid -t 0 -w 640 -h 480 -fps 30 -o -","r");
 	if(stream<=NULL){
 		printf("Unable to run video program\n");
 		return NULL;
