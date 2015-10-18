@@ -64,6 +64,8 @@ void* testVideoStream(void* nada){
 	while(1){
 		unsigned int charsRead=fread(buf,1,1024,stream); //1024 counts of 1 byte elements
 		if(charsRead<=0){
+			printf("Unable Read Stream\n");
+			pclose(stream);
 			return NULL;
 		}
 		write(socketFD,buf,charsRead);
