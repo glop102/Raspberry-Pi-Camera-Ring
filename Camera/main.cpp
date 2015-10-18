@@ -62,7 +62,7 @@ void* testVideoStream(void* nada){
 		return NULL;
 	}
 	while(1){
-		fgets(buf,1024,stream);
+		read(stream,buf,1024);
 		write(socketFD,buf,strlen(buf));
 	}
 	pclose(stream);
