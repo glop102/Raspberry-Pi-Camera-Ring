@@ -68,6 +68,7 @@ void* testVideoStream(void* nada){
 		}
 		write(socketFD,buf,charsRead);
 	}
+	printf("Client Disconnest\n");
 	pclose(stream);
 	return NULL;
 }
