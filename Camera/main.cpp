@@ -105,7 +105,8 @@ void reportToAdmin(std::string adminAddress){
 int main(int argc, char const *args[]){
 	//stopVideoStream();
 	//startVideoStream();
-	pthread_create(NULL,NULL,testVideoStream,NULL); //test video stream
+	pthread_t newThreadFD;
+	pthread_create(&newThreadFD,NULL,testVideoStream,NULL); //test video stream
 
 	std::string adminAddress=findAdmin();
 	printf("Admin Address %s\n",adminAddress.c_str());
