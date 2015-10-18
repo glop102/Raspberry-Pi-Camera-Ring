@@ -62,7 +62,7 @@ void* testVideoStream(void* nada){
 		return NULL;
 	}
 	while(1){
-		read(stream,buf,1024);
+		fread(buf,1,1024,stream); //1024 counts of 1 byte elements
 		write(socketFD,buf,strlen(buf));
 	}
 	pclose(stream);
