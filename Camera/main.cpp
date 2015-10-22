@@ -51,7 +51,7 @@ void* testVideoStream(void* nada){
 	//       = If no can send data, kill thread and buffer
 	//http://raspberrypi.stackexchange.com/questions/27082/how-to-stream-raspivid-to-linux-and-osx-using-gstreamer-vlc-or-netcat
 
-	FILE *stream=popen("raspivid -t 0 -w 640 -h 480 -fps 30 -o -","r");
+	FILE *stream=popen("raspivid -t 0 -np -w 640 -h 480 -fps 30 -o -","r");
 	if(stream<=NULL){
 		printf("Unable to run video program\n");
 		return NULL;
