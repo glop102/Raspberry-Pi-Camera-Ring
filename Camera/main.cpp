@@ -49,6 +49,7 @@ void* testVideoStream(void* nada){
 	//       = Write data from file output into buffer of each connection
 	//       = Each thread sends data
 	//       = If no can send data, kill thread and buffer
+	//http://raspberrypi.stackexchange.com/questions/27082/how-to-stream-raspivid-to-linux-and-osx-using-gstreamer-vlc-or-netcat
 
 	FILE *stream=popen("raspivid -t 0 -w 640 -h 480 -fps 30 -o -","r");
 	if(stream<=NULL){
@@ -111,8 +112,8 @@ void reportToAdmin(std::string adminAddress){
 int main(int argc, char const *args[]){
 	//stopVideoStream();
 	//startVideoStream();
-	pthread_t newThreadFD;
-	pthread_create(&newThreadFD,NULL,testVideoStream,NULL); //test video stream
+	//pthread_t newThreadFD;
+	//pthread_create(&newThreadFD,NULL,testVideoStream,NULL); //test video stream
 
 	std::string adminAddress=findAdmin();
 	printf("Admin Address %s\n",adminAddress.c_str());
