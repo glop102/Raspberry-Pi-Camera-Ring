@@ -146,10 +146,10 @@ VideoCore OS Abstraction Layer - Assertion and error-handling macros.
 extern "C" {
 #endif
 
-#include "interface/vcos/vcos_types.h"
+#include "../../interface/vcos/vcos_types.h"
 
 #ifdef __COVERITY__
-#include "interface/vcos/user_nodefs.h"
+#include "../../interface/vcos/user_nodefs.h"
 
 extern void __coverity_panic__(void);
 #undef VCOS_ASSERT_BKPT
