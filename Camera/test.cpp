@@ -4,15 +4,15 @@
 #include <stdio.h>
 
 int main(){
-	raspicam::RaspiCam cam;
+	raspicam::RaspiCam_Still cam;
 	cam.open();
 	if(!cam.isOpened()){
 		printf("Unable to open Camera\n");
 		exit(1);
 	}
 	cam.setCaptureSize(1280,960);
-	cam.setFormat(RASPICAM_FORMAT_YUV420);
-	cam.setEncoding(RASPICAM_ENCODING_PNG);
+	cam.setFormat(raspicam::RASPICAM_FORMAT_YUV420);
+	cam.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
 
 	size_t bufSize = cam.getImageBufferSize();
 	unsigned char* buf = malloc(bufSize);
