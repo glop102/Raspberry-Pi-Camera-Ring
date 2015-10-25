@@ -5,20 +5,18 @@
 
 int main(){
 	raspicam::RaspiCam_Still cam;
-	cam.open();
-	if(!cam.isOpened()){
+	if(!cam.open()){
 		printf("Unable to open Camera\n");
 		exit(1);
 	}
 	cam.setCaptureSize(1280,960);
-	cam.setFormat(raspicam::RASPICAM_FORMAT_YUV420);
+	//cam.setFormat(raspicam::RASPICAM_FORMAT_YUV420);
 	cam.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
 
 	size_t bufSize = cam.getImageBufferSize();
-	unsigned char* buf = malloc(bufSize);
-	for(int x=0;x<30;x++) cam.grab(); //let it fix the color balance stuffs
-
-	grab_retrieve(buf,bufSize); //get the image into our buffer
+	unsigned char* buf = (unsigned char*)malloc(bufSize);
+	for(int x=0;x<30;x++) cam.grab_retrieve(buf,bufSize); //get the image into our buffer
+		
 	for(unsigned long x=0;x<bufSize;x++){
 		printf("%c",buf[x]); //put the image on the stdout
 	}
