@@ -37,9 +37,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #ifndef _Private_RaspiCam_STILL_IMPL_H
 #define _Private_RaspiCam_STILL_IMPL_H
-#include "raspicamtypes.h"
-#include "mmal/mmal.h"
-#include "mmal/util/mmal_connection.h"
+#include "../raspicamtypes.h"
+#include "../../dependencies/mmal/mmal.h"
+#include "../../dependencies/mmal/util/mmal_connection.h"
 #include <string>
 #define MMAL_CAMERA_CAPTURE_PORT 2
 #define STILLS_FRAME_RATE_NUM 3
