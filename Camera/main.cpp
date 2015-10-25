@@ -1,5 +1,6 @@
 #include "../libs/stdSocketTools.h"
 #include "../libs/fileSend.h"
+#include "raspicam/src/raspicam.h"
 #include <stdlib.h>
 #include <pthread.h>
 #include <stdio.h>

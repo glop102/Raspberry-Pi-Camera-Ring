@@ -14,3 +14,6 @@ all: stdSocketTools.o fileSend.o
 clean:
 	rm build/*.o
 	rm *.out
+
+test:
+	$(CC)    -o test.out test.cpp -I/usr/local/include -lraspicam -lmmal -lmmal_core -lmmal_util
