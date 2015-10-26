@@ -32,4 +32,4 @@ clean:
 	rm *.out
 
 test: $(RASPICAM_DEPENDS)
-	$(CC)    -o test.out test.cpp $(patsubst %,$(BUILD_DIR)/%,$^) -Lmmal -Lmmal_core -Lmmal_util -Lraspicam
+	$(CC)    -o test.out test.cpp $(patsubst %,$(BUILD_DIR)/%,$^) -Lmmal -Lmmal_core -Lmmal_util -Lraspicam -I/usr/local/include
