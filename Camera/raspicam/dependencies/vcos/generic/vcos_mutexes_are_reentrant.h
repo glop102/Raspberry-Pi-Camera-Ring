@@ -36,8 +36,8 @@ VideoCore OS Abstraction Layer - reentrant mutexes mapped directly to regular on
 extern "C" {
 #endif
 
-#include "interface/vcos/vcos_types.h"
-#include "interface/vcos/vcos_mutex.h"
+#include "../vcos_types.h"
+#include "../vcos_mutex.h"
 
 /**
  * \file

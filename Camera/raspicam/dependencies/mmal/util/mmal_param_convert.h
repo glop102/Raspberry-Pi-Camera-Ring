@@ -32,7 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MMAL_PARAM_CONVERT_H
 #define MMAL_PARAM_CONVERT_H
 
-#include "interface/mmal/mmal.h"
+#include "../mmal.h"
 
 #ifdef __cplusplus
 extern "C" {

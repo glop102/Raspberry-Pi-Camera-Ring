@@ -28,7 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MMAL_UTIL_RATIONAL_H
 #define MMAL_UTIL_RATIONAL_H
 
-#include "interface/mmal/mmal_types.h"
+#include "../mmal_types.h"
 
 /** \defgroup MmalRationalUtilities Rational Utility Functions
  * \ingroup MmalUtilities

@@ -29,7 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MMAL_LOGGING_H
 
 #include "mmal_common.h"
-#include "interface/vcos/vcos_logging.h"
+#include "../vcos/vcos_logging.h"
 
 #ifndef VCOS_LOG_CATEGORY
 #define VCOS_LOG_CATEGORY (&mmal_log_category)

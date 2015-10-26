@@ -37,7 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <stddef.h>
 #include <assert.h>
 
-#include <vcos.h>
+#include "../vcos/vcos.h"
 
 /* C99 64bits integers */
 #ifndef INT64_C

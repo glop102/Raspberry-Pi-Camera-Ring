@@ -36,7 +36,7 @@ VideoCore OS Abstraction Layer - event flags implemented via a semaphore
 extern "C" {
 #endif
 
-#include "vcos_types.h"
+#include "../vcos_types.h"
 
 /**
   * \file

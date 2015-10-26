@@ -49,17 +49,17 @@ extern "C" {
 #endif
 
 #ifndef VCOS_SEMAPHORE_H
-#include "interface/vcos/vcos_semaphore.h"
+#include "../vcos_semaphore.h"
 #endif
 #ifndef VCOS_LOWLEVEL_THREAD_H
-#include "interface/vcos/vcos_lowlevel_thread.h"
+#include "../vcos_lowlevel_thread.h"
 #endif
 #ifndef VCOS_TIMER_H
-#include "interface/vcos/vcos_timer.h"
+#include "../vcos_timer.h"
 #endif
 
 #ifdef VCOS_WANT_TLS_EMULATION
-#include "interface/vcos/generic/vcos_generic_tls.h"
+#include "../generic/vcos_generic_tls.h"
 #endif
 
 #define VCOS_THREAD_MAGIC 0x56436a74

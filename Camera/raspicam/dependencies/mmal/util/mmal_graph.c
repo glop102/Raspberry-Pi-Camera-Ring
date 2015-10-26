@@ -25,12 +25,12 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "mmal.h"
-#include "util/mmal_util.h"
-#include "util/mmal_graph.h"
-#include "core/mmal_component_private.h"
-#include "core/mmal_port_private.h"
-#include "mmal_logging.h"
+#include "../mmal.h"
+#include "mmal_util.h"
+#include "mmal_graph.h"
+#include "../core/mmal_component_private.h"
+#include "../core/mmal_port_private.h"
+#include "../mmal_logging.h"
 
 #define GRAPH_CONNECTIONS_MAX 16
 #define PROCESSING_TIME_MAX 20000

@@ -28,7 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MMAL_GRAPH_H
 #define MMAL_GRAPH_H
 
-#include "util/mmal_connection.h"
+#include "mmal_connection.h"
 
 /** \defgroup MmalGraphUtility Graph Utility
  * \ingroup MmalUtilities
