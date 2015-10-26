@@ -1,6 +1,7 @@
 CC=g++
 CFLAGS=-pthread -std=gnu++11
 BUILD_DIR=build
+RASPICAM_DEPENDS=raspicam_still.o private_still_impl.o 
 
 all: stdSocketTools.o fileSend.o
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
@@ -11,9 +12,24 @@ all: stdSocketTools.o fileSend.o
 %.o: ../libs/%.cpp
 	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
 
+#---------------------------------------------
+%.o: raspicam/src/%.cpp
+	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+%.o: raspicam/src/private/%.cpp
+	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+%.o: raspicam/src/private_still/%.cpp
+	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+#----------------------------------------------
+%.o: raspicam/src/dependencies/mmal/core/%.c
+	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+%.o: raspicam/src/dependencies/mmal/util/%.c
+	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+%.o: raspicam/src/dependencies/mmal/%.c
+	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+
 clean:
 	rm build/*.o
 	rm *.out
 
-test:
-	$(CC)    -o test.out test.cpp -I/usr/local/include -lraspicam -lmmal -lmmal_core -lmmal_util
+test: $(RASPICAM_DEPENDS)
+	$(CC)    -o test.out test.cpp $(patsubst %,$(BUILD_DIR)/%,$^) -Lmmal -Lmmal_core -Lmmal_util -Lraspicam
