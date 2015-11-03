@@ -24,10 +24,10 @@ int main(){
 		printf("Unable to open Camera\n");
 		exit(1);
 	}
-	if(!still.open()){
-		printf("Unable to open Camera\n");
-		exit(1);
-	}
+	//if(!still.open()){
+	//	printf("Unable to open Camera\n");
+	//	exit(1);
+	//}
 	preview.setFormat(raspicam::RASPICAM_FORMAT_RGB);
 	still.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
 
