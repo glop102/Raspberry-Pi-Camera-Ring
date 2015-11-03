@@ -7,13 +7,8 @@
 void captureStill(raspicam::RaspiCam_Still& cam){
 	size_t bufSize = cam.getImageBufferSize();
 	unsigned char* buf = (unsigned char*)malloc(bufSize);
-<<<<<<< HEAD
 	cam.grab_retrieve(buf,bufSize);
-		
-=======
-	for(int x=0;x<60;x++) cam.grab_retrieve(buf,bufSize); //get the image into our buffer
 
->>>>>>> 026104e3257385f5d702ac600aee08b5267feca6
 	for(unsigned long x=0;x<bufSize;x++){
 		printf("%c",buf[x]); //put the image on the stdout
 	}
