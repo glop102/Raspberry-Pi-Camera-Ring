@@ -1,11 +1,15 @@
 #include "../libs/stdSocketTools.h"
 #include "../libs/fileSend.h"
+#include "raspicam/src/raspicam_still.h"
 #include "raspicam/src/raspicam.h"
+#include "raspicam/src/raspicamtypes.h"
 #include <stdlib.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string>
+#include <iostream>
+#include <fstream>
 
 std::string findAdmin(){
 	int socketFD = simpleOpenSocket_UDP(63036);
@@ -42,53 +46,27 @@ std::string getHeader(int socketFD){
 	return header;
 }
 
-void* testVideoStream(void* nada){
-	//test function to see how to do a usefull version of the video stream
-	//GOAL: have a constant stream ready to go
-	//       = Person connects
-	//       = New Thread - Each thread has own buffer
-	//       = Write data from file output into buffer of each connection
-	//       = Each thread sends data
-	//       = If no can send data, kill thread and buffer
-	//http://raspberrypi.stackexchange.com/questions/27082/how-to-stream-raspivid-to-linux-and-osx-using-gstreamer-vlc-or-netcat
-
-	FILE *stream=popen("raspivid -t 0 -np -w 640 -h 480 -fps 30 -o -","r");
-	if(stream<=NULL){
-		printf("Unable to run video program\n");
-		return NULL;
-	}
-	char buf[1024];
-	int socketFD = simpleConnectToHost("10.42.0.1",63136);
-	if(socketFD<=0){
-		printf("Unable to contact client\n");
-		return NULL;
-	}
-	while(1){
-		unsigned int charsRead=fread(buf,1,1024,stream); //1024 counts of 1 byte elements
-		if(charsRead<=0){
-			printf("Unable Read Stream\n");
-			pclose(stream);
-			return NULL;
-		}
-		write(socketFD,buf,charsRead);
-	}
-	printf("Client Disconnest\n");
-	pclose(stream);
-	return NULL;
-}
-void startVideoStream(){
-	system("uv4l --auto-video_nr --driver raspicam --server-option '--enable-webrtc=0' --server-option '--enable-webrtc-audio=0' --server-option '--webrtc-receive-audio=0' --server-option '--port=63136'");
-}
-void stopVideoStream(){
-	system("sudo killall uv4l");
-	sleep(1); //wait for the device /dev/video0 to disappear
-}
-void takeImage(){
+void takeImage(raspicam::RaspiCam_Still &cam){
 	// puts into output.png
 	// no preview on screen
 	// waits 900 milliseconds to capture
 	// the camera seems to need time to warm up
-	system("raspistill -o output.png -e png --nopreview --timeout 900");
+	//system("raspistill -o output.png -e png --nopreview --timeout 900");
+
+	//new method that is faster, a lot faster
+	size_t bufSize = cam.getImageBufferSize();
+	unsigned char* buf = (unsigned char*)malloc(bufSize);
+	cam.grab_retrieve(buf,bufSize);
+
+	std::ofstream of;
+	of.open("output.png",std::ios::binary);
+	for(int x=0;x<bufSize;x++){
+		of << buf[x];
+	}
+	of.close();
+
+	cam.release();
+	free(buf);
 }
 void sendImageBack(std::string adminAddress){
 	int socketFD = simpleConnectToHost(adminAddress,63036);
@@ -110,11 +88,13 @@ void reportToAdmin(std::string adminAddress){
 	close(socketFD);
 }
 
+void setupCamera(raspicam::RaspiCam_Still &still){
+
+}
+
 int main(int argc, char const *args[]){
-	//stopVideoStream();
-	//startVideoStream();
-	//pthread_t newThreadFD;
-	//pthread_create(&newThreadFD,NULL,testVideoStream,NULL); //test video stream
+	raspicam::RaspiCam_Still still;
+	setupCamera(still);
 
 	std::string adminAddress=findAdmin();
 	printf("Admin Address %s\n",adminAddress.c_str());
