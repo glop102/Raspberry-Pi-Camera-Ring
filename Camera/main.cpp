@@ -108,9 +108,7 @@ int main(int argc, char const *args[]){
 		std::string header=getHeader(newConc.FD);
 		printf("%s\n", header.c_str());
 		if(header=="RASPI ADMIN\r\nIMAGE TAKE\r\n\r\n"){
-			stopVideoStream();
-			takeImage();
-			startVideoStream();
+			takeImage(still);
 			sendImageBack(adminAddress);
 		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
 			system("sudo reboot");
