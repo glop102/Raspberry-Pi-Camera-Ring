@@ -89,7 +89,8 @@ void reportToAdmin(std::string adminAddress){
 }
 
 void setupCamera(raspicam::RaspiCam_Still &still){
-
+	still.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
+	still.setCaptureSize(2592 , 1944); //max size
 }
 
 int main(int argc, char const *args[]){
