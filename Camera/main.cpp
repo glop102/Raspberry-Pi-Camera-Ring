@@ -55,7 +55,7 @@ void takeImage(raspicam::RaspiCam &cam){
 	size_t bufSize = cam.getImageBufferSize();
 	unsigned char* buf = (unsigned char*)malloc(bufSize);
 	cam.grab();
-	cam.retrieve(buf,bufSize);
+	cam.retrieve(buf);
 
 	FILE* of = fopen("output.png","wb");
 	fwrite(buf,1,bufSize,of);
