@@ -91,6 +91,10 @@ void reportToAdmin(std::string adminAddress){
 void setupCamera(raspicam::RaspiCam_Still &still){
 	still.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
 	still.setCaptureSize(2592 , 1944); //max size
+	if(!still.open()){
+		printf("Unable to open Camera\n");
+		exit(1);
+	}
 }
 
 int main(int argc, char const *args[]){
