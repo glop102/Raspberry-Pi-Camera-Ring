@@ -58,12 +58,9 @@ void takeImage(raspicam::RaspiCam_Still &cam){
 	unsigned char* buf = (unsigned char*)malloc(bufSize);
 	cam.grab_retrieve(buf,bufSize);
 
-	std::ofstream of;
-	of.open("output.png",std::ios::binary);
-	for(int x=0;x<bufSize;x++){
-		of << buf[x];
-	}
-	of.close();
+	FILE* of = fopen("output.png","rd");
+	write(of,buf,bufSize);
+	fclose(of);
 
 	cam.release();
 	free(buf);
