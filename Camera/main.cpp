@@ -8,8 +8,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string>
-#include <iostream>
-#include <fstream>
 
 std::string findAdmin(){
 	int socketFD = simpleOpenSocket_UDP(63036);
@@ -46,7 +44,7 @@ std::string getHeader(int socketFD){
 	return header;
 }
 
-void takeImage(raspicam::RaspiCam_Still &cam){
+void takeImage(raspicam::RaspiCam &cam){
 	// puts into output.png
 	// no preview on screen
 	// waits 900 milliseconds to capture
@@ -56,13 +54,14 @@ void takeImage(raspicam::RaspiCam_Still &cam){
 	//new method that is faster, a lot faster
 	size_t bufSize = cam.getImageBufferSize();
 	unsigned char* buf = (unsigned char*)malloc(bufSize);
-	cam.grab_retrieve(buf,bufSize);
+	cam.grab();
+	cam.retrieve(buf,bufSize);
 
 	FILE* of = fopen("output.png","wb");
 	fwrite(buf,1,bufSize,of);
 	fclose(of);
 
-	cam.release();
+	//cam.release();
 	free(buf);
 }
 void sendImageBack(std::string adminAddress){
@@ -85,17 +84,23 @@ void reportToAdmin(std::string adminAddress){
 	close(socketFD);
 }
 
-void setupCamera(raspicam::RaspiCam_Still &still){
-	still.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
-	still.setCaptureSize(2592 , 1944); //max size
-	if(!still.open()){
+void setupCamera(raspicam::RaspiCam &cam){
+	//still.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
+	//still.setCaptureSize(2592 , 1944); //max size
+	//if(!still.open()){
+	//	printf("Unable to open Camera\n");
+	//	exit(1);
+	//}
+
+	cam.setCaptureSize(2560 , 1920); //max size
+	if(!cam.open()){
 		printf("Unable to open Camera\n");
 		exit(1);
 	}
 }
 
 int main(int argc, char const *args[]){
-	raspicam::RaspiCam_Still still;
+	raspicam::RaspiCam still;
 	setupCamera(still);
 
 	std::string adminAddress=findAdmin();
