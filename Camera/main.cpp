@@ -59,7 +59,7 @@ void takeImage(raspicam::RaspiCam_Still &cam){
 	cam.grab_retrieve(buf,bufSize);
 
 	FILE* of = fopen("output.png","rd");
-	write(of,buf,bufSize);
+	fwrite(buf,1,bufSize,of);
 	fclose(of);
 
 	cam.release();
