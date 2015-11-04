@@ -23,7 +23,8 @@ int main(){
 	raspicam::RaspiCam_Still still;
 	//preview.setFormat(raspicam::RASPICAM_FORMAT_RGB);
 	still.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
-	still.setCaptureSize(1200,960);
+	//still.setCaptureSize(1200,960);
+	still.setCaptureSize(2592 , 1944);
 	//if(!preview.open()){
 	//	printf("Unable to open Camera\n");
 	//	exit(1);
