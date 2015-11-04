@@ -93,6 +93,7 @@ void setupCamera(raspicam::RaspiCam &cam){
 	//}
 
 	cam.setCaptureSize(2560 , 1920); //max size
+	cam.setFormat(raspicam::RASPICAM_FORMAT_RGB);
 	if(!cam.open()){
 		printf("Unable to open Camera\n");
 		exit(1);
