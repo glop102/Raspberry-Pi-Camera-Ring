@@ -3,10 +3,10 @@ CFLAGS=-pthread -std=gnu++11 -lraspicam -lpng
 BUILD_DIR=build
 RASPICAM_DEPENDS=raspicam_still.o #private_still_impl.o 
 
-all: libpng raspicam main.out
+all: main.out
 	#All Done. Just run "sudo ./main.out" to start it up
 
-main.out: stdSocketTools.o fileSend.o
+main.out: stdSocketTools.o fileSend.o libpng raspicam
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
 
 %.o: %.cpp
