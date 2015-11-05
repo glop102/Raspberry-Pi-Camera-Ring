@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string>
+#include "png++/png.hpp"
 
 std::string findAdmin(){
 	int socketFD = simpleOpenSocket_UDP(63036);
@@ -57,9 +58,20 @@ void takeImage(raspicam::RaspiCam &cam){
 	cam.grab();
 	cam.retrieve(buf);
 
-	FILE* of = fopen("output.png","wb");
-	fwrite(buf,1,bufSize,of);
-	fclose(of);
+	png::image< png::rgb_pixel > image(2560, 1920);
+	int counter=0;
+	for (png::uint_32 y = 0; y < image.get_height(); ++y){
+	    for (png::uint_32 x = 0; x < image.get_width(); ++x){
+	        image[y][x] = png::rgb_pixel(buf[counter],buf[counter+1],buf[counter+2]);
+	        // non-checking equivalent of image.set_pixel(x, y, ...);
+	        counter+=3;
+	    }
+	}
+	image.write("output.png");
+
+	//FILE* of = fopen("output.png","wb");
+	//fwrite(buf,1,bufSize,of);
+	//fclose(of);
 
 	//cam.release();
 	free(buf);
