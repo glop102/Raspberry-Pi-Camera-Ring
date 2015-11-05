@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-pthread -std=gnu++11 -lraspicam
+CFLAGS=-pthread -std=gnu++11 -lraspicam -lpng
 BUILD_DIR=build
 RASPICAM_DEPENDS=raspicam_still.o #private_still_impl.o 
 
