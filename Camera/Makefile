@@ -57,4 +57,4 @@ raspicam:
 	#make the build dir
 	if ! [ -d raspicam/build ]; then mkdir raspicam/build; fi
 	#do the install
-	cd raspicam/build && cmake .. && make && sudo make install
+	cd raspicam/build ; cmake .. ; make ; sudo make install
