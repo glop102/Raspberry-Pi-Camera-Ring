@@ -48,6 +48,7 @@ test: $(RASPICAM_DEPENDS)
 	$(CC)    -o test.out test.cpp $(patsubst %,$(BUILD_DIR)/%,$^) -lraspicam -I/usr/local/include
 
 libpng:
+	if ! [ -a libpng-1.2.52/Makefile ] ; then cd libpng-1.2.52 && ./configure; fi
 	cd libpng-1.2.52 && make && sudo make install
 
 raspicam:
