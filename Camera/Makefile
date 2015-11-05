@@ -56,7 +56,7 @@ libpng:
 	cd libpng-1.2.52 && make && sudo make install
 
 raspicam:
-	sudo apt-get install cmake
+	sudo apt-get -y install cmake
 	#make the build dir
 	if ! [ -d raspicam/build ]; then mkdir raspicam/build; fi
 	#do the install
