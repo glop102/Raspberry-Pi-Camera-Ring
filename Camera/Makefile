@@ -6,7 +6,7 @@ RASPICAM_DEPENDS=raspicam_still.o #private_still_impl.o
 all: main.out
 	#All Done. Just run "sudo ./main.out" to start it up
 
-main.out: stdSocketTools.o fileSend.o libpng raspicam
+main.out: libpng raspicam stdSocketTools.o fileSend.o
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
 
 %.o: %.cpp
