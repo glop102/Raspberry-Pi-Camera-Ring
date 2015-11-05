@@ -4,11 +4,12 @@ BUILD_DIR=build
 RASPICAM_DEPENDS=raspicam_still.o #private_still_impl.o 
 
 all: main.out
+	sudo ldconfig
 	#All Done. Just run "sudo ./main.out" to start it up
 
 main.out: stdSocketTools.o fileSend.o
 	make libpng
-	make raspicam 
+	make -B raspicam 
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
 
 %.o: %.cpp
@@ -57,4 +58,6 @@ raspicam:
 	#make the build dir
 	if ! [ -d raspicam/build ]; then mkdir raspicam/build; fi
 	#do the install
-	cd raspicam/build ; cmake .. ; make ; sudo make install
+	cd raspicam/build && cmake .. && make && sudo make install
+
+.PHONY: raspicam
