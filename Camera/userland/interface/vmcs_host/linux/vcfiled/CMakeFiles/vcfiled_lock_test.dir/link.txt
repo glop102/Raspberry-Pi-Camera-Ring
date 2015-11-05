@@ -1,1 +1,0 @@
-/usr/bin/gcc   -Wno-multichar -Wall -Wno-unused-but-set-variable -fPIC    CMakeFiles/vcfiled_lock_test.dir/vcfiled_lock_test.c.o  -o ../../../../build/bin/vcfiled_lock_test -rdynamic ../../../../build/lib/libvcfiled_check.a 

@@ -1,1 +1,0 @@
-/usr/bin/gcc   -Wno-multichar -Wall -Wno-unused-but-set-variable -fPIC    CMakeFiles/containers_stream_server.dir/stream_server.c.o  -o ../../build/bin/containers_stream_server -rdynamic ../../build/lib/libcontainers.so ../../build/lib/libvcos.so -lpthread -ldl -lrt -Wl,-rpath,/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/userland/build/lib: 
