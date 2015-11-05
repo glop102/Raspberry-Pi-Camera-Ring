@@ -6,6 +6,7 @@ RASPICAM_DEPENDS=raspicam_still.o #private_still_impl.o
 all: main.out
 	sudo ldconfig
 	#All Done. Just run "sudo ./main.out" to start it up
+	#If you want, add the executable to the /etc/rc.local file to run on startup
 
 main.out: stdSocketTools.o fileSend.o
 	make libpng
