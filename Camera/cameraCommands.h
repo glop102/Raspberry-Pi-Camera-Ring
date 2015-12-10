@@ -23,6 +23,11 @@ public:
 		this->buf = (unsigned char*)malloc(bufSize);
 		for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
 	}
+	ImageBuffer(ImageBuffer other){
+		this->bufSize = other.size();
+		this->buf = (unsigned char*)malloc(bufSize);
+		for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
+	}
 	~ImageBuffer(){
 		free(buf);
 	}
