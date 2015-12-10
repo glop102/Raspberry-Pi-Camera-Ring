@@ -21,7 +21,7 @@ public:
 	ImageBuffer(ImageBuffer& other){
 		this->bufSize = other.size();
 		this->buf = (unsigned char*)malloc(bufSize);
-		for(unsigned int x=0;x<bufSize;x++) this->buf = other[x];
+		for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
 	}
 	~ImageBuffer(){
 		free(buf);
@@ -38,8 +38,8 @@ public:
 };
 
 void takeImage_toFile();
-unsigned char* takeImage();
-void saveImageToFile(unsigned char* buf, std::string filename);
+ImageBuffer takeImage();
+void saveImageToFile(ImageBuffer& buf, std::string filename);
 
 void takeImage_toFile(){
 	/*
@@ -76,7 +76,7 @@ ImageBuffer takeImage(){
 	cam.retrieve(buf.raw_array());
 	return buf;
 }
-void saveImageToFile(ImageBuffer buf, std::string filename){
+void saveImageToFile(ImageBuffer& buf, std::string filename){
 	png::image< png::rgb_pixel > image(2560, 1920);
 	int counter=0;
 	for (png::uint_32 y = 0; y < image.get_height(); ++y){
