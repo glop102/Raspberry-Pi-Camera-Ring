@@ -83,6 +83,8 @@ ImageBuffer takeImage(){
 }
 void saveImageToFile(ImageBuffer& buf, std::string filename){
 	png::image< png::rgb_pixel > image(2560, 1920);
+	image.set_interlace_type(PNG_INTERLACE_NONE);
+	image.set_compression_type(PNG_COMPRESSION_TYPE_BASE);
 	int counter=0;
 	for (png::uint_32 y = 0; y < image.get_height(); ++y){
 	    for (png::uint_32 x = 0; x < image.get_width(); ++x){
