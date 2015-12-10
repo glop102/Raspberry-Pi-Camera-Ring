@@ -1,14 +1,14 @@
 #include "../libs/stdSocketTools.h"
 #include "../libs/fileSend.h"
-#include "raspicam/src/raspicam_still.h"
-#include "raspicam/src/raspicam.h"
-#include "raspicam/src/raspicamtypes.h"
 #include <stdlib.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string>
-#include "png++/png.hpp"
+#include "globals.h"
+#include "udpCommands.h"
+#include "tcpCommands.h"
+#include "cameraCommands.h"
 
 std::string findAdmin(){
 	int socketFD = simpleOpenSocket_UDP(63036);
@@ -22,60 +22,6 @@ std::string findAdmin(){
 	return peer.address;
 }
 
-std::string getHeader(int socketFD){
-	char buf;
-	int charsRead=1;
-    std::string header;
-    while(charsRead){
-	    charsRead=read(socketFD,&buf,1);//read the message
-	    if(charsRead<0){
-	    	printf("Unable to read socket\n");
-	    	return ""; //default to safety
-	    }
-	    header+=buf;
-
-	    int headerLength=header.length();
-	    if(headerLength<5) continue;
-	    if(header.substr(headerLength-4) == "\r\n\r\n"){
-	    	//found the end of the header of the newly connected client
-	    	//now lets break so that we can analyze what we need to do
-	    	break;
-	    }
-	}
-	return header;
-}
-
-void takeImage(raspicam::RaspiCam &cam){
-	// puts into output.png
-	// no preview on screen
-	// waits 900 milliseconds to capture
-	// the camera seems to need time to warm up
-	//system("raspistill -o output.png -e png --nopreview --timeout 900");
-
-	//new method that is faster, a lot faster
-	size_t bufSize = cam.getImageBufferSize();
-	unsigned char* buf = (unsigned char*)malloc(bufSize);
-	cam.grab();
-	cam.retrieve(buf);
-
-	png::image< png::rgb_pixel > image(2560, 1920);
-	int counter=0;
-	for (png::uint_32 y = 0; y < image.get_height(); ++y){
-	    for (png::uint_32 x = 0; x < image.get_width(); ++x){
-	        image[y][x] = png::rgb_pixel(buf[counter],buf[counter+1],buf[counter+2]);
-	        // non-checking equivalent of image.set_pixel(x, y, ...);
-	        counter+=3;
-	    }
-	}
-	image.write("output.png");
-
-	//FILE* of = fopen("output.png","wb");
-	//fwrite(buf,1,bufSize,of);
-	//fclose(of);
-
-	//cam.release();
-	free(buf);
-}
 void sendImageBack(std::string adminAddress){
 	int socketFD = simpleConnectToHost(adminAddress,63036);
 	std::string header="RASPI CAMERA\r\nIMAGE SEND\r\n\r\n";
@@ -97,13 +43,6 @@ void reportToAdmin(std::string adminAddress){
 }
 
 void setupCamera(raspicam::RaspiCam &cam){
-	//still.setEncoding(raspicam::RASPICAM_ENCODING_PNG);
-	//still.setCaptureSize(2592 , 1944); //max size
-	//if(!still.open()){
-	//	printf("Unable to open Camera\n");
-	//	exit(1);
-	//}
-
 	cam.setCaptureSize(2560 , 1920); //max size
 	cam.setFormat(raspicam::RASPICAM_FORMAT_RGB);
 	if(!cam.open()){
@@ -113,31 +52,15 @@ void setupCamera(raspicam::RaspiCam &cam){
 }
 
 int main(int argc, char const *args[]){
-	raspicam::RaspiCam still;
-	setupCamera(still);
+	//raspicam::RaspiCam still;
+	setupCamera(cam);
 
-	std::string adminAddress=findAdmin();
+	adminAddress=findAdmin();
 	printf("Admin Address %s\n",adminAddress.c_str());
 	reportToAdmin(adminAddress); //connect to the admin to say that we are here
 
-	int listenFD = simpleOpenListenSocket(63036);
-	printf("Accepting Commands\n");
-	while(1){
-		struct newConnectionInfo newConc = simpleAccept(listenFD);
-		std::string header=getHeader(newConc.FD);
-		printf("%s\n", header.c_str());
-		if(header=="RASPI ADMIN\r\nIMAGE TAKE\r\n\r\n"){
-			takeImage(still);
-			sendImageBack(adminAddress);
-		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
-			system("sudo reboot");
-		}else if(header=="RASPI ADMIN\r\nUPDATE\r\n\r\n"){
-			system("git pull");
-			system("make");
-			system("sudo reboot");
-		}
-		close(newConc.FD);
-	}
+	pthread_t threadFD;
+	pthread_create(&threadFD,NULL,recieveTCPCommands,NULL); //start the tcp command system
 
 	return 0;
 }
