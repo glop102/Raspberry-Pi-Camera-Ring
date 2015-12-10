@@ -7,6 +7,7 @@
 
 void* recieveTCPCommands(void* nada); //thread starts here
 std::string getHeader(int socketFD);  // gets the tcp header that holds the command
+void sendImageBack(std::string adminAddress); //sends the file output.png to the admin server
 
 void* recieveTCPCommands(void* nada){ //thread starts here
 	int listenFD = simpleOpenListenSocket(63036);
@@ -50,6 +51,13 @@ std::string getHeader(int socketFD){
 	    }
 	}
 	return header;
+}
+
+void sendImageBack(std::string adminAddress){
+	int socketFD = simpleConnectToHost(adminAddress,63036);
+	std::string header="RASPI CAMERA\r\nIMAGE SEND\r\n\r\n";
+	write(socketFD,header.c_str(),header.length());
+	sendFileAlreadyConnected(socketFD,"output.png");
 }
 
 #endif

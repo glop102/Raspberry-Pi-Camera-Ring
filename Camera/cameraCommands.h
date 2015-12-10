@@ -62,8 +62,8 @@ void takeImage_toFile(){
 	//image.write("output.png");
 
 	//free(buf);
-
-	saveImageToFile(takeImage(),"output.png");
+	ImageBuffer buf=takeImage();
+	saveImageToFile(buf,"output.png");
 }
 
 ImageBuffer takeImage(){

@@ -22,12 +22,6 @@ std::string findAdmin(){
 	return peer.address;
 }
 
-void sendImageBack(std::string adminAddress){
-	int socketFD = simpleConnectToHost(adminAddress,63036);
-	std::string header="RASPI CAMERA\r\nIMAGE SEND\r\n\r\n";
-	write(socketFD,header.c_str(),header.length());
-	sendFileAlreadyConnected(socketFD,"output.png");
-}
 void reportToAdmin(std::string adminAddress){
 	int socketFD = simpleConnectToHost(adminAddress,63036);
 	//printf("%d\n", socketFD);
