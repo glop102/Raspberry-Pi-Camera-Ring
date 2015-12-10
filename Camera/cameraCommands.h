@@ -23,14 +23,10 @@ public:
 		this->buf = (unsigned char*)malloc(bufSize);
 		for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
 	}
-	ImageBuffer(ImageBuffer other){
-		this->bufSize = other.size();
-		this->buf = (unsigned char*)malloc(bufSize);
-		for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
-	}
 	~ImageBuffer(){
 		free(buf);
 	}
+
 	unsigned char operator[](unsigned int index){
 		return buf[index];
 	}
@@ -67,7 +63,8 @@ void takeImage_toFile(){
 	//image.write("output.png");
 
 	//free(buf);
-	ImageBuffer buf=takeImage();
+	ImageBuffer buf;
+	buf=takeImage();
 	saveImageToFile(buf,"output.png");
 }
 
@@ -83,8 +80,8 @@ ImageBuffer takeImage(){
 }
 void saveImageToFile(ImageBuffer& buf, std::string filename){
 	png::image< png::rgb_pixel > image(2560, 1920);
-	image.set_interlace_type(PNG_INTERLACE_NONE);
-	image.set_compression_type(PNG_COMPRESSION_TYPE_BASE);
+	image.set_interlace_type(png::interlace_none);
+	image.set_compression_type(png::compression_type_base);
 	int counter=0;
 	for (png::uint_32 y = 0; y < image.get_height(); ++y){
 	    for (png::uint_32 x = 0; x < image.get_width(); ++x){
