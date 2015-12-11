@@ -56,5 +56,7 @@ int main(int argc, char const *args[]){
 	pthread_t threadFD;
 	pthread_create(&threadFD,NULL,recieveTCPCommands,NULL); //start the tcp command system
 
+	while(1);
+
 	return 0;
 }
