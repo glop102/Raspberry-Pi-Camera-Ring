@@ -58,5 +58,7 @@ int main(int argc, char const *args[]){
 
 	while(1);
 
+	printf("\nProgram Finished\n\n");
+
 	return 0;
 }
