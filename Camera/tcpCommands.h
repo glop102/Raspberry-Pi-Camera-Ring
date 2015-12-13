@@ -17,6 +17,7 @@ void* recieveTCPCommands(void* nada){ //thread starts here
 		std::string header=getHeader(newConc.FD);
 		printf("%s\n", header.c_str());
 		if(header=="RASPI ADMIN\r\nIMAGE TAKE\r\n\r\n"){
+			printf("taking Picture\n");
 			takeImage_toFile();
 			sendImageBack(adminAddress);
 		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
