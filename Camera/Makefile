@@ -9,9 +9,16 @@ all: main.out
 	#If you want, add the executable to the /etc/rc.local file to run on startup
 
 main.out: stdSocketTools.o fileSend.o
-	make libpng
-	make -B raspicam 
 	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
+
+base:
+	raspi-config #ENABLE THE CAMERA OPTION
+	make libpng
+	make -B raspicam
+	apt-get update
+	apt-get install build-essential cmake git g++-4.8
+	rm /usr/bin/g++
+	ln -s /usr/bin/g++-4.8 /usr/bin/g++
 
 %.o: %.cpp
 	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
