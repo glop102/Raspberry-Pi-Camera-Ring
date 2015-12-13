@@ -13,12 +13,12 @@ main.out: stdSocketTools.o fileSend.o
 
 base:
 	raspi-config #ENABLE THE CAMERA OPTION
-	make libpng
-	make -B raspicam
 	apt-get update
 	apt-get install build-essential cmake git g++-4.8
 	rm /usr/bin/g++
 	ln -s /usr/bin/g++-4.8 /usr/bin/g++
+	make libpng
+	make -B raspicam
 
 %.o: %.cpp
 	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
