@@ -30,11 +30,11 @@ public:
 	unsigned char operator[](unsigned int index){
 		return buf[index];
 	}
-	void operator=(ImageBuffer& other){
-		this->bufSize = other.size();
-		this->buf = (unsigned char*)malloc(bufSize);
-		for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
-	}
+	//void operator=(ImageBuffer& other){
+	//	this->bufSize = other.size();
+	//	this->buf = (unsigned char*)malloc(bufSize);
+	//	for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
+	//}
 	unsigned char* raw_array(){
 		return this->buf;
 	}
@@ -70,6 +70,7 @@ void takeImage_toFile(){
 	//free(buf);
 	ImageBuffer buf;
 	buf=takeImage();
+	printf("Image Buffer Size: %d",buf.size());
 	saveImageToFile(buf,"output.png");
 }
 
