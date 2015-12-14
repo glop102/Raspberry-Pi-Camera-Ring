@@ -68,7 +68,7 @@ public:
 		}
 	}
 	ImageBuffer pop(){
-		auto temp =this->buffer->buf; //save the image buffer
+		ImageBuffer temp(this->buffer->buf); //save the image buffer
 		auto temp2=this->buffer; //save the current struct
 		this->buffer=this->buffer->next; //move to the next struct
 		delete temp2; //delete the old struct
@@ -132,7 +132,7 @@ void saveImageToFile(ImageBuffer& buf, std::string filename){
 	for (png::uint_32 y = 0; y < image.get_height(); ++y){
 	    for (png::uint_32 x = 0; x < image.get_width(); ++x){
 	        auto temp = png::rgb_pixel(buf[counter],buf[counter+1],buf[counter+2]);
-		image[y][x] = temp;
+			image[y][x] = temp;
 	        // non-checking equivalent of image.set_pixel(x, y, ...);
 	        counter+=3;
 	    }
