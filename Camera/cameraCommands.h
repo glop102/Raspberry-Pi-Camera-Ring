@@ -68,6 +68,10 @@ public:
 		}
 	}
 	ImageBuffer pop(){
+		if(this->buffer==0){
+			ImageBuffer temp;
+			return temp;
+		}
 		ImageBuffer temp(this->buffer->buf); //save the image buffer
 		auto temp2=this->buffer; //save the current struct
 		this->buffer=this->buffer->next; //move to the next struct
