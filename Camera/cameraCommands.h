@@ -28,7 +28,7 @@ public:
 	}
 	~ImageBuffer(){
 		free(buf);
-		//printf("buffer freed\n");
+		//printf("buffer freed %d\n",buf);
 	}
 
 	unsigned char operator[](unsigned int index) const {
@@ -55,16 +55,15 @@ public:
 		buffer=0;
 	}
 	void add(ImageBuffer other){
+		auto newest = new ITEM{other,0};
+		//newest->buf = other;
+		//newest->next= 0;
 		if(this->buffer==0){
-			this->buffer=new ITEM;
-			this->buffer->buf=other;
-			this->buffer->next=0;
+			this->buffer=newest;
 		}else{
 			auto temp=this->buffer;
 			while(temp->next != 0) temp=temp->next;
-			temp->next=new ITEM;
-			temp->next->buf=other;
-			temp->next->next=0;
+			temp->next=newest;
 		}
 	}
 	ImageBuffer pop(){
@@ -135,8 +134,7 @@ void saveImageToFile(ImageBuffer& buf, std::string filename){
 	int counter=0;
 	for (png::uint_32 y = 0; y < image.get_height(); ++y){
 	    for (png::uint_32 x = 0; x < image.get_width(); ++x){
-	        auto temp = png::rgb_pixel(buf[counter],buf[counter+1],buf[counter+2]);
-			image[y][x] = temp;
+	        image[y][x] = png::rgb_pixel(buf[counter],buf[counter+1],buf[counter+2]);
 	        // non-checking equivalent of image.set_pixel(x, y, ...);
 	        counter+=3;
 	    }
