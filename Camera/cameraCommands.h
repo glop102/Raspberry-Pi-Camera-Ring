@@ -17,28 +17,28 @@ public:
 	ImageBuffer(){
 		this->bufSize = cam.getImageBufferSize();
 		this->buf = (unsigned char*)malloc(bufSize);
+		if(buf==0) printf("error on ImageBuffer allocation\n");
 	}
-	ImageBuffer(ImageBuffer& other){
+	ImageBuffer(const ImageBuffer& other){
+		//printf("copying the buffer\n");
 		this->bufSize = other.size();
-		this->buf = (unsigned char*)malloc(bufSize);
+		this->buf = (unsigned char*)malloc(this->bufSize);
+		if(buf==0) printf("error on ImageBuffer allocation\n");
 		for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
 	}
 	~ImageBuffer(){
 		free(buf);
+		//printf("buffer freed\n");
 	}
 
-	unsigned char operator[](unsigned int index){
-		return buf[index];
+	unsigned char operator[](unsigned int index) const {
+		return this->buf[index];
 	}
-	//void operator=(ImageBuffer& other){
-	//	this->bufSize = other.size();
-	//	this->buf = (unsigned char*)malloc(bufSize);
-	//	for(unsigned int x=0;x<bufSize;x++) this->buf[x] = other[x];
-	//}
-	unsigned char* raw_array(){
+
+	unsigned char* raw_array() const {
 		return this->buf;
 	}
-	size_t size(){
+	size_t size() const {
 		return this->bufSize;
 	}
 };
@@ -46,6 +46,7 @@ public:
 void takeImage_toFile();
 ImageBuffer takeImage();
 void saveImageToFile(ImageBuffer& buf, std::string filename);
+//void saveImageToFile(unsigned char* buf, std::string filename);
 
 void takeImage_toFile(){
 	/*
@@ -68,9 +69,7 @@ void takeImage_toFile(){
 	//image.write("output.png");
 
 	//free(buf);
-	ImageBuffer buf;
-	buf=takeImage();
-	printf("Image Buffer Size: %d\n",buf.size());
+	ImageBuffer buf=takeImage();
 	saveImageToFile(buf,"output.png");
 }
 
@@ -85,14 +84,15 @@ ImageBuffer takeImage(){
 	return buf;
 }
 void saveImageToFile(ImageBuffer& buf, std::string filename){
-	printf("Image Buffer Size: %d\n",buf.size());
+//void saveImageToFile(unsigned char* buf,std::string filename){
 	png::image< png::rgb_pixel > image(2560, 1920);
 	image.set_interlace_type(png::interlace_none);
 	image.set_compression_type(png::compression_type_base);
 	int counter=0;
 	for (png::uint_32 y = 0; y < image.get_height(); ++y){
 	    for (png::uint_32 x = 0; x < image.get_width(); ++x){
-	        image[y][x] = png::rgb_pixel(buf[counter],buf[counter+1],buf[counter+2]);
+	        auto temp = png::rgb_pixel(buf[counter],buf[counter+1],buf[counter+2]);
+		image[y][x] = temp;
 	        // non-checking equivalent of image.set_pixel(x, y, ...);
 	        counter+=3;
 	    }

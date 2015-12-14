@@ -17,7 +17,6 @@ void* recieveTCPCommands(void* nada){ //thread starts here
 		std::string header=getHeader(newConc.FD);
 		printf("%s\n", header.c_str());
 		if(header=="RASPI ADMIN\r\nIMAGE TAKE\r\n\r\n"){
-			printf("taking Picture\n");
 			takeImage_toFile();
 			sendImageBack(adminAddress);
 		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
@@ -55,7 +54,7 @@ std::string getHeader(int socketFD){
 }
 
 void sendImageBack(std::string adminAddress){
-	printf("sending file back\n");
+	//printf("sending file back\n");
 	int socketFD = simpleConnectToHost(adminAddress,63036);
 	std::string header="RASPI CAMERA\r\nIMAGE SEND\r\n\r\n";
 	write(socketFD,header.c_str(),header.length());
