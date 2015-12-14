@@ -43,26 +43,26 @@ public:
 	}
 };
 
-class BufferQueue(){
+class BufferQueue{
 private:
-	struct item{
+	struct ITEM{
 		ImageBuffer buf;
-		item* next;
-	}item;
-	item * buffer;
+		ITEM* next;
+	};
+	BufferQueue::ITEM * buffer;
 public:
 	BufferQueue(){
 		buffer=0;
 	}
 	void add(ImageBuffer other){
 		if(this->buffer==0){
-			this->buffer=new item;
+			this->buffer=new ITEM;
 			this->buffer->buf=other;
 			this->buffer->next=0;
 		}else{
 			auto temp=this->buffer;
 			while(temp->next != 0) temp=temp->next;
-			temp->next=new item;
+			temp->next=new ITEM;
 			temp->next->buf=other;
 			temp->next->next=0;
 		}
