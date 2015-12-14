@@ -9,9 +9,15 @@
 void* recieveUDPCommands(void* nada); //thread starts here
 
 void* recieveUDPCommands(void* nada){
+	int socketFD = simpleOpenSocket_UDP(63036);
+	struct newConnectionInfo peer;
 	while(1){
-		;
+		peer=listen_UDP(socketFD);
+		if(peer.message=="ADMIN ANNOUNCE"){//admin reporting
+			reportToAdmin();
+		}
 	}
+	close(socketFD); //just in case we somehow end up here
 }
 
 #endif

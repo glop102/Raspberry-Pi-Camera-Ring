@@ -27,7 +27,7 @@ void reportToAdmin(std::string adminAddress){
 	//printf("%d\n", socketFD);
 	while(socketFD<=0){
 		printf("Failed to report to admin\n");
-		sleep(5);
+		sleep(2);
 		socketFD=simpleConnectToHost(adminAddress,63036);
 	}
 	std::string header="RASPI CAMERA\r\nREPORTING\r\n\r\n";
@@ -55,6 +55,7 @@ int main(int argc, char const *args[]){
 
 	pthread_t threadFD;
 	pthread_create(&threadFD,NULL,recieveTCPCommands,NULL); //start the tcp command system
+	pthread_create(&threadFD,NULL,recieveUDPCommands,NULL); //start the udp command system
 
 	while(1);
 

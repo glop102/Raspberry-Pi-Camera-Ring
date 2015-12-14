@@ -7,8 +7,11 @@ void raspiConnection(struct newConnectionInfo peer,std::string header){
 	*/
 
 	//check that we have this PI in our list of available PIs
-	if(globalIPList.find({peer.address})==-1){ //this is not in the list
-		globalIPList.append({peer.address,header.substr(6,header.find('\r',6)-6)}); //fills out the basic info of the PI
+	int index = globalIPList.find({peer.address});
+	if(index==-1){ //this is not in the list
+		globalIPList.append({peer.address,header.substr(6,header.find('\r',6)-6),0}); //fills out the basic info of the PI
+	}else{//it is in the list
+		globalIPList[index].failedReports=0;
 	}
 
 	//DEBUG - lets you see all the clients connected everytime a new connection happens

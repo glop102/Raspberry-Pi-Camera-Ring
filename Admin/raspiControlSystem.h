@@ -39,6 +39,7 @@ struct PI_INFO
 {
 	std::string address;
 	std::string role; //Camera, Projector, etc
+	int failedReports;
 	bool operator==(const PI_INFO& other){
 		return this->address==other.address;
 	}

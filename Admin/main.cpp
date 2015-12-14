@@ -48,10 +48,22 @@ void* spawnThread(void* peer){
 }
 
 void* constantAnnounce(void* data){
+	/*
+	* this announces over UDP every 3 seconds that the admin is HERE
+	* this signals that the PIs should all report back in so that we can see they are still online
+	* this removes PIs after 3 time of not having them check back in
+	*/
 	int socketFD=simpleOpenSocket_UDP(63036);
 	while(1){
 		sleep(3); //only announce every 3 seconds
 		sendBroadcast_UDP(socketFD,63036,"ADMIN ANNOUNCE");
+		for(int x=0;x<globalIPList.length();x++){
+			if(globalIPList[x].failedReports==3){
+				globalIPList.remove(x);
+				x--;
+			}
+			globalIPList[x].failedReports++;
+		}
 	}
 }
 
