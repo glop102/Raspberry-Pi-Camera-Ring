@@ -147,6 +147,7 @@ void * encodingQueueThread(void* nada){
 			saveImageToFile(temp,"output.png");
 			sendImageBack(adminAddress);
 		}
+		sleep(1);
 	}
 	return 0;
 }

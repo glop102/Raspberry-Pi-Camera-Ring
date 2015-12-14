@@ -23,7 +23,7 @@ private:
 	std::vector<ttt> buf;
 public:
 	threadSafeList();
-	ttt operator[](unsigned int index);
+	ttt& operator[](unsigned int index);
 	void remove(unsigned int index);
 	void remove(ttt input);
 	void append(ttt input);
