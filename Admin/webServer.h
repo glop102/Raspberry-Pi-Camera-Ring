@@ -29,6 +29,7 @@ std::string getRequestedPage(std::string header); //gets the requested URL from 
 void sendHTMLFile(int socketFD,std::string request); //sends a file from the filesystem
 void replaceSymbols(std::vector<char>& input); //replaces speacial symbols with special information before letting it be sent to the browser
 std::string makeNextImageSet(); //makes the folder for the next image set
+std::string currentImageSet(); //gets the last image set name
 std::string itoa(unsigned int here);
 void redirectPage(int socketFD,std::string here);
 

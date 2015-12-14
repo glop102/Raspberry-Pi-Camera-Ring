@@ -29,8 +29,9 @@ void downloadImage(struct newConnectionInfo peer); //command was to download ima
 std::vector<std::string> listDirectoryContents(std::string);
 std::vector<std::string> sortContents(std::vector<std::string>);
 int stringDifference(std::string,std::string);
-void sendCaptureCommand_All(); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
-void* __sendCaptureCommand_All(void* data); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
+void sendTakeCommand_All(); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
+void* __sendTakeCommand_All(void* data); //each socket connection needs to be in a new thread so that there is less time between the call and it happening
+void sendCaptureCommand_All(); //sends a UDP packet to tell each PI to take a new picture and send it back to us
 //void sendRebootCommand(std::string address);
 //void sendVideoRestartCommand(std::string address);
 void sendUpdateCommand_All();
@@ -47,5 +48,6 @@ struct PI_INFO
 
 extern threadSafeList<PI_INFO> globalIPList; //global list of PIs that have reported to the admin
 	//NOTE: this list is global so that the webserver can use it to send commands when the client says to
+extern std::string itoa(unsigned int here);
 
 #endif

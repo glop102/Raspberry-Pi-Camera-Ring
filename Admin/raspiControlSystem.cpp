@@ -73,7 +73,27 @@ void downloadImage(struct newConnectionInfo peer){
 	*/
 	std::vector<std::string> dirContents;
 	dirContents=listDirectoryContents("./images/");
-	saveFile_noThread(peer.FD,"images/"+dirContents[dirContents.size()-1],std::string(peer.address)+".png");
+
+	unsigned int x=0;
+	std::vector<std::string> dirContents2=listDirectoryContents("images/"+dirContents[dirContents.size()-1]);
+	bool has=false;
+
+	for(int y=0;y<dirContents2.size();y++){
+		if(dirContents2[y]==std::string(peer.address)+"_"+itoa(x)+".png"){
+			has=true;
+			break;
+		}
+	}
+	while(has){
+		x++;
+		for(int y=0;y<dirContents2.size();y++){
+			if(dirContents2[y]==std::string(peer.address)+"_"+itoa(x)+".png"){
+				has=true;
+				break;
+			}
+		}
+	}
+	saveFile_noThread(peer.FD,"images/"+dirContents[dirContents.size()-1],std::string(peer.address)+"_"+itoa(x)+".png");
 }
 
 std::vector<std::string> listDirectoryContents(std::string input){
@@ -119,14 +139,14 @@ int stringDifference(std::string first,std::string sec){
 	return first[counter]-sec[counter];
 }
 
-void sendCaptureCommand_All(){
+void sendTakeCommand_All(){
 	for(int x=0;x<globalIPList.length();x++){
 		if(globalIPList[x].role!="CAMERA")continue;
 		pthread_t thread;
-		pthread_create(&thread,NULL,__sendCaptureCommand_All,(void*)globalIPList[x].address.c_str());
+		pthread_create(&thread,NULL,__sendTakeCommand_All,(void*)globalIPList[x].address.c_str());
 	}
 }
-void* __sendCaptureCommand_All(void* data){
+void* __sendTakeCommand_All(void* data){
 	std::string address=(char*)data;
 	int socketFD=simpleConnectToHost(address,63036);
 	if(socketFD==0)return NULL;
@@ -134,6 +154,10 @@ void* __sendCaptureCommand_All(void* data){
 	write(socketFD,header.c_str(),header.length());
 	close(socketFD);
 	return NULL;
+}
+void sendCaptureCommand_All(){
+	int socketFD=simpleOpenSocket_UDP(63036);
+	sendBroadcast_UDP(socketFD,63036,"IMAGE CAPTURE");
 }
 
 void sendUpdateCommand_All(){

@@ -34,13 +34,25 @@ void engageBrowser(int socketFD,std::string header){
 				}else sendHTMLFile(socketFD,request.substr(1)); //if it is /images/setNumber/something
 			} else sendHTML_ImageSet(socketFD,imageSetName);
 		}
-	}else if(request=="/capturePicture"){
+	}else if(request=="/newImageSet"){
+		//make a new image set that comes next in the sequence
+		//it will have no images, and will have to be added later
+		std::string nextSetName=makeNextImageSet();
+		redirectPage(socketFD,"/images/"+nextSetName);
+	}else if(request=="/takePicture"){
 		//tell PIs to capture the picture
 		//load new page - prefiably redirects to the home page
 		//i mean it really changes the location of the page to the index page
 		std::string nextSetName=makeNextImageSet();
-		sendCaptureCommand_All();
+		sendTakeCommand_All();
 		redirectPage(socketFD,"/images/"+nextSetName);
+	}else if(request=="/capturePicture"){
+		//tell PIs to capture the picture
+		//load new page - prefiably redirects to the home page
+		//i mean it really changes the location of the page to the index page
+		std::string setName=currentImageSet();
+		sendTakeCommand_All();
+		redirectPage(socketFD,"/images/"+setName);
 	}else if(request=="/update"){
 		sendUpdateCommand_All();
 		redirectPage(socketFD,"/");
@@ -393,6 +405,15 @@ void replaceSymbols_ImageSet(std::string& doc, std::string setName){
 	doc=temp;
 }
 
+std::string currentImageSet(){
+	std::vector<std::string> dirContents=listDirectoryContents("images");
+	if(dirContents.size()==0){
+		system("mkdir images"); //make sure the folder exists in the first place
+		system("mkdir images/00001");
+		return "00001"; //already did the work
+	}
+	return dirContents[dirContents.size()-1].c_str();
+}
 std::string makeNextImageSet(){
 	std::vector<std::string> dirContents=listDirectoryContents("images");
 	if(dirContents.size()==0){
