@@ -61,6 +61,7 @@ void* constantAnnounce(void* data){
 			if(globalIPList[x].failedReports==3){
 				globalIPList.remove(x);
 				x--;
+				continue;
 			}
 			globalIPList[x].failedReports++;
 		}
