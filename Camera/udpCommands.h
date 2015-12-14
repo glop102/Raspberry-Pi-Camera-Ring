@@ -16,6 +16,8 @@ void* recieveUDPCommands(void* nada){
 		peer=listen_UDP(socketFD);
 		if(peer.message=="ADMIN ANNOUNCE"){//admin reporting
 			reportToAdmin(adminAddress);
+		}else if(peer.message=="IMAGE CAPTURE"){
+			bufferQueue.add(takeImage);
 		}
 	}
 	close(socketFD); //just in case we somehow end up here

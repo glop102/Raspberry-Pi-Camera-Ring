@@ -43,10 +43,50 @@ public:
 	}
 };
 
+class BufferQueue(){
+private:
+	struct item{
+		ImageBuffer buf;
+		item* next;
+	}item;
+	item * buffer;
+public:
+	BufferQueue(){
+		buffer=0;
+	}
+	void add(ImageBuffer other){
+		if(this->buffer==0){
+			this->buffer=new item;
+			this->buffer->buf=other;
+			this->buffer->next=0;
+		}else{
+			auto temp=this->buffer;
+			while(temp->next != 0) temp=temp->next;
+			temp->next=new item;
+			temp->next->buf=other;
+			temp->next->next=0;
+		}
+	}
+	ImageBuffer pop(){
+		auto temp =this->buffer->buf; //save the image buffer
+		auto temp2=this->buffer; //save the current struct
+		this->buffer=this->buffer->next; //move to the next struct
+		delete temp2; //delete the old struct
+		return temp;
+	}
+	bool hasNext(){
+		if(buffer)return true;
+		return false;
+	}
+};
+
+BufferQueue bufferQueue;
+
 void takeImage_toFile();
 ImageBuffer takeImage();
 void saveImageToFile(ImageBuffer& buf, std::string filename);
 //void saveImageToFile(unsigned char* buf, std::string filename);
+extern void sendImageBack(std::string);
 
 void takeImage_toFile(){
 	/*
@@ -97,7 +137,18 @@ void saveImageToFile(ImageBuffer& buf, std::string filename){
 	        counter+=3;
 	    }
 	}
-	image.write("output.png");
+	image.write(filename.c_str());
+}
+
+void * encodingQueueThread(void* nada){
+	while(1){
+		while(bufferQueue.hasNext()){
+			ImageBuffer temp=bufferQueue.pop();
+			saveImageToFile(temp,"output.png");
+			sendImageBack(adminAddress);
+		}
+	}
+	return 0;
 }
 
 #endif
