@@ -7,6 +7,7 @@
 #include "cameraCommands.h"
 
 void* recieveUDPCommands(void* nada); //thread starts here
+extern void reportToAdmin(std::string adminAddress);
 
 void* recieveUDPCommands(void* nada){
 	int socketFD = simpleOpenSocket_UDP(63036);
@@ -14,7 +15,7 @@ void* recieveUDPCommands(void* nada){
 	while(1){
 		peer=listen_UDP(socketFD);
 		if(peer.message=="ADMIN ANNOUNCE"){//admin reporting
-			reportToAdmin();
+			reportToAdmin(adminAddress);
 		}
 	}
 	close(socketFD); //just in case we somehow end up here
