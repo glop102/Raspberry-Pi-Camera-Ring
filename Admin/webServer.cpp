@@ -51,7 +51,7 @@ void engageBrowser(int socketFD,std::string header){
 		//load new page - prefiably redirects to the home page
 		//i mean it really changes the location of the page to the index page
 		std::string setName=currentImageSet();
-		sendTakeCommand_All();
+		sendCaptureCommand_All();
 		redirectPage(socketFD,"/images/"+setName);
 	}else if(request=="/update"){
 		sendUpdateCommand_All();
