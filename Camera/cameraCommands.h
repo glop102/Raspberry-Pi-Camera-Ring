@@ -146,8 +146,11 @@ void * encodingQueueThread(void* nada){
 	while(1){
 		while(bufferQueue.hasNext()){
 			ImageBuffer temp=bufferQueue.pop();
+			printf("Encoding New Image\n");
 			saveImageToFile(temp,"output.png");
+			printf("Saved Image\n");
 			sendImageBack(adminAddress);
+			printf("Sent Image\n");
 		}
 		sleep(1);
 	}

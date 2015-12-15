@@ -57,8 +57,14 @@ std::string getHeader(int socketFD){
 void sendImageBack(std::string adminAddress){
 	//printf("sending file back\n");
 	int socketFD = simpleConnectToHost(adminAddress,63036);
+	if(socketFD<=0){
+		printf("unable to open socket\n");
+		return;
+	}
+	printf("socketFD : %d\n",socketFD);
 	std::string header="RASPI CAMERA\r\nIMAGE SEND\r\n\r\n";
 	write(socketFD,header.c_str(),header.length());
+	printf("Header Sent\n");
 	sendFileAlreadyConnected(socketFD,"output.png");
 }
 
