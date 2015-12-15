@@ -77,6 +77,7 @@ void downloadImage(struct newConnectionInfo peer){
 	unsigned int x=0;
 	std::vector<std::string> dirContents2=listDirectoryContents("images/"+dirContents[dirContents.size()-1]);
 	bool has=false;
+	printf("Downloading Image\n");
 
 	for(int y=0;y<dirContents2.size();y++){
 		if(dirContents2[y]==std::string(peer.address)+"_"+itoa(x)+".png"){
@@ -86,6 +87,7 @@ void downloadImage(struct newConnectionInfo peer){
 	}
 	while(has){
 		x++;
+		has=false;
 		for(int y=0;y<dirContents2.size();y++){
 			if(dirContents2[y]==std::string(peer.address)+"_"+itoa(x)+".png"){
 				has=true;
@@ -93,6 +95,7 @@ void downloadImage(struct newConnectionInfo peer){
 			}
 		}
 	}
+	printf("\t%s\n",std::string(peer.address)+"_"+itoa(x)+".png");
 	saveFile_noThread(peer.FD,"images/"+dirContents[dirContents.size()-1],std::string(peer.address)+"_"+itoa(x)+".png");
 }
 
