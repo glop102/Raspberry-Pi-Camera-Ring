@@ -95,7 +95,7 @@ void downloadImage(struct newConnectionInfo peer){
 			}
 		}
 	}
-	printf("\t%s\n",std::string(peer.address)+"_"+itoa(x)+".png");
+	printf("\t%s\n",(std::string(peer.address)+"_"+itoa(x)+".png").c_str());
 	saveFile_noThread(peer.FD,"images/"+dirContents[dirContents.size()-1],std::string(peer.address)+"_"+itoa(x)+".png");
 }
 
