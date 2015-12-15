@@ -61,10 +61,10 @@ void sendImageBack(std::string adminAddress){
 		printf("unable to open socket\n");
 		return;
 	}
-	printf("socketFD : %d\n",socketFD);
+	//printf("socketFD : %d\n",socketFD);
 	std::string header="RASPI CAMERA\r\nIMAGE SEND\r\n\r\n";
 	write(socketFD,header.c_str(),header.length());
-	printf("Header Sent\n");
+	//printf("Header Sent\n");
 	sendFileAlreadyConnected(socketFD,"output.png");
 }
 
