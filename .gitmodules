@@ -1,0 +1,3 @@
+[submodule "glopLibs"]
+	path = glopLibs
+	url = https://github.com/glop102/glopLibs
