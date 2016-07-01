@@ -12,6 +12,7 @@
 #include "../libs/stdSocketTools.h"
 #include "../libs/fileSave.h" //to get the itoa function I wrote
 #include "raspiControlSystem.h"
+#include "../glopLibs/zip/zipFile.h"
 #ifndef webServerWrapper
 #define webServerWrapper
 

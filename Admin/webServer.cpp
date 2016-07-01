@@ -465,5 +465,5 @@ void redirectPage(int socketFD,std::string here){
 }
 
 void imageSetDownload(int socketFD,std::string imageSetName){
-	redirectPage(socketFD,imageSetName);
+	redirectPage(socketFD,"/images/"+imageSetName);
 }
