@@ -37,7 +37,7 @@ void redirectPage(int socketFD,std::string here);
 void sendHTML_ImageSet(int socketFD,std::string setName); //special case for when opening an image set to look at the images and download archive
 void replaceSymbols_ImageSet(std::string& doc, std::string setName);
 
-void imageSetDownload(int socketFD,std::string imageSetName);
+void imageSetDownload(unsigned int socketFD,std::string imageSetName);
 void imageSetDelete(int socketFD,std::string imageSetName);
 
 #endif

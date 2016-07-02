@@ -464,6 +464,16 @@ void redirectPage(int socketFD,std::string here){
 	write(socketFD,page.c_str(),page.length());
 }
 
-void imageSetDownload(int socketFD,std::string imageSetName){
-	redirectPage(socketFD,"/images/"+imageSetName);
+void imageSetDownload(unsigned int socketFD,std::string imageSetName){
+	//redirectPage(socketFD,"/images/"+imageSetName);
+	ZipFile zip;
+	std::vector<std::string> dirContents=listDirectoryContents("images/"+imageSetName);
+	for(int x=0; x<dirContents.size(); x++){
+		zip.addFile("images/"+imageSetName+'/'+dirContents[x]);
+		printf("\t adding file %s\n",("images/"+imageSetName+'/'+dirContents[x]).c_str());
+	}
+
+	std::string response200="HTTP/1.1 200 OK\r\n\r\n";
+	write(socketFD,response200.c_str(),response200.length());
+	zip.saveFile(socketFD);
 }
