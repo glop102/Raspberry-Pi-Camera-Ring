@@ -122,6 +122,7 @@ ImageBuffer takeImage(){
 	* new method that is faster, a lot faster
 	*/
 	ImageBuffer buf;
+	printf("Taking New Image\n");
 	cam.grab();
 	cam.retrieve(buf.raw_array());
 	return buf;
