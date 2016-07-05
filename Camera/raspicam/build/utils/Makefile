@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam
+CMAKE_SOURCE_DIR = /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
+CMAKE_BINARY_DIR = /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/CMakeFiles/progress.marks
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/CMakeFiles/progress.marks
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/clean
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/preinstall
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/preinstall
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 utils/CMakeFiles/raspicam_still_test.dir/rule:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/raspicam_still_test.dir/rule
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/raspicam_still_test.dir/rule
 .PHONY : utils/CMakeFiles/raspicam_still_test.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ raspicam_still_test: utils/CMakeFiles/raspicam_still_test.dir/rule
 
 # fast build rule for target.
 raspicam_still_test/fast:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/build
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/build
 .PHONY : raspicam_still_test/fast
 
 # Convenience name for target.
 utils/CMakeFiles/raspicam_test.dir/rule:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/raspicam_test.dir/rule
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/raspicam_test.dir/rule
 .PHONY : utils/CMakeFiles/raspicam_test.dir/rule
 
 # Convenience name for target.
@@ -164,7 +164,7 @@ raspicam_test: utils/CMakeFiles/raspicam_test.dir/rule
 
 # fast build rule for target.
 raspicam_test/fast:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/build
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/build
 .PHONY : raspicam_test/fast
 
 raspicam_still_test.o: raspicam_still_test.cpp.o
@@ -172,7 +172,7 @@ raspicam_still_test.o: raspicam_still_test.cpp.o
 
 # target to build an object file
 raspicam_still_test.cpp.o:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/raspicam_still_test.cpp.o
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/raspicam_still_test.cpp.o
 .PHONY : raspicam_still_test.cpp.o
 
 raspicam_still_test.i: raspicam_still_test.cpp.i
@@ -180,7 +180,7 @@ raspicam_still_test.i: raspicam_still_test.cpp.i
 
 # target to preprocess a source file
 raspicam_still_test.cpp.i:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/raspicam_still_test.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/raspicam_still_test.cpp.i
 .PHONY : raspicam_still_test.cpp.i
 
 raspicam_still_test.s: raspicam_still_test.cpp.s
@@ -188,7 +188,7 @@ raspicam_still_test.s: raspicam_still_test.cpp.s
 
 # target to generate assembly for a file
 raspicam_still_test.cpp.s:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/raspicam_still_test.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/raspicam_still_test.cpp.s
 .PHONY : raspicam_still_test.cpp.s
 
 raspicam_test.o: raspicam_test.cpp.o
@@ -196,7 +196,7 @@ raspicam_test.o: raspicam_test.cpp.o
 
 # target to build an object file
 raspicam_test.cpp.o:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/raspicam_test.cpp.o
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/raspicam_test.cpp.o
 .PHONY : raspicam_test.cpp.o
 
 raspicam_test.i: raspicam_test.cpp.i
@@ -204,7 +204,7 @@ raspicam_test.i: raspicam_test.cpp.i
 
 # target to preprocess a source file
 raspicam_test.cpp.i:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/raspicam_test.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/raspicam_test.cpp.i
 .PHONY : raspicam_test.cpp.i
 
 raspicam_test.s: raspicam_test.cpp.s
@@ -212,7 +212,7 @@ raspicam_test.s: raspicam_test.cpp.s
 
 # target to generate assembly for a file
 raspicam_test.cpp.s:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/raspicam_test.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/raspicam_test.cpp.s
 .PHONY : raspicam_test.cpp.s
 
 # Help Target
@@ -246,6 +246,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

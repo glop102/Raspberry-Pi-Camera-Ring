@@ -39,6 +39,7 @@ void reportToAdmin(std::string adminAddress){
 void setupCamera(raspicam::RaspiCam &cam){
 	cam.setCaptureSize(2560 , 1920); //max size
 	cam.setFormat(raspicam::RASPICAM_FORMAT_RGB);
+	cam.setAWB(raspicam::RASPICAM_AWB_AUTO);
 	if(!cam.open()){
 		printf("Unable to open Camera\n");
 		exit(1);

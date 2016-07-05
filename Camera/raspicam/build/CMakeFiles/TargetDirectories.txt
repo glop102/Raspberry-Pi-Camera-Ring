@@ -1,4 +1,4 @@
-/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/CMakeFiles/raspicam.dir
-/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/CMakeFiles/raspicam_still_test.dir
-/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/CMakeFiles/raspicam_test.dir
-/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles/uninstall.dir
+/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/CMakeFiles/raspicam.dir
+/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/CMakeFiles/raspicam_still_test.dir
+/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/CMakeFiles/raspicam_test.dir
+/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles/uninstall.dir

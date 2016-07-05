@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam
+CMAKE_SOURCE_DIR = /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
+CMAKE_BINARY_DIR = /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/raspicam.dir/depend.make
@@ -51,17 +51,17 @@ include src/CMakeFiles/raspicam.dir/flags.make
 
 src/CMakeFiles/raspicam.dir/raspicam.cpp.o: src/CMakeFiles/raspicam.dir/flags.make
 src/CMakeFiles/raspicam.dir/raspicam.cpp.o: ../src/raspicam.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/raspicam.dir/raspicam.cpp.o"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/raspicam.cpp.o -c /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam.cpp
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/raspicam.cpp.o -c /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam.cpp
 
 src/CMakeFiles/raspicam.dir/raspicam.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raspicam.dir/raspicam.cpp.i"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam.cpp > CMakeFiles/raspicam.dir/raspicam.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam.cpp > CMakeFiles/raspicam.dir/raspicam.cpp.i
 
 src/CMakeFiles/raspicam.dir/raspicam.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raspicam.dir/raspicam.cpp.s"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam.cpp -o CMakeFiles/raspicam.dir/raspicam.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam.cpp -o CMakeFiles/raspicam.dir/raspicam.cpp.s
 
 src/CMakeFiles/raspicam.dir/raspicam.cpp.o.requires:
 .PHONY : src/CMakeFiles/raspicam.dir/raspicam.cpp.o.requires
@@ -74,17 +74,17 @@ src/CMakeFiles/raspicam.dir/raspicam.cpp.o.provides.build: src/CMakeFiles/raspic
 
 src/CMakeFiles/raspicam.dir/raspicam_still.cpp.o: src/CMakeFiles/raspicam.dir/flags.make
 src/CMakeFiles/raspicam.dir/raspicam_still.cpp.o: ../src/raspicam_still.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/raspicam.dir/raspicam_still.cpp.o"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/raspicam_still.cpp.o -c /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam_still.cpp
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/raspicam_still.cpp.o -c /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam_still.cpp
 
 src/CMakeFiles/raspicam.dir/raspicam_still.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raspicam.dir/raspicam_still.cpp.i"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam_still.cpp > CMakeFiles/raspicam.dir/raspicam_still.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam_still.cpp > CMakeFiles/raspicam.dir/raspicam_still.cpp.i
 
 src/CMakeFiles/raspicam.dir/raspicam_still.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raspicam.dir/raspicam_still.cpp.s"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam_still.cpp -o CMakeFiles/raspicam.dir/raspicam_still.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam_still.cpp -o CMakeFiles/raspicam.dir/raspicam_still.cpp.s
 
 src/CMakeFiles/raspicam.dir/raspicam_still.cpp.o.requires:
 .PHONY : src/CMakeFiles/raspicam.dir/raspicam_still.cpp.o.requires
@@ -97,17 +97,17 @@ src/CMakeFiles/raspicam.dir/raspicam_still.cpp.o.provides.build: src/CMakeFiles/
 
 src/CMakeFiles/raspicam.dir/private/private_impl.cpp.o: src/CMakeFiles/raspicam.dir/flags.make
 src/CMakeFiles/raspicam.dir/private/private_impl.cpp.o: ../src/private/private_impl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/raspicam.dir/private/private_impl.cpp.o"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/private/private_impl.cpp.o -c /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/private_impl.cpp
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/private/private_impl.cpp.o -c /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/private_impl.cpp
 
 src/CMakeFiles/raspicam.dir/private/private_impl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raspicam.dir/private/private_impl.cpp.i"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/private_impl.cpp > CMakeFiles/raspicam.dir/private/private_impl.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/private_impl.cpp > CMakeFiles/raspicam.dir/private/private_impl.cpp.i
 
 src/CMakeFiles/raspicam.dir/private/private_impl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raspicam.dir/private/private_impl.cpp.s"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/private_impl.cpp -o CMakeFiles/raspicam.dir/private/private_impl.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/private_impl.cpp -o CMakeFiles/raspicam.dir/private/private_impl.cpp.s
 
 src/CMakeFiles/raspicam.dir/private/private_impl.cpp.o.requires:
 .PHONY : src/CMakeFiles/raspicam.dir/private/private_impl.cpp.o.requires
@@ -120,17 +120,17 @@ src/CMakeFiles/raspicam.dir/private/private_impl.cpp.o.provides.build: src/CMake
 
 src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.o: src/CMakeFiles/raspicam.dir/flags.make
 src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.o: ../src/private/threadcondition.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.o"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/private/threadcondition.cpp.o -c /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/threadcondition.cpp
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/private/threadcondition.cpp.o -c /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/threadcondition.cpp
 
 src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raspicam.dir/private/threadcondition.cpp.i"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/threadcondition.cpp > CMakeFiles/raspicam.dir/private/threadcondition.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/threadcondition.cpp > CMakeFiles/raspicam.dir/private/threadcondition.cpp.i
 
 src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raspicam.dir/private/threadcondition.cpp.s"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/threadcondition.cpp -o CMakeFiles/raspicam.dir/private/threadcondition.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private/threadcondition.cpp -o CMakeFiles/raspicam.dir/private/threadcondition.cpp.s
 
 src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.o.requires:
 .PHONY : src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.o.requires
@@ -143,17 +143,17 @@ src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o: src/CMakeFiles/raspicam.dir/flags.make
 src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o: ../src/private_still/private_still_impl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o -c /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private_still/private_still_impl.cpp
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o -c /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private_still/private_still_impl.cpp
 
 src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.i"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private_still/private_still_impl.cpp > CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private_still/private_still_impl.cpp > CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.i
 
 src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.s"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private_still/private_still_impl.cpp -o CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/private_still/private_still_impl.cpp -o CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.s
 
 src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o.requires:
 .PHONY : src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o.requires
@@ -186,8 +186,8 @@ src/libraspicam.so.0.1.2: /opt/vc/lib/libmmal_util.so
 src/libraspicam.so.0.1.2: /opt/vc/lib/libmmal.so
 src/libraspicam.so.0.1.2: src/CMakeFiles/raspicam.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library libraspicam.so"
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/raspicam.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && $(CMAKE_COMMAND) -E cmake_symlink_library libraspicam.so.0.1.2 libraspicam.so.0.1 libraspicam.so
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/raspicam.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && $(CMAKE_COMMAND) -E cmake_symlink_library libraspicam.so.0.1.2 libraspicam.so.0.1 libraspicam.so
 
 src/libraspicam.so.0.1: src/libraspicam.so.0.1.2
 
@@ -205,10 +205,10 @@ src/CMakeFiles/raspicam.dir/requires: src/CMakeFiles/raspicam.dir/private_still/
 .PHONY : src/CMakeFiles/raspicam.dir/requires
 
 src/CMakeFiles/raspicam.dir/clean:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && $(CMAKE_COMMAND) -P CMakeFiles/raspicam.dir/cmake_clean.cmake
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src && $(CMAKE_COMMAND) -P CMakeFiles/raspicam.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/raspicam.dir/clean
 
 src/CMakeFiles/raspicam.dir/depend:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/CMakeFiles/raspicam.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/CMakeFiles/raspicam.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/raspicam.dir/depend
 

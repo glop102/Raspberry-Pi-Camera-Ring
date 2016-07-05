@@ -16,7 +16,7 @@ raspicamtypes.h
 
 ../src/raspicamtypes.h
 
-/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/utils/raspicam_test.cpp
+/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/utils/raspicam_test.cpp
 iostream
 -
 ctime
@@ -30,7 +30,7 @@ sstream
 sys/timeb.h
 -
 raspicam.h
-/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/utils/raspicam.h
+/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/utils/raspicam.h
 sys/time.h
 -
 unistd.h

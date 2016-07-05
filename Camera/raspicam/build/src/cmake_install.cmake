@@ -1,4 +1,4 @@
-# Install script for directory: /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src
+# Install script for directory: /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -46,9 +46,9 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "main")
     ENDIF()
   ENDFOREACH()
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE FILES
-    "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/libraspicam.so.0.1.2"
-    "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/libraspicam.so.0.1"
-    "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/libraspicam.so"
+    "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/libraspicam.so.0.1.2"
+    "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/libraspicam.so.0.1"
+    "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/libraspicam.so"
     )
   FOREACH(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraspicam.so.0.1.2"
@@ -68,8 +68,8 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "main
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "main")
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/raspicam" TYPE FILE FILES
-    "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicamtypes.h"
-    "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam.h"
+    "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicamtypes.h"
+    "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/src/raspicam.h"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "main")
 

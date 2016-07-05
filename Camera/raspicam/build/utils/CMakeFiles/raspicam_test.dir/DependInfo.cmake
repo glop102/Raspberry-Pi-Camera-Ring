@@ -4,13 +4,13 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/utils/raspicam_test.cpp" "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/CMakeFiles/raspicam_test.dir/raspicam_test.cpp.o"
+  "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/utils/raspicam_test.cpp" "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/CMakeFiles/raspicam_test.dir/raspicam_test.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/CMakeFiles/raspicam.dir/DependInfo.cmake"
+  "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/CMakeFiles/raspicam.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

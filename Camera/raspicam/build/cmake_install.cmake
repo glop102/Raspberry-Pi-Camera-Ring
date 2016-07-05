@@ -1,4 +1,4 @@
-# Install script for directory: /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam
+# Install script for directory: /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,17 +33,17 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake" TYPE FILE FILES "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/Findraspicam.cmake")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake" TYPE FILE FILES "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/Findraspicam.cmake")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake" TYPE FILE FILES "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/raspicamConfig.cmake")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake" TYPE FILE FILES "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/raspicamConfig.cmake")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/cmake_install.cmake")
-  INCLUDE("/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/cmake_install.cmake")
+  INCLUDE("/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/cmake_install.cmake")
+  INCLUDE("/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/utils/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -53,7 +53,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

@@ -47,10 +47,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam
+CMAKE_SOURCE_DIR = /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
+CMAKE_BINARY_DIR = /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/uninstall.dir
@@ -59,15 +59,15 @@ CMAKE_BINARY_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
 CMakeFiles/uninstall.dir/all:
 	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/depend
 	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 
 	@echo "Built target uninstall"
 .PHONY : CMakeFiles/uninstall.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/uninstall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/uninstall.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
 .PHONY : CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -105,7 +105,7 @@ src/preinstall:
 src/CMakeFiles/raspicam.dir/all:
 	$(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/depend
 	$(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles  1 2 3 4 5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles  1 2 3 4 5
 	@echo "Built target raspicam"
 .PHONY : src/CMakeFiles/raspicam.dir/all
 
@@ -115,9 +115,9 @@ all: src/CMakeFiles/raspicam.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/raspicam.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/raspicam.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/raspicam.dir/rule
 
 # Convenience name for target.
@@ -157,7 +157,7 @@ utils/preinstall:
 utils/CMakeFiles/raspicam_still_test.dir/all: src/CMakeFiles/raspicam.dir/all
 	$(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/depend
 	$(MAKE) -f utils/CMakeFiles/raspicam_still_test.dir/build.make utils/CMakeFiles/raspicam_still_test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles  6
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles  6
 	@echo "Built target raspicam_still_test"
 .PHONY : utils/CMakeFiles/raspicam_still_test.dir/all
 
@@ -167,9 +167,9 @@ all: utils/CMakeFiles/raspicam_still_test.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/raspicam_still_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/raspicam_still_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/raspicam_still_test.dir/rule
 
 # Convenience name for target.
@@ -192,7 +192,7 @@ clean: utils/CMakeFiles/raspicam_still_test.dir/clean
 utils/CMakeFiles/raspicam_test.dir/all: src/CMakeFiles/raspicam.dir/all
 	$(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/depend
 	$(MAKE) -f utils/CMakeFiles/raspicam_test.dir/build.make utils/CMakeFiles/raspicam_test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles  7
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles  7
 	@echo "Built target raspicam_test"
 .PHONY : utils/CMakeFiles/raspicam_test.dir/all
 
@@ -202,9 +202,9 @@ all: utils/CMakeFiles/raspicam_test.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/raspicam_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/raspicam_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/raspicam_test.dir/rule
 
 # Convenience name for target.

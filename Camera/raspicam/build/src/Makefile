@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam
+CMAKE_SOURCE_DIR = /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
+CMAKE_BINARY_DIR = /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/CMakeFiles/progress.marks
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/src/CMakeFiles/progress.marks
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/raspicam.dir/rule:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/raspicam.dir/rule
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/raspicam.dir/rule
 .PHONY : src/CMakeFiles/raspicam.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ raspicam: src/CMakeFiles/raspicam.dir/rule
 
 # fast build rule for target.
 raspicam/fast:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/build
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/build
 .PHONY : raspicam/fast
 
 private/private_impl.o: private/private_impl.cpp.o
@@ -158,7 +158,7 @@ private/private_impl.o: private/private_impl.cpp.o
 
 # target to build an object file
 private/private_impl.cpp.o:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/private_impl.cpp.o
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/private_impl.cpp.o
 .PHONY : private/private_impl.cpp.o
 
 private/private_impl.i: private/private_impl.cpp.i
@@ -166,7 +166,7 @@ private/private_impl.i: private/private_impl.cpp.i
 
 # target to preprocess a source file
 private/private_impl.cpp.i:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/private_impl.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/private_impl.cpp.i
 .PHONY : private/private_impl.cpp.i
 
 private/private_impl.s: private/private_impl.cpp.s
@@ -174,7 +174,7 @@ private/private_impl.s: private/private_impl.cpp.s
 
 # target to generate assembly for a file
 private/private_impl.cpp.s:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/private_impl.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/private_impl.cpp.s
 .PHONY : private/private_impl.cpp.s
 
 private/threadcondition.o: private/threadcondition.cpp.o
@@ -182,7 +182,7 @@ private/threadcondition.o: private/threadcondition.cpp.o
 
 # target to build an object file
 private/threadcondition.cpp.o:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.o
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.o
 .PHONY : private/threadcondition.cpp.o
 
 private/threadcondition.i: private/threadcondition.cpp.i
@@ -190,7 +190,7 @@ private/threadcondition.i: private/threadcondition.cpp.i
 
 # target to preprocess a source file
 private/threadcondition.cpp.i:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.i
 .PHONY : private/threadcondition.cpp.i
 
 private/threadcondition.s: private/threadcondition.cpp.s
@@ -198,7 +198,7 @@ private/threadcondition.s: private/threadcondition.cpp.s
 
 # target to generate assembly for a file
 private/threadcondition.cpp.s:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private/threadcondition.cpp.s
 .PHONY : private/threadcondition.cpp.s
 
 private_still/private_still_impl.o: private_still/private_still_impl.cpp.o
@@ -206,7 +206,7 @@ private_still/private_still_impl.o: private_still/private_still_impl.cpp.o
 
 # target to build an object file
 private_still/private_still_impl.cpp.o:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.o
 .PHONY : private_still/private_still_impl.cpp.o
 
 private_still/private_still_impl.i: private_still/private_still_impl.cpp.i
@@ -214,7 +214,7 @@ private_still/private_still_impl.i: private_still/private_still_impl.cpp.i
 
 # target to preprocess a source file
 private_still/private_still_impl.cpp.i:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.i
 .PHONY : private_still/private_still_impl.cpp.i
 
 private_still/private_still_impl.s: private_still/private_still_impl.cpp.s
@@ -222,7 +222,7 @@ private_still/private_still_impl.s: private_still/private_still_impl.cpp.s
 
 # target to generate assembly for a file
 private_still/private_still_impl.cpp.s:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/private_still/private_still_impl.cpp.s
 .PHONY : private_still/private_still_impl.cpp.s
 
 raspicam.o: raspicam.cpp.o
@@ -230,7 +230,7 @@ raspicam.o: raspicam.cpp.o
 
 # target to build an object file
 raspicam.cpp.o:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam.cpp.o
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam.cpp.o
 .PHONY : raspicam.cpp.o
 
 raspicam.i: raspicam.cpp.i
@@ -238,7 +238,7 @@ raspicam.i: raspicam.cpp.i
 
 # target to preprocess a source file
 raspicam.cpp.i:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam.cpp.i
 .PHONY : raspicam.cpp.i
 
 raspicam.s: raspicam.cpp.s
@@ -246,7 +246,7 @@ raspicam.s: raspicam.cpp.s
 
 # target to generate assembly for a file
 raspicam.cpp.s:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam.cpp.s
 .PHONY : raspicam.cpp.s
 
 raspicam_still.o: raspicam_still.cpp.o
@@ -254,7 +254,7 @@ raspicam_still.o: raspicam_still.cpp.o
 
 # target to build an object file
 raspicam_still.cpp.o:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam_still.cpp.o
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam_still.cpp.o
 .PHONY : raspicam_still.cpp.o
 
 raspicam_still.i: raspicam_still.cpp.i
@@ -262,7 +262,7 @@ raspicam_still.i: raspicam_still.cpp.i
 
 # target to preprocess a source file
 raspicam_still.cpp.i:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam_still.cpp.i
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam_still.cpp.i
 .PHONY : raspicam_still.cpp.i
 
 raspicam_still.s: raspicam_still.cpp.s
@@ -270,7 +270,7 @@ raspicam_still.s: raspicam_still.cpp.s
 
 # target to generate assembly for a file
 raspicam_still.cpp.s:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam_still.cpp.s
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(MAKE) -f src/CMakeFiles/raspicam.dir/build.make src/CMakeFiles/raspicam.dir/raspicam_still.cpp.s
 .PHONY : raspicam_still.cpp.s
 
 # Help Target
@@ -312,6 +312,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pi/git/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/pi/Raspberry-Pi-Camera-Ring/Camera/raspicam/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
