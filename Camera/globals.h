@@ -2,9 +2,9 @@
 #define __CAMERAGLOBALS
 
 #include <string>
-#include "raspicam/src/raspicam_still.h"
-#include "raspicam/src/raspicam.h"
-#include "raspicam/src/raspicamtypes.h"
+#include "RaspiCam/src/raspicam_still.h"
+#include "RaspiCam/src/raspicam.h"
+#include "RaspiCam/src/raspicamtypes.h"
 
 //------------------------------------------------------------------
 // These are globals to be used in other files

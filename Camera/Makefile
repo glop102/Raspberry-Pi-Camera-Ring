@@ -1,19 +1,20 @@
 CC=g++
-CFLAGS=-pthread -std=gnu++11 -lraspicam -lpng -O2
-RASPICAM_DEPENDS=raspicam_still.o #private_still_impl.o 
+CFLAGS=-pthread -std=gnu++11 -lpng -O2 #-lraspicam
+RASPICAM_DEPENDS=build/raspicam_still.o #private_still_impl.o 
+MMAL = -L/opt/vc/lib/ -lmmal -lmmal_util -lmmal_core
 
 all: main.out
 	sudo ldconfig
 	#All Done. Just run "sudo ./main.out" to start it up
 	#If you want, add the executable to the /etc/rc.local file to run on startup
 
-main.out: build stdSocketTools.o fileSend.o
-	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,build/%,$^)
+main.out: build build/stdSocketTools.o build/fileSend.o build/raspicam.o
+	$(CC)    -o main.out main.cpp $(CFLAGS) build/*.o $(MMAL)
 
 base:
-	raspi-config #ENABLE THE CAMERA OPTION
-	apt-get update
-	apt-get upgrade
+	#raspi-config #ENABLE THE CAMERA OPTION
+	sudo apt-get update
+	sudo apt-get upgrade
 	#apt-get install build-essential cmake git g++-4.8
 	#rm /usr/bin/g++
 	#ln -s /usr/bin/g++-4.8 /usr/bin/g++
@@ -21,37 +22,33 @@ base:
 	make -B raspicam
 
 build :
+	#Creating Build Directory
 	- mkdir build
 
-%.o: %.cpp
-	$(CC) -c -o build/$@ $^ $(CFLAGS)
-
-%.o: ../libs/%.cpp
-	$(CC) -c -o build/$@ $^ $(CFLAGS)
+build/stdSocketTools.o: ../libs/stdSocketTools.cpp
+	$(CC) -c -o $@ $^ $(CFLAGS)
+build/fileSend.o: ../libs/fileSend.cpp
+	$(CC) -c -o $@ $^ $(CFLAGS)
 
 #---------------------------------------------
-%.o: raspicam/src/%.cpp
-	$(CC) -c -o build/$@ $^ $(CFLAGS)
-%.o: raspicam/src/private/%.cpp
-	$(CC) -c -o build/$@ $^ $(CFLAGS)
-%.o: raspicam/src/private_still/%.cpp
-	$(CC) -c -o build/$@ $^ $(CFLAGS)
-#----------------------------------------------
-%.o: raspicam/src/dependencies/mmal/core/%.c
-	$(CC) -c -o build/$@ $^ $(CFLAGS)
-%.o: raspicam/src/dependencies/mmal/util/%.c
-	$(CC) -c -o build/$@ $^ $(CFLAGS)
-%.o: raspicam/src/dependencies/mmal/%.c
-	$(CC) -c -o build/$@ $^ $(CFLAGS)
+#  Raspi Cam
+#---------------------------------------------
+build/raspicam.o: RaspiCam/src/raspicam.cpp build/private_impl.o build/threadcondition.o
+	$(CC) -c -o $@ $^ $(CFLAGS)
+build/private_impl.o: RaspiCam/src/private/private_impl.cpp
+	$(CC) -c -o $@ $^ $(CFLAGS)
+build/threadcondition.o: RaspiCam/src/private/threadcondition.cpp
+	$(CC) -c -o $@ $^ $(CFLAGS)
+
+
 
 clean:
+	#PI-Ring Clean
 	- rm build/*.o
 	- rm *.out
-	cd libpng-1.2.52 && make clean
-	cd raspicam/build && make clean
 
-test: $(RASPICAM_DEPENDS)
-	$(CC)    -o test.out test.cpp $(patsubst %,build/%,$^) -lraspicam -I/usr/local/include
+	#LIB PNG
+	#cd libpng-1.2.52 && make clean
 
 libpng:
 	if ! [ -a libpng-1.2.52/Makefile ] ; then cd libpng-1.2.52 && ./configure; fi
