@@ -1,6 +1,5 @@
 CC=g++
 CFLAGS=-pthread -std=gnu++11 -lraspicam -lpng -O2
-BUILD_DIR=build
 RASPICAM_DEPENDS=raspicam_still.o #private_still_impl.o 
 
 all: main.out
@@ -8,55 +7,51 @@ all: main.out
 	#All Done. Just run "sudo ./main.out" to start it up
 	#If you want, add the executable to the /etc/rc.local file to run on startup
 
-main.out: stdSocketTools.o fileSend.o
-	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,$(BUILD_DIR)/%,$^)
+main.out: build stdSocketTools.o fileSend.o
+	$(CC)    -o main.out main.cpp $(CFLAGS) $(patsubst %,build/%,$^)
 
 base:
 	raspi-config #ENABLE THE CAMERA OPTION
 	apt-get update
-	apt-get install build-essential cmake git g++-4.8
-	rm /usr/bin/g++
-	ln -s /usr/bin/g++-4.8 /usr/bin/g++
+	apt-get upgrade
+	#apt-get install build-essential cmake git g++-4.8
+	#rm /usr/bin/g++
+	#ln -s /usr/bin/g++-4.8 /usr/bin/g++
 	make libpng
 	make -B raspicam
 
+build :
+	- mkdir build
+
 %.o: %.cpp
-	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
-	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+	$(CC) -c -o build/$@ $^ $(CFLAGS)
 
 %.o: ../libs/%.cpp
-	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
-	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+	$(CC) -c -o build/$@ $^ $(CFLAGS)
 
 #---------------------------------------------
 %.o: raspicam/src/%.cpp
-	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
-	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+	$(CC) -c -o build/$@ $^ $(CFLAGS)
 %.o: raspicam/src/private/%.cpp
-	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
-	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+	$(CC) -c -o build/$@ $^ $(CFLAGS)
 %.o: raspicam/src/private_still/%.cpp
-	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
-	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+	$(CC) -c -o build/$@ $^ $(CFLAGS)
 #----------------------------------------------
 %.o: raspicam/src/dependencies/mmal/core/%.c
-	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
-	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+	$(CC) -c -o build/$@ $^ $(CFLAGS)
 %.o: raspicam/src/dependencies/mmal/util/%.c
-	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
-	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+	$(CC) -c -o build/$@ $^ $(CFLAGS)
 %.o: raspicam/src/dependencies/mmal/%.c
-	if ! [ -d $(BUILD_DIR) ]; then mkdir $(BUILD_DIR); fi
-	$(CC) -c -o $(BUILD_DIR)/$@ $^ $(CFLAGS)
+	$(CC) -c -o build/$@ $^ $(CFLAGS)
 
 clean:
-	rm build/*.o
-	rm *.out
+	- rm build/*.o
+	- rm *.out
 	cd libpng-1.2.52 && make clean
 	cd raspicam/build && make clean
 
 test: $(RASPICAM_DEPENDS)
-	$(CC)    -o test.out test.cpp $(patsubst %,$(BUILD_DIR)/%,$^) -lraspicam -I/usr/local/include
+	$(CC)    -o test.out test.cpp $(patsubst %,build/%,$^) -lraspicam -I/usr/local/include
 
 libpng:
 	if ! [ -a libpng-1.2.52/Makefile ] ; then cd libpng-1.2.52 && ./configure; fi
