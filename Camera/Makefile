@@ -7,8 +7,9 @@ all: main.out
 	sudo ldconfig
 	#All Done. Just run "sudo ./main.out" to start it up
 	#If you want, add the executable to the /etc/rc.local file to run on startup
+.PHONY: all
 
-main.out: build build/stdSocketTools.o build/fileSend.o build/raspicam.o
+main.out: main.cpp cameraCommands.h globals.h tcpCommands.h udpCommands.h build build/stdSocketTools.o build/fileSend.o build/raspicam.o
 	$(CC)    -o main.out main.cpp $(CFLAGS) build/*.o $(MMAL)
 
 base:
