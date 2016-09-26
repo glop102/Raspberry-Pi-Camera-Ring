@@ -149,10 +149,12 @@ void saveImageToFile(ImageBuffer& buf, std::string filename){
 
 	for(unsigned long y=0 ; y<im.height() ; y++){
 		for(unsigned long x=0 ; x<im.width() ; x++){
-			Pixel& pix=im[y][x];
-			pix.R=buf[y*im.width() + 0];
-			pix.G=buf[y*im.width() + 1];
-			pix.B=buf[y*im.width() + 2];
+			Pixel pix;
+			pix.R=buf[(3*y*im.width()) + x + 0];
+			pix.G=buf[(3*y*im.width()) + x + 1];
+			pix.B=buf[(3*y*im.width()) + x + 2];
+			im[y][x] = pix;
+
 		}
 	}
 	im.saveImage(filename,BMP,0);
