@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "png++/png.hpp"
 #include "globals.h"
+#include "../glopLibs/imageLibrary/image.h"
 
 class ImageBuffer{
 	/*
@@ -88,6 +89,7 @@ BufferQueue bufferQueue;
 void takeImage_toFile();
 ImageBuffer takeImage();
 void saveImageToFile(ImageBuffer& buf, std::string filename);
+void saveImageToFile__PNGLIB(ImageBuffer& buf, std::string filename);
 //void saveImageToFile(unsigned char* buf, std::string filename);
 extern void sendImageBack(std::string);
 
@@ -127,7 +129,7 @@ ImageBuffer takeImage(){
 	cam.retrieve(buf.raw_array());
 	return buf;
 }
-void saveImageToFile(ImageBuffer& buf, std::string filename){
+void saveImageToFile__PNGLIB(ImageBuffer& buf, std::string filename){
 //void saveImageToFile(unsigned char* buf,std::string filename){
 	png::image< png::rgb_pixel > image(2560, 1920);
 	image.set_interlace_type(png::interlace_none);
@@ -141,6 +143,19 @@ void saveImageToFile(ImageBuffer& buf, std::string filename){
 	    }
 	}
 	image.write(filename.c_str());
+}
+void saveImageToFile(ImageBuffer& buf, std::string filename){
+	Image im(2560, 1920,RGB);
+
+	for(unsigned long y=0 ; y<im.height() ; y++){
+		for(unsigned long x=0 ; x<im.width() ; x++){
+			Pixel& pix=im[y][x];
+			pix.R=buf[y*im.width() + 0];
+			pix.G=buf[y*im.width() + 1];
+			pix.B=buf[y*im.width() + 2];
+		}
+	}
+	im.saveImage(filename,BMP,0);
 }
 
 void * encodingQueueThread(void* nada){

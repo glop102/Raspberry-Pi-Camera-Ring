@@ -9,8 +9,8 @@ all: main.out
 	#If you want, add the executable to the /etc/rc.local file to run on startup
 .PHONY: all
 
-main.out: main.cpp cameraCommands.h globals.h tcpCommands.h udpCommands.h build build/stdSocketTools.o build/fileSend.o build/raspicam.o
-	$(CC)    -o main.out main.cpp $(CFLAGS) build/*.o $(MMAL)
+main.out: main.cpp cameraCommands.h globals.h tcpCommands.h udpCommands.h build build/stdSocketTools.o build/fileSend.o build/raspicam.o image.a
+	$(CC)    -o main.out main.cpp $(CFLAGS) build/*.o $(MMAL) image.a
 
 base:
 	#raspi-config #ENABLE THE CAMERA OPTION
@@ -31,6 +31,10 @@ build/stdSocketTools.o: ../libs/stdSocketTools.cpp
 build/fileSend.o: ../libs/fileSend.cpp
 	$(CC) -c -o $@ $^ $(CFLAGS)
 
+image.a:
+	cd ../glopLibs/imageLibrary && make image.a
+	cp ../glopLibs/imageLibrary/image.a .
+
 #---------------------------------------------
 #  Raspi Cam
 #---------------------------------------------
@@ -47,6 +51,7 @@ clean:
 	#PI-Ring Clean
 	- rm build/*.o
 	- rm *.out
+	cd ../glopLibs/imageLibrary && make clean
 
 	#LIB PNG
 	#cd libpng-1.2.52 && make clean
