@@ -23,6 +23,7 @@ void* recieveTCPCommands(void* nada){ //thread starts here
 		}else if(header=="RASPI ADMIN\r\nREBOOT\r\n\r\n"){
 			system("sudo reboot");
 		}else if(header=="RASPI ADMIN\r\nUPDATE\r\n\r\n"){
+			system("make clean");
 			system("git pull");
 			system("git fetch --recurse-submodules");
 			system("make");
