@@ -51,6 +51,7 @@ clean:
 	#PI-Ring Clean
 	- rm build/*.o
 	- rm *.out
+	- rm image.a
 	cd ../glopLibs/imageLibrary && make clean
 
 	#LIB PNG
